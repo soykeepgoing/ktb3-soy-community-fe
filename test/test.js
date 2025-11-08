@@ -1,32 +1,19 @@
-const input = document.getElementById("userProfileImg");
-const preview = document.getElementById("preview");
+const userEmail = document.getElementById("userEmail");
+const emailHelper = document.getElementById("emailHelper");
 
-let uploaded = false; // 현재 이미지 업로드 여부 플래그
-const defaultImg = "default-profile.png"; // 기본 이미지 경로
+userEmail.addEventListener("input", () => {
+  const value = userEmail.value.trim();
 
-input.addEventListener("click", () => {
-  // 클릭 시 현재 업로드된 상태 기억
-  input.dataset.previousUploaded = uploaded;
-});
-
-input.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-
-  // 파일을 새로 선택하지 않고 창을 닫은 경우
-  if (!file) {
-    // 기존에 업로드된 상태였다면 → 이미지 삭제
-    if (input.dataset.previousUploaded === "true") {
-      preview.src = defaultImg;
-      uploaded = false;
-    }
-    return;
+  if (value === "") {
+    emailHelper.textContent = "이메일을 입력해주세요.";
+    emailHelper.className = "helper-text show"; // 표시 + 기본색
+  } 
+  else if (!/^[\w.-]+@[\w.-]+\.\w+$/.test(value)) {
+    emailHelper.textContent = "올바른 이메일 형식이 아닙니다.";
+    emailHelper.className = "helper-text error show"; // 표시 + 빨간색
+  } 
+  else {
+    emailHelper.textContent = "사용 가능한 이메일입니다.";
+    emailHelper.className = "helper-text success show"; // 표시 + 초록색
   }
-
-  // 파일 선택 → 이미지 미리보기 표시
-  const reader = new FileReader();
-  reader.onload = (event) => {
-    preview.src = event.target.result;
-    uploaded = true;
-  };
-  reader.readAsDataURL(file);
 });
