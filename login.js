@@ -3,15 +3,14 @@ const userPassword = document.getElementById("userPassword");
 const loginBtn = document.getElementById("btn-login");
 const url = "http://localhost:8080/api/users/auth";
 
-function signIn(){
-  event.preventDefault();
-  const userData = {
+function getUserData(){
+  const inputValue = {
     "userEmail": userEmail.value,
     "userPassword": userPassword.value
   }
 
-  const jsonData = JSON.stringify(userData);
-  const options = { method: 'POST',
+  const jsonData = JSON.stringify(inputValue);
+  const userData = { method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -19,19 +18,32 @@ function signIn(){
     body: jsonData
   };
 
-  fetch(url, options)
+  return userData;
+}
+
+function convertHelperTextToWarning(){
+  helperText.textContent = "아이디 또는 비밀번호를 확인해주세요.";
+  helperText.className = "helper-text show";
+}
+
+function signIn(){
+  event.preventDefault();
+  const userData = getUserData();
+
+  fetch(url, userData)
     .then(response => {
-      console.log(response);
       if (!response.ok) {
-        helperText.textContent = "아이디 또는 비밀번호를 확인해주세요.";
-        helperText.className = "helper-text show";
+        convertHelperTextToWarning();
+        throw new Error("로그인 실패");
       }
-      return response.json(); 
-    })
-    .then(data => {
-      console.log('응답:', data);
-      window.location.href = "http://127.0.0.1:5500/pages/posts.html?";
-    });
+      return response.json();
+    }).then(
+      data => {
+        console.log(data);  
+        localStorage.setItem("userId", data.data.userId);
+        window.location.href = `posts.html?userId=${localStorage.getItem("userId")}`;
+      }
+    ).catch(err => console.error("로그인 실패:", err));
 }
 
 loginBtn.addEventListener("click", signIn);
