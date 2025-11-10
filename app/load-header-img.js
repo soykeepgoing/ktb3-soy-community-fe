@@ -1,5 +1,2 @@
 const dropdownImage = document.getElementById("dropdown-user-image");
-
-function getDropdownImg(){
-    
-}
+dropdownImage.src = localStorage.getItem("userProfileImg");
