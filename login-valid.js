@@ -33,5 +33,3 @@ userPassword.addEventListener("input", () => {
     helperText.className = "helper-text";
   }
 });
-
-

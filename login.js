@@ -41,6 +41,8 @@ function signIn(){
       data => {
         console.log(data);  
         localStorage.setItem("userId", data.data.userId);
+        alert(data.data.userProfileImgUrl);
+        localStorage.setItem("userProfileImgUrl", data.data.userProfileImgUrl);
         window.location.href = `posts.html?userId=${localStorage.getItem("userId")}`;
       }
     ).catch(err => console.error("로그인 실패:", err));
