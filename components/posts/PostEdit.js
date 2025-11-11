@@ -1,5 +1,5 @@
-import { handlePostDetailView } from "../../events/handlePostDetailView.js";
-import {handlePostEdit} from "../../events/handlePostEdit.js";
+import { handlePostDetailView } from "../../handle/handlePostDetailView.js";
+import {handlePostEdit} from "../../handle/handlePostEdit.js";
 import { navigateTo } from "../../router/router.js";
 
 export function PostEdit(postId){

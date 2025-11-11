@@ -1,5 +1,5 @@
 import { getPosts } from "../../api/postApi.js";
-import { handlePostsView } from "../../events/handlePostsView.js";
+import { handlePostsView } from "../../handle/handlePostsView.js";
 import { navigateTo } from "../../router/router.js";
 
 const default_size = 20;

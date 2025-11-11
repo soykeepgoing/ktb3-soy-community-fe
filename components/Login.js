@@ -1,4 +1,4 @@
-import {submitLogin} from "../events/handleSubmitLogin.js"
+import {submitLogin} from "../handle/handleSubmitLogin.js"
 
 export function Login(){
     const section = document.createElement("section");

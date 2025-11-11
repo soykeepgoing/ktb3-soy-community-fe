@@ -1,7 +1,7 @@
 
-import { handlePostDetailView } from "../../events/handlePostDetailView.js";
+import { handlePostDetailView } from "../../handle/handlePostDetailView.js";
 import { navigateTo } from "../../router/router.js";
-import {handleDeleteContents} from "../../events/handleDeleteContents.js";
+import {handleDeleteContents} from "../../handle/handleDeleteContents.js";
 
 export function PostDetail(postId){
     const modalDeleteMsg = "게시글을 삭제하시겠습니까?";
@@ -21,7 +21,7 @@ export function PostDetail(postId){
                 <button id="btn-post-delete">삭제</button>
             </div>
 
-            <img src="https://picsum.photos/id/237/200/300" alt="게시글 이미지" class="post-img">
+            <img src=${postDetailData.imgUrl} alt="게시글 이미지" class="post-img">
 
             <p class="content"> ${postDetailData.body}</p>
 

@@ -10,10 +10,10 @@ export async function createPost(postData, userId){
         
         if (!response.ok) alert("게시글 등록 실패");
         const data = await response.json();
-        return true;
+        return {state: true, postId: data.postId};
     } catch(error){
         console.log("게시글 등록 실패 : " + error);
-        return false;
+        return {state: false, postId: undefined};
     }
 }
 
@@ -74,4 +74,23 @@ export async function deletePost(postId, userId){
     console.log("게시글 삭제 에러" + error);
     return false
   }
+}
+
+export async function uploadImageFile(postId, file){
+  const formData = new FormData();
+  formData.append("file", file);
+
+  fetch(`http://localhost:8080/api/posts/${postId}/profile`, {
+    method: "POST",
+    body: formData
+  })
+    .then(res => {
+      if (!res.ok) throw new Error("이미지 업로드 실패");
+      return res.json();
+    })
+    .then(data => {
+      console.log("이미지 업데이트 완료:", data);
+      localStorage.setItem("userProfileImg", data.profileImgUrl);
+    })
+    .catch(err => console.error(err));
 }

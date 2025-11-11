@@ -1,5 +1,5 @@
 import {createPost} from "../../api/postApi.js";
-import { handlePostCreate } from "../../events/handlePostCreate.js";
+import { handlePostCreate } from "../../handle/handlePostCreate.js";
 
 export function PostsCreate(){
     const section = document.createElement("section");
@@ -14,7 +14,7 @@ export function PostsCreate(){
         <textarea id="post-body" placeholder="내용을 입력해주세요."></textarea>
 
         <label>이미지</label>
-        <input type="file">
+        <input id="post-image" type="file">
         <p class="helper-text">* helper text</p>
 
         <button id="btn-post-create" class="btn-primary">작성 완료</button>
