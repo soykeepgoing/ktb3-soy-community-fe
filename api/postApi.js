@@ -63,3 +63,15 @@ export async function editPost(postData, postId, userId){
     return false
   }
 }
+
+export async function deletePost(postId, userId){
+  const deletePostUrl =  `http://localhost:8080/api/posts/${postId}?userId=${userId}`;
+  try{
+      const response = await fetch(deletePostUrl, {method: "DELETE"});
+      if (!response.ok) alert("게시글 삭제 실패");
+      return true;
+  } catch(error) {
+    console.log("게시글 삭제 에러" + error);
+    return false
+  }
+}

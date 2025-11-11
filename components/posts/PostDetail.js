@@ -1,8 +1,10 @@
 
 import { handlePostDetailView } from "../../events/handlePostDetailView.js";
 import { navigateTo } from "../../router/router.js";
+import {handleDeleteContents} from "../../events/handleDeleteContents.js";
 
 export function PostDetail(postId){
+    const modalDeleteMsg = "게시글을 삭제하시겠습니까?";
     const article = document.createElement("article");
     article.className = "post-detail";
     handlePostDetailView(postId).then(postDetailData => {
@@ -32,6 +34,10 @@ export function PostDetail(postId){
     
         const btnPostEdit = article.querySelector("#btn-post-edit");
         btnPostEdit.addEventListener("click", () => navigateTo(`/posts/${postId}/edit`));
+    
+        const btnPostDelete = article.querySelector("#btn-post-delete");
+        btnPostDelete.addEventListener("click", () => handleDeleteContents(modalDeleteMsg, postId));
+    
     });
     return article;
 }
