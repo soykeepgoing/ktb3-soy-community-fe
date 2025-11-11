@@ -1,4 +1,4 @@
-import {submitLogin} from "../events/submitLogin.js"
+import {submitLogin} from "../events/handleSubmitLogin.js"
 
 export function Login(){
     const section = document.createElement("section");
@@ -53,8 +53,6 @@ export function Login(){
             helperText.className = "helper-text";
         }
     });
-
-
 
     const loginBtn = section.querySelector("#btn-login");
     loginBtn.addEventListener("click", submitLogin);

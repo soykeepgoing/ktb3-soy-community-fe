@@ -1,8 +1,7 @@
-import { getPosts } from "../api/postApi.js";
-import { handlePostsView } from "../events/handlePostsView.js";
-import { navigateTo } from "../router/router.js";
+import { getPosts } from "../../api/postApi.js";
+import { handlePostsView } from "../../events/handlePostsView.js";
+import { navigateTo } from "../../router/router.js";
 
-const src_default_user_profile = "../images/default_user_profile.png";
 const default_size = 20;
 let currentPage = 0;
 

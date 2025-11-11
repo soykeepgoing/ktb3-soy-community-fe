@@ -1,77 +1,62 @@
 import {Login} from "../components/Login.js";
-import {Posts} from "../components/Posts.js";
-import { PostsCreate } from "../components/PostsCreate.js";
-import {PostDetail} from "../components/PostDetail.js";
+import {Posts} from "../components/posts/Posts.js";
+import { PostsCreate } from "../components/posts/PostsCreate.js";
+import {PostDetail} from "../components/posts/PostDetail.js";
 import { CommentsSection } from "../components/comments/CommentsSection.js";
 
-export function router() {
-  const path = window.location.pathname;
-  const app = document.getElementById('app');
-  app.innerHTML = '';
+const app = document.getElementById("app");
 
-  const matchedRoute = matchRoute(path);
-  const components = matchedRoute.component;
-  const param = matchedRoute.param;
+const routes = {
+  "/": [Login],
+  "/posts": [Posts],
+  "/posts/create": [PostsCreate],
+  "/posts/:id": [PostDetail, CommentsSection]
+};
+
+export function router(){
+  const path = window.location.pathname;
+
+  /*
+    routes 맵을 순회하면서 패턴이 일치하는 컴포넌트를 확인 
+    파라미터를 포함하는 경우 (":") 앞부분을 띄어서 일치하는지 확인했음 
+  */
+  const matched = Object.keys(routes).find( 
+    route => {
+      if (route.includes(":")){
+        const base = route.split("/:")[0]
+        return path.startsWith(base);
+      }
+      return route === path;
+    }); 
+
+  app.innerHTML = ""; // 화면 지우기 
+
+  if (!matched){ // 라우팅할 수 없는 경우 
+    app.innerHTML = "<h2>404 NotFound</h2>";
+    return;
+  }
+
+  const components = routes[matched];
+  const param = path.split("/").pop();
+
+  /*
+   보여줄 컴포넌트들 하나씩 순회하면서 파라미터 값 찾고 반환 
+   app에 자식으로 추가해줌 
+  */
 
   components.forEach(component => {
-    app.appendChild(component(param));
+    const elem = matched.includes(":") ? component(param) : component();
+    app.appendChild(elem);
   });
 }
 
-
-const routes = [
-  { path: /^\/$/, component: [Login] },
-  { path: /^\/posts$/, component: [Posts] },
-  { path: /^\/posts\/create$/, component: [PostsCreate] },
-  { path: /^\/posts\/([^/]+)$/, component: [PostDetail, CommentsSection] }, // ← :id 패턴 대응
-];
-
-export function matchRoute(path) {
-  for (const route of routes) {
-    const match = path.match(route.path);
-    if (match) {
-      const param = match[1]; // 정규식 그룹으로 추출됨
-      return { component: route.component, param };
-    }
-  }
-  return { component: NotFound, param: undefined };
-}
-
-
-export function navigateTo(url) {
-  window.history.pushState({}, '', url);
+export function navigateTo(url){
+  window.history.pushState(null, null, url);
   router();
 }
 
-// 뒤로가기/앞으로가기 처리
-window.addEventListener('popstate', router);
-
-
-
-
-// const routes = {
-//     "/": Login,
-//     "/posts": Posts,
-//     "/posts/create": PostsCreate
-// };
-
-// export function clean(){
-//     const app = document.getElementById("app");
-//     app.innerHTML = "";
-// }
-
-// export function navigateTo(routeName){
-//     clean();
-//     const component = routes[routeName];
-//     app.appendChild(component());
-// }
-
-// export function navigateToPostDetail(postId){
-//     clean();
-//     const component = PostDetail(postId);
-//     app.appendChild(component);
-// }
+window.addEventListener("popstate", router);
 
 export function initRouter(){
-    navigateTo("/");
+  navigateTo("/");
 }

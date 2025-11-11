@@ -10,11 +10,10 @@ export async function createPost(postData, userId){
         
         if (!response.ok) alert("게시글 등록 실패");
         const data = await response.json();
-        data.state = "success";
-        return data;
+        return true;
     } catch(error){
         console.log("게시글 등록 실패 : " + error);
-        return {"state": "fail"};
+        return false;
     }
 }
 

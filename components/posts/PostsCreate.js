@@ -1,5 +1,5 @@
-import {createPost} from "../api/postApi.js";
-import { handlePostCreate } from "../events/createPost.js";
+import {createPost} from "../../api/postApi.js";
+import { handlePostCreate } from "../../events/handlePostCreate.js";
 
 export function PostsCreate(){
     const section = document.createElement("section");
@@ -22,7 +22,7 @@ export function PostsCreate(){
 
     const submitBtn = section.querySelector("#btn-post-create");
     submitBtn.addEventListener("click", async (event) => {
-        await handlePostCreate(event);
+        handlePostCreate(event);
     });
 
     return section;

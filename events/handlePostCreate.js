@@ -13,8 +13,8 @@ export async function handlePostCreate(event){
         "postContent": postBody
     };
 
-    const res = await createPost(newPost, userId);
-    if (res.state === "success"){
+    const isCreated = await createPost(newPost, userId);
+    if (isCreated){
         console.log("게시글 작성 완료");
         navigateTo("/posts");
     } 

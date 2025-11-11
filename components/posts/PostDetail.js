@@ -1,5 +1,6 @@
 
-import { handlePostDetailView } from "../events/handlePostDetailView.js";
+import { handlePostDetailView } from "../../events/handlePostDetailView.js";
+import { navigateTo } from "../../router/router.js";
 
 export function PostDetail(postId){
     const article = document.createElement("article");
@@ -8,9 +9,14 @@ export function PostDetail(postId){
         console.log(postDetailData);
         article.innerHTML = `
         <h2>${postDetailData.title}</h2>
-        <div class="meta">
+        <div class="post-meta">
             <span>${postDetailData.userNickname}</span> | 
             <span>${postDetailData.createdAt}</span>
+        </div>
+
+        <div class="post-actions">
+            <button id="btn-post-edit">수정</button>
+            <button id="btn-post-delete">삭제</button>
         </div>
 
         <img src="https://picsum.photos/id/237/200/300" alt="게시글 이미지" class="post-img">
@@ -24,5 +30,9 @@ export function PostDetail(postId){
        </div>
     `;
     });
+
+    article.querySelector("#btn-post-edit").addEventListener("click", navigateTo(`/posts/edit/${postId}/`));
+
+
     return article;
 }
