@@ -1,14 +1,16 @@
-import {Login} from "../components/Login.js";
+import {LoginPage} from "../components/LoginPage.js";
 import {Posts} from "../components/posts/Posts.js";
 import { PostsCreate } from "../components/posts/PostsCreate.js";
 import {PostDetail} from "../components/posts/PostDetail.js";
 import { PostEdit } from "../components/posts/PostEdit.js";
 import { CommentsSection } from "../components/comments/CommentsSection.js";
+import { SignUp } from "../components/Signup.js";
 
 const app = document.getElementById("app");
 
 const routes = {
-  "/": [Login],
+  "/": [LoginPage],
+  "/signup": [SignUp],
   "/posts": [Posts],
   "/posts/create": [PostsCreate],
   "/posts/:param1": [PostDetail, CommentsSection],
