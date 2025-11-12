@@ -7,3 +7,36 @@ export async function loginUser(userData) {
     body: JSON.stringify(userData),
   });
 }
+
+export async function postSignUpData(userData){
+  try{
+    const res = await fetch("http://localhost:8080/api/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData)
+    });
+    const data = await res.json();
+    localStorage.setItem("userId", data.data.userId);
+    console.log("회원가입 성공", data);
+  } catch (err) {
+    console.error("회원 가입 실패: ", err);
+    throw err;
+  };
+}
+
+export async function uploadProfileImage(file){
+  const formData = new FormData();
+  formData.append("file", file);
+  const userId = localStorage.getItem("userId");
+  try{
+    const res = await fetch(`http://localhost:8080/api/users/${userId}/profile`, {
+      method: "POST",
+      body: formData
+    });
+    const data = await res.json();
+    localStorage.setItem("userProfileImg", data.profileImgUrl);
+    console.log("사용자 프로필 이미지 업로드 성공");
+  } catch (err) {
+    console.log("사용자 프로필 이미지 업로드 실패 : ", err);
+  }
+}

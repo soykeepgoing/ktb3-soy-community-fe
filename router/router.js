@@ -4,13 +4,13 @@ import { PostsCreate } from "../components/posts/PostsCreate.js";
 import {PostDetail} from "../components/posts/PostDetail.js";
 import { PostEdit } from "../components/posts/PostEdit.js";
 import { CommentsSection } from "../components/comments/CommentsSection.js";
-import { SignUp } from "../components/Signup.js";
+import { SignUpPage } from "../components/SignUpPage.js";
 
 const app = document.getElementById("app");
 
 const routes = {
   "/": [LoginPage],
-  "/signup": [SignUp],
+  "/signup": [SignUpPage],
   "/posts": [Posts],
   "/posts/create": [PostsCreate],
   "/posts/:param1": [PostDetail, CommentsSection],
