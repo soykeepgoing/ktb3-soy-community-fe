@@ -29,6 +29,7 @@ export async function submitLogin(event){
         const data = await response.json();
         localStorage.setItem("userId", data.data.userId);
         localStorage.setItem("userProfileImg", data.data.userProfileImgUrl);
+        localStorage.setItem("userEmail", email.value);
         setNewDropDown();
         navigateTo("/posts");
     } catch(err){

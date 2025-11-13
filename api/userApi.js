@@ -9,11 +9,11 @@ export async function loginUser(userData) {
 }
 
 export async function postSignUpData(userData){
-  try{
-    const res = await fetch("http://localhost:8080/api/users", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userData)
+    try{
+        const res = await fetch("http://localhost:8080/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData)
     });
     const data = await res.json();
     localStorage.setItem("userId", data.data.userId);
@@ -39,4 +39,24 @@ export async function uploadProfileImage(file){
   } catch (err) {
     console.log("사용자 프로필 이미지 업로드 실패 : ", err);
   }
+}
+
+export async function uploadNickname(nickname){
+    const userId = localStorage.getItem("userId");
+    const postData = {
+        "userNickname": nickname
+    };
+
+    try{
+        const res = await fetch(`http://localhost:8080/api/users/${userId}/profile`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(postData)
+        });
+
+        const data = await res.json();
+        console.log("닉네임 변경 성공");
+    } catch(err){
+        console.err("닉네임 변경 실패:", err);
+    }
 }
