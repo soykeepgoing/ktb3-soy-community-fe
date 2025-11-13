@@ -3,7 +3,8 @@ import { getComments } from "../../api/commentApi.js";
 
 export function CommentList(postId){
     const list = document.createElement("div");
-    // list.classList.add("comment");
+    list.classList.add("comment-list");
+
     getComments(postId).then(
         commentLists => {
             console.log(commentLists)

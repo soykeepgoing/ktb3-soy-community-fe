@@ -1,5 +1,5 @@
 import { handleEditUserProfile } from "../handle/handleEditUserProfile.js";
-import {handleProfileImageChanged} from "../handle/handleProfileImageChanged.js"
+import {handleProfileImageChanged} from "../handle/users/handleProfileImageChanged.js"
 import { handleDeleteUsers } from "../handle/handleDeleteUsers.js";
 import { showToast } from "./Toast.js";
 

@@ -1,5 +1,5 @@
 import { handleEditPassword } from "../handle/handleEditPassword.js";
-import {isValidPasswordForSignUp, isValidPasswordCheckForSignUp} from "../handle/handleSignUpValidation.js";
+import {isValidPasswordForSignUp, isValidPasswordCheckForSignUp} from "../handle/users/handleSignUpValid.js";
 import { navigateTo } from "../router/router.js";
 
 export function EditPassword(){

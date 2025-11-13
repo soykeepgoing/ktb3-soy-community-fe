@@ -1,21 +1,20 @@
-import {LoginPage} from "../pages/LoginPage.js";
-import {Posts} from "../components/posts/Posts.js";
+import { LoginPage } from "../pages/LoginPage.js";
 import { PostsCreate } from "../components/posts/PostsCreate.js";
-import {PostDetail} from "../components/posts/PostDetail.js";
 import { PostEdit } from "../components/posts/PostEdit.js";
-import { CommentsSection } from "../components/comments/CommentsSection.js";
 import { SignUpPage } from "../pages/SignUpPage.js";
 import {EditProfilePage} from "../pages/EditProfilePage.js";
 import {EditPasswordPage} from "../pages/EditPasswordPage.js";
+import { PostDetailPage } from "../pages/PostDetailPage.js";
+import { PostListPage } from "../pages/PostListPage.js";
 
 const app = document.getElementById("app");
 
 const routes = {
   "/": [LoginPage],
   "/signup": [SignUpPage],
-  "/posts": [Posts],
+  "/posts": [PostListPage],
   "/posts/create": [PostsCreate],
-  "/posts/:param1": [PostDetail, CommentsSection],
+  "/posts/:param1": [PostDetailPage],
   "/posts/:param1/edit": [PostEdit],
   "/edit-profile": [EditProfilePage],
   "/edit-password": [EditPasswordPage]
@@ -66,6 +65,7 @@ export function router(){
    보여줄 컴포넌트들 하나씩 순회하면서 파라미터 값 찾고 반환 
    app에 자식으로 추가해줌 
   */
+  console.log(...params);
   components.forEach(component => {
     const elem = params.length > 0 ? 
       component(...params)

@@ -3,7 +3,6 @@ export async function createComment(commentData, postId){
     const response = await fetch(`http://localhost:8080/api/posts/${postId}/comments?userId=${userId}`, {
         method: "POST", 
         headers: {
-            "Header": "application/json",
             "Content-Type": "application/json"},
         body: JSON.stringify(commentData)
     });

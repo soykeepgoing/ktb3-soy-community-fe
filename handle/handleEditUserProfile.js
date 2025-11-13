@@ -1,4 +1,4 @@
-import { isValidNicknameForSignUp } from "./handleSignUpValidation.js";
+import { isValidNicknameForSignUp } from "../handle/users/handleSignUpValid.js";
 import {uploadNickname, uploadProfileImage} from "../api/userApi.js";
 
 export async function handleEditUserProfile(newUserImgInput, newUserNickname, helperText){

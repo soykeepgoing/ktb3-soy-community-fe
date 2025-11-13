@@ -1,5 +1,9 @@
 .posts {
-  width: 600px;
+  width: 800px;
+}
+
+.post-list {
+    overflow: scroll;
 }
 
 .post-header{
@@ -22,7 +26,7 @@
 }
 
 .post-header button {
-  width: 120px;
+  width: 180px;
   height: 40px;
   color: #fff;
   background: #ACA0EB;
@@ -32,6 +36,7 @@
   transition: 0.3s;
   cursor: pointer;
   justify-content: flex-end;
+  margin-left: auto;
 }
 
 .post-header button:hover {
@@ -39,58 +44,57 @@
 }
 
 .post-card {
+  width: 100%;
   background: #fff;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 24px 28px;
+  margin: 20px 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* 제목 */
+.post-card h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+/* 메타 정보 (좋아요, 댓글, 조회수 / 날짜) */
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #555;
+  font-size: 16px;
   margin-bottom: 16px;
 }
 
-.post-card h3 {
-  margin: 0 0 8px 0;
+/* 수평선 */
+.post-card hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 16px 0;
 }
 
-.post-meta {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  margin-bottom: 20px;
-}
-
+/* 작성자 영역 */
 .author {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 16px;
+  padding-top: 12px;
 }
 
-.profile-img {
+.author .profile-img {
   width: 48px;
   height: 48px;
-  border-radius: 50%; 
-  object-fit: cover;  
-}
-
-.float-button {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
   border-radius: 50%;
-  background: #ACA0EB;
-  color: white;
-  font-size: 28px;
-  border: none;
-  cursor: pointer;
-  display: none; /* 기본 숨김 */
-  z-index: 999;
+  object-fit: cover;
+  background-color: #ddd;
 }
 
-.float-button:hover{
-  background: #8d7fe0;
-}
-
-.float-button.show {
-  display: block; /* 스크롤 시 나타남 */
+.author span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
 }

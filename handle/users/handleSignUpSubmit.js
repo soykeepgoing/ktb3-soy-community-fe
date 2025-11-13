@@ -1,6 +1,6 @@
-import { postSignUpData, uploadProfileImage } from "../api/userApi.js";
+import { postSignUpData, uploadProfileImage } from "../../api/userApi.js";
 
-export async function handleSignUpData(userEmail, userPassword, userPasswordCheck, userNickname){
+export async function handleSignUpSubmit(userEmail, userPassword, userPasswordCheck, userNickname){
     const email = userEmail.value;
     const password = userPassword.value;
     const passwordCheck = userPasswordCheck.value;

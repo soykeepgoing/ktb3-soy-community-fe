@@ -1,4 +1,4 @@
-import { navigateTo } from "../router/router.js";
+import { navigateTo } from "../../router/router.js";
 
 export function setNewDropDown(){
     const header = document.getElementById("header");
