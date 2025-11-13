@@ -60,3 +60,18 @@ export async function uploadNickname(nickname){
         console.err("닉네임 변경 실패:", err);
     }
 }
+
+export async function deleteUser(userId){
+    try{
+        const res = await fetch(`http://localhost:8080/api/users/${userId}`, {
+            method: "Delete",
+            headers: { "Content-Type": "application/json" },
+        }); 
+        if (res.ok){
+            console.log("회원 삭제 실패");
+        }
+        console.log("회원 삭제 성공");
+    } catch(err){
+        console.error("회원 삭제 실패: ", err);
+    }
+}

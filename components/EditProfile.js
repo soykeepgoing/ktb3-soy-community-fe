@@ -1,6 +1,6 @@
 import { handleEditUserProfile } from "../handle/handleEditUserProfile.js";
 import {handleProfileImageChanged} from "../handle/handleProfileImageChanged.js"
-
+import { handleDeleteUsers } from "../handle/handleDeleteUsers.js";
 export function EditProfile(){
     const section = document.createElement("section");
     section.className = "edit-profile-box";
@@ -26,7 +26,7 @@ export function EditProfile(){
           <p class="helper-text" id="helper-text-nickname">* helper text</p>
         </div>
         <button class="btn-primary" id="btn-edit">수정하기</button>
-        <p class="link" id="link-delete">회원 탈퇴</a></p>`;
+        <p class="link" id="link-user-delete">회원 탈퇴</a></p>`;
 
     const newUserProfileImgInput = section.querySelector("#userProfileImg");
     const newUserProfileImgInputPreview = section.querySelector("#userProfileImgPreview");
@@ -42,7 +42,12 @@ export function EditProfile(){
     const btnEditProfile = section.querySelector("#btn-edit");
     btnEditProfile.addEventListener("click", 
         () => handleEditUserProfile(newUserProfileImgInput, newUserNickname, helperText));
-  
+    
+    const linkUserDelete = section.querySelector("#link-user-delete");
+    const titleMsg = "회원 탈퇴하시겠습니까?"
+    const contentMsg = "작성된 게시글과 댓글은 삭제됩니다."
+    linkUserDelete.addEventListener("click", 
+        () => handleDeleteUsers(titleMsg, contentMsg, localStorage.getItem("userId")));
 
     return section;
 }

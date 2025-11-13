@@ -1,7 +1,7 @@
 import {handleSignUpData} from "../handle/handleSignUpCreate.js";
 import {handleProfileImageChanged} from "../handle/handleProfileImageChanged.js"
 import { navigateTo } from "../router/router.js";
-import {isValidEmailForSignUp, isValidPasswordForSignUp, isValidPasswordCheckForSignUp} from "../handle/handleSignUpValidation.js";
+import {isValidEmailForSignUp, isValidPasswordForSignUp, isValidPasswordCheckForSignUp, isValidNicknameForSignUp} from "../handle/handleSignUpValidation.js";
 
 export function SignUpPage(){
     const section = document.createElement("section");
