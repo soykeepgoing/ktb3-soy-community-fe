@@ -10,7 +10,7 @@ export function signUp(){
         
         <div class="profile-img">
           <label for="userProfileImg" class="profile-img-preview">
-              <img id="userProfileImgPreview" alt="Profile Image" />
+              <img id="userProfileImgPreview" alt="Profile Image" src="../../images/default_user_profile.png" />
           </label>
           <input type="file" id="userProfileImg" accept="image/*" />
         </div>

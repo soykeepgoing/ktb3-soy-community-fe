@@ -7,7 +7,6 @@ export async function renderComments(list, postId){
         const commentList = await getComments(postId);
         commentList.forEach(comment => {
             const item = CommentItem(comment, postId);
-            console.log(comment.id);
             attachCommentEvents(item, postId, comment.id);
             list.appendChild(item);
         })

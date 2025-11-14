@@ -8,9 +8,8 @@ export async function handlePostEditView(postId) {
     const data = await handlePostDetailView(postId);
 
     if(data.userNickname !== localStorage.getItem("userNickname")){
-        showToast("작성한 게시글이 아닙니다.");
+        alert("작성한 게시글이 아닙니다.");
         navigateTo(`/posts/${postId}`);
-        console.log("bb")
         return;
     }
 

@@ -23,43 +23,64 @@
   gap: 12px;
 }
 
+/* 전체 프로필 이미지 박스 */
 .profile-img {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  margin: 16px 0;
+  flex-direction: column;
+  margin-bottom: 32px;
 }
 
+/* helper text */
+.profile-img .helper-text {
+  width: 100%;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #d9534f; /* 빨간 톤 */
+  text-align: left;
+}
+
+/* 실제 input(type=file)은 숨김 */
+#userProfileImg {
+  display: none;
+}
+
+/* 실제 클릭되는 동그란 영역 */
 .profile-img-preview {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
+  background-color: #d9d9d9;
   border-radius: 50%;
-  background-color: #f4f4f5;
+  
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+
   cursor: pointer;
-  border: 1px solid #d4d4d8;
-  transition: border-color 0.2s;
+  overflow: hidden; /* 이미지가 원형 안에 들어가도록 */
+
+  position: relative;
 }
 
-.profile-img-preview:hover {
-  border-color: #7f6aee;
-}
-
-.profile-img-preview img {
+/* 기본 이미지 (default_profile.png) */
+#userProfileImgPreview {
   width: 100%;
-  height: 50px;
+  height: 100%;
   object-fit: cover;
-  background-color: gray;
 }
 
-#userProfileImg {
-  display: none; /* 파일 입력창 숨김 */
+/* 기본 이미지 위에 + 아이콘처럼 보이는 효과 */
+.profile-img-preview::after {
+  content: "+";
+  position: absolute;
+  color: #666;
+  font-size: 48px;
+  font-weight: 300;
+  pointer-events: none;
 }
+
 
 /* 라벨 */
 .signup-box label {
