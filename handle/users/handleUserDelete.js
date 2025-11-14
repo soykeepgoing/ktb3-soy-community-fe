@@ -1,7 +1,8 @@
-import {ModalDelete} from "../components/ModalDelete.js";
-import {deleteUser} from "../api/userApi.js";
+import {ModalDelete} from "../../components/users/ModalDelete.js";
+import {deleteUser} from "../../api/userApi.js";
+import { navigateTo } from "../../router/router.js";
 
-export function handleDeleteUsers(titleMsg, contentMsg, userId){
+export function handleUserDelete(titleMsg, contentMsg, userId){
     ModalDelete(titleMsg, contentMsg);
 
     const modal = document.getElementById("modal-delete");
@@ -16,5 +17,7 @@ export function handleDeleteUsers(titleMsg, contentMsg, userId){
     btnConfirm.addEventListener("click", () => {
         deleteUser(userId);
         modal.remove();
+        navigateTo("/");
+        localStorage.clear();
     })
 }

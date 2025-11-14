@@ -1,6 +1,6 @@
-import { handleEditPassword } from "../handle/handleEditPassword.js";
-import {isValidPasswordForSignUp, isValidPasswordCheckForSignUp} from "../handle/users/handleSignUpValid.js";
-import { navigateTo } from "../router/router.js";
+import { handleEditPassword } from "../../handle/users/handleEditPassword.js";
+import {isValidPasswordForSignUp, isValidPasswordCheckForSignUp} from "../../handle/users/handleSignUpValid.js";
+import { navigateTo } from "../../router/router.js";
 
 export function EditPassword(){
     const section = document.createElement("section");

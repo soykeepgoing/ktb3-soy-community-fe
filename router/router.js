@@ -1,5 +1,4 @@
 import { LoginPage } from "../pages/LoginPage.js";
-import { PostEdit } from "../components/posts/PostEdit.js";
 import { SignUpPage } from "../pages/SignUpPage.js";
 import {EditProfilePage} from "../pages/EditProfilePage.js";
 import {EditPasswordPage} from "../pages/EditPasswordPage.js";

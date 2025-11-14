@@ -1,4 +1,4 @@
-import { patchNewPassword } from "../api/userApi.js";
+import { patchNewPassword } from "../../postApi.js";
 
 export async function handleEditPassword(userOldPassword, userNewPassword){
     const userId = localStorage.getItem("userId");

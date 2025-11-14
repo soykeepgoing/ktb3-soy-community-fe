@@ -1,4 +1,4 @@
-import { navigateTo } from "../router/router.js";
+import { navigateTo } from "../../router/router.js";
 
 export function SignUpLink(){
     const paragraph = document.createElement("p");

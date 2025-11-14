@@ -1,4 +1,4 @@
-import {EditPassword} from "../components/EditPassword.js"
+import {EditPassword} from "../components/users/EditPassword.js"
 
 export function EditPasswordPage(){
     const div = document.createElement("div");

@@ -1,4 +1,4 @@
-import { handleDeleteComments } from "../../handle/handleDeleteComments.js";
+import { handleDeleteComments } from "../../handle/comments/handleCommentDelete.js";
 import { handleCommentEdit } from "../../handle/comments/handleCommentEdit.js";
 
 export function CommentItem(data, postId){

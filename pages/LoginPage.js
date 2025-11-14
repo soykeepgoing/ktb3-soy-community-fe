@@ -1,4 +1,4 @@
-import { SignUpLink } from "../components/SignUpLink.js";
+import { SignUpLink } from "../components/users/SignUpLink.js";
 import { Login } from "../components/users/Login.js";
 import {attachLoginValid } from "../handle/users/handleLoginValid.js";
 
