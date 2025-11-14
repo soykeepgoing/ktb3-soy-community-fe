@@ -1,3 +1,5 @@
+import {fromCreatedAt} from "../../utils/formatUtils.js";
+
 export function PostDetail(data){
     const article = document.createElement("article");
     article.className = "post-detail";
@@ -10,7 +12,7 @@ export function PostDetail(data){
             <div class="post-header-left">
                 <img class="author-img" src="${data.userProfileImgUrl}">
                 <span class="author-name">${data.userNickname}</span>
-                <span class="post-date">${data.createdAt}</span>
+                <span class="post-date">${fromCreatedAt(data.createdAt)}</span>
             </div>
 
             <div class="post-actions-buttons">

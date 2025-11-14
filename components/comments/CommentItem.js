@@ -1,3 +1,5 @@
+import { fromCreatedAt } from "../../utils/formatUtils.js";
+
 export function CommentItem(data) {
     const item = document.createElement("div");
     item.classList.add("comment-item");
@@ -5,7 +7,7 @@ export function CommentItem(data) {
         <div class="comment-header">
             <img class="profile-img" src="${data.userProfileImgUrl}">
             <span class="author-name">${data.userNickname}</span>
-            <span class="comment-date">${data.createdAt}</span>
+            <span class="comment-date">${fromCreatedAt(data.createdAt)}</span>
         </div>
 
         <p class="comment-body">${data.body}</p>

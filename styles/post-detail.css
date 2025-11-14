@@ -53,25 +53,22 @@
 }
 
 /* 수정 / 삭제 버튼 */
-.post-actions-inline {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.post-actions-inline button {
-  padding: 8px 18px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fff;
+.post-actions-buttons #btn-post-edit,
+.post-actions-buttons #btn-post-delete {
+  padding: 6px 16px;
+  border: 2px solid #A78BFA;
+  background: transparent;
+  border-radius: 12px;
+  font-size: 13px;
   cursor: pointer;
-  transition: 0.2s;
+  margin-right: 10px;
 }
 
-.post-actions button:hover {
-  background: #f2f2f2;
+.post-actions-buttons #btn-post-edit:hover,
+.post-actions-buttons #btn-post-delete:hover {
+  background: #F3E8FF;
 }
+
 
 /* 좋아요/조회수/댓글 박스 */
 .stats {
