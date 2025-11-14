@@ -1,4 +1,4 @@
-import {ModalDelete} from "../../components/users/ModalDelete.js";
+import {ModalDelete} from "../../components/ModalDelete.js";
 import {deleteUser} from "../../api/userApi.js";
 import { navigateTo } from "../../router/router.js";
 

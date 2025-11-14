@@ -13,7 +13,7 @@ export function PostDetail(data){
                 <span class="post-date">${data.createdAt}</span>
             </div>
 
-            <div class="post-actions-inline">
+            <div class="post-actions-buttons">
                 <button id="btn-post-edit">수정</button>
                 <button id="btn-post-delete">삭제</button>
             </div>

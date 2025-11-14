@@ -1,11 +1,12 @@
 import { handlePostDetailView } from "./handlePostDetailView.js";
-import { handleDeletePosts } from "../../handle/posts/handlePostDelete.js";
+import { handlePostDelete } from "../../handle/posts/handlePostDelete.js";
 import {handlePostLike} from "../../handle/posts/handlePostLike.js"
 import { PostDetail } from "../../components/posts/PostDetail.js";
 import { navigateTo } from "../../router/router.js";
 
 export async function handlePostDetail(postId) {
-    const modalDeleteMsg = "게시글을 삭제하시겠습니까?";
+    const modalTitleMsg = "게시글을 삭제하시겠습니까?";
+    const modalContentMsg = "삭제한 글은 복구할 수 없습니다.";
 
     const data = await handlePostDetailView(postId);
     const article = PostDetail(data); 
@@ -14,7 +15,7 @@ export async function handlePostDetail(postId) {
         .addEventListener("click", () => navigateTo(`/posts/${postId}/edit`));
 
     article.querySelector("#btn-post-delete")
-        .addEventListener("click", () => handleDeletePosts(modalDeleteMsg, postId));
+        .addEventListener("click", () => handlePostDelete(modalTitleMsg, modalContentMsg, postId));
 
     article.querySelector("#btn-likes")
         .addEventListener("click", function (){ handlePostLike(this, postId)});

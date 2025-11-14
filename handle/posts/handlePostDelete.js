@@ -1,8 +1,9 @@
-import { ModalDelete } from "../../components/users/ModalDelete.js";
+import { ModalDelete } from "../../components/ModalDelete.js";
 import {deletePost} from "../../api/postApi.js"
+import { navigateTo } from "../../router/router.js";
 
-export function handleDeletePosts(message, postId){
-    ModalDelete(message);
+export function handlePostDelete(titleMsg, contentMsg, postId){
+    ModalDelete(titleMsg, contentMsg);
 
     const modal = document.getElementById("modal-delete");
 
@@ -15,9 +16,10 @@ export function handleDeletePosts(message, postId){
 
     const userId = localStorage.getItem("userId");
 
-	btnConfirm.addEventListener("click", () => {
-		deletePost(postId, userId);
+	btnConfirm.addEventListener("click", async () => {
+		await deletePost(postId, userId);
 		modal.remove();
+        navigateTo("/posts");
 	})
 
 }

@@ -2,7 +2,6 @@ import { handlePostDetailView } from "./handlePostDetailView.js";
 import { PostEdit } from "../../components/posts/PostEdit.js";
 import { handlePostEdit } from "./handlePostEdit.js";
 import {navigateTo} from "../../router/router.js";
-import { showToast } from "../../components/users/Toast.js";
 
 export async function handlePostEditView(postId) {
     const data = await handlePostDetailView(postId);
@@ -17,7 +16,7 @@ export async function handlePostEditView(postId) {
 
     const btnPostEdit = article.querySelector("#btn-post-edit");
         btnPostEdit.addEventListener("click", async (event) => {
-        handlePostEdit(event, postId);
+        await handlePostEdit(event, postId);
         navigateTo(`/posts/${postId}`);
     });
 

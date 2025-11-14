@@ -1,0 +1,59 @@
+/* 게시글 수정 전체 박스 */
+.post-edit-box {
+  width: 800px;
+  margin: 60px auto;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+/* 제목 */
+.post-edit-box h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+/* 라벨 */
+.post-edit-box label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* 텍스트 인풋 */
+.post-edit-box input[type="text"],
+.post-edit-box input[type="file"],
+.post-edit-box textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  margin-bottom: 4px;
+}
+
+.post-edit-box input[type="text"]:focus,
+.post-edit-box textarea:focus {
+  border-color: #6366F1; /* 인디고 */
+}
+
+/* textarea 크기 */
+.post-edit-box textarea {
+  min-height: 240px;
+  resize: vertical;
+}
+
+/* helper text */
+.post-edit-box .helper-text {
+  font-size: 13px;
+  color: #6B7280;
+  margin-top: 4px;
+}
+
