@@ -1,75 +1,21 @@
-header {
-  padding:1.3rem;
-  position: sticky;
-  text-align: center;
-  top: 0;
-  width: 100%;
-  background-color: #f4f5f7;
-  align-items: center;
-  justify-content: center;
+.header {
+  background: #D94848;
+  padding: 18px 24px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0 3px 12px rgba(255,99,71,0.3);
+  margin-bottom: 24px;
 }
 
-header .title {
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.user-profile {
-  position: relative;
-  display: inline-block;
-  left: 400px;
-  display: none;
-}
-
-.user-profile .profile-img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  cursor: pointer;
-  object-fit: cover;
-  display: block;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown .menu {
-  display: none;
-  position: absolute;
-  top: 50px; /* 프로필 바로 아래 */
-  right: 0;
-  background-color: #fff;
-  border-radius: 8px;
-  list-style: none;
+.header__title {
   margin: 0;
-  padding: 0;
-  z-index: 10;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
-.dropdown:hover .menu {
-  display: block;
-}
-
-.dropdown .menu li {
-  width: 120px;
-  padding: 8px 0;
-  background: #f9f9f9;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.dropdown .menu li:last-child {
-  border-bottom: none;
-}
-
-/* hover 효과 */
-.dropdown .menu li:hover {
-  color: rebeccapurple;
+.header__profile {
+  font-size: 34px;
 }
