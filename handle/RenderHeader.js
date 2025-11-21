@@ -1,5 +1,5 @@
 import { Header } from "../components/Header.js";
-import { navigateTo } from "../router/router.js";
+import { navigateTo } from "../core/router.js";
 
 export function renderHeader() {
     const existingHeader = document.querySelector("header");

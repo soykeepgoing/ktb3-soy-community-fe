@@ -1,5 +1,5 @@
 import { createPost } from "../../api/postApi.js";
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 import { postImageFile } from "../../api/postApi.js";
 import { handleInvalidTitle, handleInvalidBody} from "./handleValidation.js";
 export async function attachPostCreate(section){

@@ -1,5 +1,5 @@
 import { getTitle, getCount, fromCreatedAt } from "../../utils/formatUtils.js";
-import {navigateTo} from "../../router/router.js"
+import {navigateTo} from "../../core/router.js"
 
 export function PostItem(data){
     const title = getTitle(data.title);

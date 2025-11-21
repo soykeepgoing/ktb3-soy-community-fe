@@ -1,6 +1,6 @@
 import { ModalDelete } from "../../components/ModalDelete.js";
 import {deleteComments} from "../../api/commentApi.js"
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 export function handleDeleteComments(postId, commentId){
 

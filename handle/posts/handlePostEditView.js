@@ -1,7 +1,7 @@
 import { handlePostDetailView } from "./handlePostDetailView.js";
 import { PostEdit } from "../../components/posts/PostEdit.js";
 import { handlePostEdit } from "./handlePostEdit.js";
-import {navigateTo} from "../../router/router.js";
+import {navigateTo} from "../../core/router.js";
 
 export async function handlePostEditView(postId) {
     const data = await handlePostDetailView(postId);

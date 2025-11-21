@@ -1,5 +1,5 @@
 import { handlePostListView } from "./handlePostListView.js";
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 const DEFAULT_SIZE = 5;
 

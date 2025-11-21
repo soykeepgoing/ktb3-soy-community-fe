@@ -1,5 +1,5 @@
 import { loginUser } from "../../api/userApi.js";
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 export async function attachLoginSubmit(email, password, helperText){
     const userData = {

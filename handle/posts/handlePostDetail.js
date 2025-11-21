@@ -2,7 +2,7 @@ import { handlePostDetailView } from "./handlePostDetailView.js";
 import { handlePostDelete } from "../../handle/posts/handlePostDelete.js";
 import {handlePostLike} from "../../handle/posts/handlePostLike.js"
 import { PostDetail } from "../../components/posts/PostDetail.js";
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 export async function handlePostDetail(postId) {
     const modalTitleMsg = "게시글을 삭제하시겠습니까?";

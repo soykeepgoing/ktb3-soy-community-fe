@@ -1,6 +1,6 @@
 import { patchNewPassword } from "../../api/userApi.js";
 import {isValidPasswordForSignUp, isValidPasswordCheckForSignUp} from "../../handle/users/handleSignUpValid.js";
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 async function handleEditPassword(userOldPassword, userNewPassword){
     const userId = localStorage.getItem("userId");

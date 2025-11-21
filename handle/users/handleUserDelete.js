@@ -1,6 +1,6 @@
 import {ModalDelete} from "../../components/ModalDelete.js";
 import {deleteUser} from "../../api/userApi.js";
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 export function handleUserDelete(titleMsg, contentMsg, userId){
     ModalDelete(titleMsg, contentMsg);

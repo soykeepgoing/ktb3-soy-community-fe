@@ -1,6 +1,6 @@
 import { ModalDelete } from "../../components/ModalDelete.js";
 import {deletePost} from "../../api/postApi.js"
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 export function handlePostDelete(titleMsg, contentMsg, postId){
     ModalDelete(titleMsg, contentMsg);

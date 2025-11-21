@@ -6,7 +6,7 @@ import {
     isValidPasswordCheckForSignUp,
     isValidNicknameForSignUp
 } from "./handleSignUpValid.js";
-import { navigateTo } from "../../router/router.js";
+import { navigateTo } from "../../core/router.js";
 
 export function attachSignUpEvents(section){
     const linkLogin = section.querySelector("#link-login");
