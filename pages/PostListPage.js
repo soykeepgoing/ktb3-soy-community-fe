@@ -1,7 +1,6 @@
 import { FeedSection } from "../components/posts/PostItemContainer.js";
 import {Header} from "../components/header/Header.js";
 import { Banner } from "../components/banner/Banner.js";
-import { tmpAttachPostListEvents, attachPostListEvents } from "../handle/posts/handlePostListEvents.js";
 import { FloatingButton } from "../components/FloatingButton.js";
 
 export function PostListPage(){

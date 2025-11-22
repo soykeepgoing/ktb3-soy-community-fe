@@ -1,0 +1,78 @@
+.post-create-container {
+    margin: 0 auto;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+.post-create {
+  width: 100%;
+  background: #e09898;
+  padding: 32px 28px;
+  border-radius: 26px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  font-family: sans-serif;
+}
+
+.post-create form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-create label {
+  font-size: 14px;
+  color: #595959;
+  font-weight: 600;
+}
+
+.post-create textarea {
+  height: 120px;
+  padding: 14px;
+  border-radius: 18px;
+  resize: none;
+  font-size: 14px;
+  border: 2px solid #F2D0D0; /* 연한 토마토 톤 */
+  background: #fff;
+  outline: none;
+}
+
+.post-create textarea:focus {
+  border-color: #F2B6BB; /* 포커스되면 밝은 토마토 */
+}
+
+.post-create input[type="file"] {
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.helper-text {
+  font-size: 12px;
+  margin-top: -10px;
+  color: #BF3B3B; /* 토마토 껍질 */
+}
+
+/* 버튼 */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 22px;
+  border: none;
+  cursor: pointer;
+  background: #F2B6BB; /* 메인 토마토 */
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #D98F96; /* 눌렀을 때 더 진하게 */
+}
+
+.btn-primary:disabled {
+  background: #F2D0D0;
+  cursor: not-allowed;
+}

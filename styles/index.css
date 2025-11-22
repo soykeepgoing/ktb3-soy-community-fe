@@ -1,7 +1,11 @@
 @import "./global.css";
 @import "./login.css";
 @import "./signup.css";
+
+
+@import "./posts.css";
+@import "./post-create.css";
+
+@import "./components/dropdown.css";
 @import "./header.css";
 @import "./banner.css";
-@import "./posts.css";
-@import "./components/dropdown.css";
