@@ -7,6 +7,9 @@
 @import "./posts.css";
 @import "./post-create.css";
 @import "../pages/PostDetailPage.css";
+@import "../pages/EditProfilePage.css";
+
+@import "./edit-profile.css";
 
 @import "./components/dropdown.css";
 @import "./banner.css";

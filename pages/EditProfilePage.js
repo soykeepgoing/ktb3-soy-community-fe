@@ -3,6 +3,7 @@ import { attachUserEditProfile } from "../handle/users/handleEditUserProfile.js"
 
 export function EditProfilePage(){
     const div = document.createElement("div");
+    div.classList.add("editProfilePage");
     const section = EditProfile();
     attachUserEditProfile(section);
     div.appendChild(section);

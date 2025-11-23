@@ -31,7 +31,7 @@
 .post-edit-box textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #D1D5DB;
+  border: 1px solid var(--sub-red2);
   border-radius: 8px;
   font-size: 14px;
   outline: none;
@@ -41,7 +41,7 @@
 
 .post-edit-box input[type="text"]:focus,
 .post-edit-box textarea:focus {
-  border-color: #6366F1; /* 인디고 */
+  border-color: var(--main-red);
 }
 
 /* textarea 크기 */
@@ -49,11 +49,3 @@
   min-height: 240px;
   resize: vertical;
 }
-
-/* helper text */
-.post-edit-box .helper-text {
-  font-size: 13px;
-  color: #6B7280;
-  margin-top: 4px;
-}
-
