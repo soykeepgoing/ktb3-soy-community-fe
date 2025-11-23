@@ -1,0 +1,6 @@
+.postContent {
+    font-size: 20px;
+    color: var(--neutral);
+    line-height: 1.5;
+    overflow: hidden;
+}

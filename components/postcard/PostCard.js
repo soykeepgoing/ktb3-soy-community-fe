@@ -9,14 +9,15 @@ import {h} from "../../core/renderer.js";
 export function PostCard(data){
     return h(
         "div", 
-        {class: "post-card"}, 
+        {class: "postCard"}, 
         TopicBadge(data.topicLabel, data.topicCode),
+        PostMeta(data.userNickname, data.userProfileImgUrl, data.createdAt),
         PostImage(data.imgUrl),
         PostContent(data.content),
         PostStats({
             like: data.statsLikeCounts, 
             comment: data.statsCommentCounts, 
             view: data.statsViewCounts}),
-        PostMeta(data.userNickname, data.userProfileImgUrl, data.createdAt)
+        
     )
 }

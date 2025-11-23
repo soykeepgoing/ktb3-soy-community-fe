@@ -5,29 +5,17 @@ import {loadPostDetail} from "../handle/posts/PostEventHandler.js";
 
 export function PostDetailPage(postId) {
     const container = document.createElement("section");
+    container.classList.add("postDetailPage");
 
     let cardDom = null;
-    loadPostDetail(postId).then(data => {
-        console.log(data);        
+    loadPostDetail(postId).then(data => {      
         const card = PostCard(data);
-        console.log(card)
         cardDom = createDom(card);
         container.appendChild(cardDom);
-    });
-
-    const commentSection = CommentSection(postId);
-
-    container.appendChild(createDom(commentSection));
-
-
-
-    // handlePostDetail(postId).then(postDetail => {
-    //     const postCard = PostCard(postDetail);
-    //     container.appendChild(postDetail);
-
-    //     const commentList = CommentList(postId);
-    //     container.appendChild(commentList);
-    // });
+    }).then(() => {
+        const commentSection = CommentSection(postId);
+        container.appendChild(createDom(commentSection));
+    })
 
     return container;
 }

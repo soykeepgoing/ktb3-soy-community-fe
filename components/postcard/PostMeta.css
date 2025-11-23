@@ -1,0 +1,33 @@
+.postMeta {
+    display: flex;
+    justify-content: space-between; /* 왼쪽 authorMeta / 오른쪽 createdAt */
+    align-items: center;
+    width: 100%;
+    padding: 10px 4px;
+}
+
+.authorMeta {
+    display: flex;
+    flex-direction: column; /* 이미지 위 / 닉네임 아래 */
+    align-items: center;
+    gap: 6px;
+}
+
+.authorMeta img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.authorMeta .nickname {
+    font-size: 14px;
+    font-weight: 600;
+    color: #595959;
+}
+
+.createdAt {
+    font-size: 14px;
+    color: #888;
+    white-space: nowrap;
+}

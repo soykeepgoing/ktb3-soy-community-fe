@@ -20,9 +20,11 @@ class Renderer{
                 const event = key.slice(2).toLowerCase();
                 dom.addEventListener(event, value);
             } else if (key === "class") {
-                for (const v of value){
-                    dom.classList.add(v);
-                }
+                const classes = Array.isArray(value) ? value
+                : typeof value === "string"
+                ? value.trim().split(/\s+/)
+                : [];
+                classes.forEach(cls => dom.classList.add(cls));
             } else {
                 dom[key] = value;
             }

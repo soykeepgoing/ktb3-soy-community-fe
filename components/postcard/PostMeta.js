@@ -4,9 +4,11 @@ import { fromCreatedAt } from "../../utils/formatUtils.js";
 export function PostMeta(authorNickname, authorProfileImgUrl, createdAt ){
     return h(
         "div", 
-        {class: "post-meta"}, 
-        h("img", {class: "author-img", src: authorProfileImgUrl}),
-        h("span", {class: "author-nickname"}, authorNickname),
-        h("span", {class: "date"}, fromCreatedAt(createdAt))
+        {class: "postMeta"}, 
+        h("div", {class: "authorMeta"}, 
+            h("img", {src: authorProfileImgUrl}),
+            h("span", {class: "nickname"}, authorNickname),
+        ),
+        h("span", {class: "createdAt"}, fromCreatedAt(createdAt))
     );
 }

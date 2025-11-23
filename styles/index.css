@@ -6,9 +6,15 @@
 
 @import "./posts.css";
 @import "./post-create.css";
+@import "../pages/PostDetailPage.css";
 
 @import "./components/dropdown.css";
 @import "./header.css";
 @import "./banner.css";
 
-@import "../components/TopicBadge/TopicBadge.css"
+@import "../components/TopicBadge/TopicBadge.css";
+@import "../components/postcard/PostCard.css";
+@import "../components/postcard/PostContent.css";
+@import "../components/postcard/PostImage.css";
+@import "../components/postcard/PostMeta.css";
+@import "../components/postcard/PostStats.css";
