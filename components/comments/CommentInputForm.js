@@ -3,7 +3,7 @@ import {h} from "../../core/renderer.js"
 export function CommentInputForm(){
     return h(
         "div", 
-        {class: "input-form"}, 
+        {class: "commentInputForm"}, 
         h(
             "textarea", {class: "textarea", placeholder: "댓글을 남겨주세요."}
         ), 

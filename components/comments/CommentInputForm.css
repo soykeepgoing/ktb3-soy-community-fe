@@ -1,0 +1,45 @@
+/* 전체 댓글 입력 폼 */
+.commentInputForm {
+    width: 700px;          /* 고정 너비 */
+    margin: 0 auto;        /* 화면 가운데 정렬 */
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+}
+
+/* 텍스트 입력 */
+.commentInputForm .textarea {
+    flex: 1;
+    min-height: 80px;
+    padding: 14px;
+    border: 2px solid #F2D0D0;   /* 연한 토마토 과육 */
+    border-radius: 14px;
+    font-size: 14px;
+    resize: vertical;
+    background: #FFFFFF;
+    color: #595959;
+    line-height: 1.4;
+}
+
+.commentInputForm .textarea::placeholder {
+    color: #A9A9A9;
+}
+
+/* 버튼 */
+.commentInputForm .btn {
+    padding: 12px 20px;
+    border-radius: 14px;
+    border: none;
+    background: #BF3B3B;   /* 토마토 껍질 */
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+    white-space: nowrap;
+}
+
+.commentInputForm .btn:hover {
+    background: #D94848;   /* 클릭 느낌 */
+}
