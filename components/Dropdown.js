@@ -1,9 +1,9 @@
-export function Dropdown({ placeholder, options }) {
+export function Dropdown({ placeholder, options, className, clickEvents = {}}) {
     const div = document.createElement("div");
-    div.classList.add("dropdown");
+    div.classList.add(className);
 
     div.innerHTML = `
-        <button class="btn">${placeholder} ▾</button>
+        <button class="btn">${placeholder}</button>
         <ul class="menu">
             ${options.map(o => `<li data-value="${o.value}">${o.label}</li>`).join("")}
         </ul>
@@ -26,6 +26,11 @@ export function Dropdown({ placeholder, options }) {
             div.dispatchEvent(new CustomEvent("select", {
                 detail: { value }
             }));
+
+            if (clickEvents[value]){
+                clickEvents[value]();
+            }
+
         });
     });
 

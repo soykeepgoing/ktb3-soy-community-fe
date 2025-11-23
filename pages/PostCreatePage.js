@@ -1,5 +1,5 @@
 import { createPost } from "../../api/postApi.js";
-import { navigateTo } from "../core/router.js";
+import {navigateTo} from "../core/router.js";
 import { postImageFile } from "../../api/postApi.js";
 import { Dropdown } from "../components/Dropdown.js";
 import { PostsCreateSection } from "../components/posts/PostsCreateSection.js";
@@ -11,14 +11,15 @@ export function PostCreatePage(){
     attachPostCreate(postCreate);
     
     const dropdownHashtag = Dropdown({
-        placeholder: "오늘 칭찬할 일 찾기", 
+        placeholder: "오늘 칭찬할 일 찾기 ▾", 
         options: [
             { value: "food", label: "#한입의기쁨" },
             { value: "purchase", label: "#득템로그" },
             { value: "contents", label: "#인생콘텐츠" },
             { value: "music", label: "#듣는마약" },
             { value: "activity", label: "#피지컬파워" }
-        ]
+        ],
+        className: "topic_dropdown"
     });
 
     dropdownHashtag.addEventListener("select", (e) => {
@@ -64,7 +65,7 @@ async function attachPostCreate(section){
         const {state, postId} = await createPost(newPost, userId);
         if (state){
             console.log("게시글 작성 완료");
-            navigateTo("/posts");
+            await navigateTo("/posts");
         } 
     
         if (postImgFile.files.length > 0){

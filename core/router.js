@@ -10,7 +10,6 @@ import {mount} from "../core/renderer.js";
 
 class Router{
     constructor(){
-        this.appContainer = document.getElementById("app");
         this.pathPageMap = {
             "/": LoginPage,
             "/signup": SignUpPage, 
@@ -40,18 +39,21 @@ class Router{
         return {pattern, params};
     }
 
-    navigateTo(url){
-        window.history.pushState(null, null, url); 
+    navigateTo(url) {
+        window.history.pushState(null, null, url);
+
         const path = window.location.pathname;
-        const {pattern, params} = this.toParamPath(path);
-        console.log(pattern, params);
+        const { pattern, params } = this.toParamPath(path);
 
-        const matchedPage = Object.keys(this.pathPageMap).find( 
-            route => {return route === pattern;
-        }); 
+        const pageFunc = this.pathPageMap[pattern];
+        if (!pageFunc) {
+            console.warn(`❗ No page matched for pattern: ${pattern}`);
+            return;
+        }
 
-        const page = this.pathPageMap[matchedPage];
-        mount(page, this.appContainer);
+        const page = params ? pageFunc(params) : pageFunc();
+
+        mount(page);
     }
 }
 

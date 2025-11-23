@@ -10,7 +10,7 @@
 
 .post-create {
   width: 100%;
-  background: #e09898;
+  background: #ea4e4e;
   padding: 32px 28px;
   border-radius: 26px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
@@ -52,7 +52,7 @@
 .helper-text {
   font-size: 12px;
   margin-top: -10px;
-  color: #BF3B3B; /* 토마토 껍질 */
+  color: #fff; /* 토마토 껍질 */
 }
 
 /* 버튼 */
@@ -63,16 +63,16 @@
   border-radius: 22px;
   border: none;
   cursor: pointer;
-  background: #F2B6BB; /* 메인 토마토 */
+  background: #ea4e4e; /* 메인 토마토 */
   color: #fff;
   transition: 0.2s;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #D98F96; /* 눌렀을 때 더 진하게 */
+  background: #dc4949; 
 }
 
 .btn-primary:disabled {
-  background: #F2D0D0;
+  background: #d35d5de4;
   cursor: not-allowed;
 }

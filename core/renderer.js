@@ -1,19 +1,19 @@
 class Renderer{
     constructor(){
-        this.oldVNode = null;
-        this.domPage = null;
-        this.container = null;
+        this.currentPage = null;
+        this.container = document.getElementById("app");
     }
 
-    mount(domPage, container){
-        this.domPage = domPage;
-        this.container = container;
+    mount(newPage){
+        if (this.currentPage) {
+            this.container.removeChild(this.currentPage)
+        };
+        this.currentPage = newPage;
         this.render();
     }
 
     render() {
-        this.container.innerHTML = "";
-        this.container.appendChild(this.domPage());
+        this.container.appendChild(this.currentPage);
     }
 
 }

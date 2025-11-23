@@ -1,10 +1,11 @@
 import { getPosts } from "../../api/postApi.js";
-import { PostItem } from "../posts/PostItem.js";
-
+import { PostItem } from "./PostItem.js";
+import { navigateTo } from "../../core/router.js";
 const DEFAULT_SIZE = 8;
 let page = 0;
-
 export function FeedSection(){
+    page = 0;
+    console.log("feedSection");
     const section = document.createElement("section");
     section.className = "feedSection";
     section.appendChild(PostItemContainer());
@@ -33,6 +34,9 @@ function createFragment(postsData) {
 
     postsData.forEach(postData => {
         const post = PostItem(postData);
+        const postId = postData.id;
+        console.log(postId)
+        post.addEventListener("click", () => navigateTo(`/posts/${postId}`));
         fragment.appendChild(post);
     });
 
@@ -40,12 +44,12 @@ function createFragment(postsData) {
 }
 
 async function handlePostItemContainer(section){
-
     const postItemContainer = section.querySelector("#postItemContainer");
     const scrollObserver = section.querySelector("#scrollObserver");
 
     /* 초기화 */
     const data = await getPosts(page, DEFAULT_SIZE);
+    console.log(data);
     const postItemData = data.postItemResponseList;
     postItemContainer.appendChild(createFragment(postItemData));
     page++;
@@ -62,16 +66,14 @@ async function handlePostItemContainer(section){
             
             const data = await getPosts(page, DEFAULT_SIZE);
             const postItemData = data.postItemResponseList;
-
+            console.log(page, postItemData);
             if(postItemData.length === 0){
                 observer.unobserve(entry.target);
                 return;
             }
-
+            page++;
             postItemContainer.appendChild(createFragment(postItemData));
         }
-        page++;
-
     }
 
     const observer = new IntersectionObserver(onIntersect, options);

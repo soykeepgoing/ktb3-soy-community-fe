@@ -1,12 +1,15 @@
 export function PostItem(data){
     console.log(data);
+    const id = data.id;
     const content = data.content;
+    const imageUrl = data.postImgUrl;
     const topicCode = data.topicCode;
     const topicLabel = data.topicLabel;
     const userNickname = data.userNickname;
-    
-    const postItemImage = PostItemImage();
-    const postItemText = PostItemText({content, topicCode, topicLabel, userNickname});
+    const userProfileImgUrl = data.userProfileImgUrl;
+    console.log(userProfileImgUrl);
+    const postItemImage = PostItemImage(imageUrl);
+    const postItemText = PostItemText({content, topicCode, topicLabel, userNickname, userProfileImgUrl});
     const div = document.createElement("div");
     div.classList.add("postItem");
     div.appendChild(postItemImage);
@@ -14,24 +17,24 @@ export function PostItem(data){
     return div;
 }
 
-function PostItemImage(){
-    const postItemImageData = PostItemImageData();
+function PostItemImage(imageUrl){
+    const postItemImageData = PostItemImageData(imageUrl);
     const div = document.createElement("div");
     div.classList.add("image");
     div.appendChild(postItemImageData);
     return div;    
 }
 
-function PostItemImageData(){
+function PostItemImageData(imageUrl){
     const img = document.createElement("img");
     img.className = "data";
-    img.src = `https://picsum.photos/240/300`;
+    img.src = imageUrl;
     return img;    
 }
 
-function PostItemText({content, topicCode, topicLabel, userNickname}){
+function PostItemText({content, topicCode, topicLabel, userNickname, userProfileImgUrl}){
     const postItemTextLeft = PostItemTextLeft({content, topicCode, topicLabel});
-    const postItemTextRight = PostItemTextRight(userNickname);
+    const postItemTextRight = PostItemTextRight(userNickname, userProfileImgUrl);
 
     const postItem = document.createElement("div");
     postItem.classList.add("text");
@@ -49,11 +52,11 @@ function PostItemTextLeft({content, topicCode, topicLabel}){
     return postItemTextLeft;
 }
 
-function PostItemTextRight(nickname){
+function PostItemTextRight(nickname, userProfileImgUrl){
     const postItemTextRight = document.createElement("div");
     postItemTextRight.classList.add("right");
     postItemTextRight.appendChild(PostItemAuthor(nickname));
-    postItemTextRight.appendChild(PostItemLogo());
+    postItemTextRight.appendChild(PostItemUserImgProfile(userProfileImgUrl));
     return postItemTextRight;  
 }
 
@@ -79,9 +82,18 @@ function PostItemAuthor(nickname){
     return p;
 }
 
-function PostItemLogo(){
-    const p = document.createElement("p");
-    p.classList.add("logo");
-    p.innerHTML = "🍅";
-    return p;
+
+function PostItemUserImgProfile(imageUrl){
+    const imgData = PostItemUserImgProfileData(imageUrl);
+    const div = document.createElement("div");
+    div.classList.add("userProfile");
+    div.appendChild(imgData);
+    return div;    
+}
+
+function PostItemUserImgProfileData(imageUrl){
+    const img = document.createElement("img");
+    img.className = "data";
+    img.src = imageUrl;
+    return img;    
 }
