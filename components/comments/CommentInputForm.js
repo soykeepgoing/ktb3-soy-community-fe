@@ -1,4 +1,4 @@
-import {h} from "../../core/renderer.js"
+import {h} from "../../core/Renderer.js"
 import {handleCommentCreate} from "../../handle/comments/CommentEventHandler.js";
 
 export function CommentInputForm(postId){

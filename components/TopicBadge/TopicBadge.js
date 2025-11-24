@@ -1,4 +1,4 @@
-import {h} from "../../core/renderer.js";
+import {h} from "../../core/Renderer.js";
 
 export function TopicBadge(label, code){
     return h(

@@ -1,4 +1,4 @@
-import {h} from "../../core/renderer.js";
+import {h} from "../../core/Renderer.js";
 
 export function PostStats({ like, comment, view }) {
     return h("div", { class: "postStats" }, 

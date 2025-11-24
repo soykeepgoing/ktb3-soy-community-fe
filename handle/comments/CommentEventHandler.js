@@ -1,9 +1,10 @@
-import { getComments, createComment, deleteComments, editComment } from "../../api/commentApi.js";
-import { CommentItem } from "../../components/Comments/CommentItem.js";
-import {createDom} from "../../core/renderer.js";
-import { Modal } from "../../components/Modal/Modal.js"
 import {navigateTo} from "../../core/Router.js";
 import {getState} from "../../core/GlobalStore.js";
+import {createDom} from "../../core/Renderer.js";
+
+import { getComments, createComment, deleteComments, editComment } from "../../api/commentApi.js";
+import { CommentItem } from "../../components/Comments/CommentItem.js";
+import { Modal } from "../../components/Modal/Modal.js"
 
 class CommentEventHandler{
     constructor(){}
@@ -116,7 +117,6 @@ class CommentEventHandler{
 
     async handleCommentEdit(commentId){
         const item = document.querySelector(`.commentItem[data-comment-id="${commentId}"]`);
-        console.log(item);
         const form = document.querySelector(".commentInputForm");
         await form.enterEditMode(item, commentId);
 

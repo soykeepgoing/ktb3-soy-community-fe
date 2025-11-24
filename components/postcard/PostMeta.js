@@ -1,4 +1,4 @@
-import { h } from "../../core/renderer.js";
+import { h } from "../../core/Renderer.js";
 import { handlePostLike } from "../../handle/posts/PostEventHandler.js";
 import { fromCreatedAt } from "../../utils/formatUtils.js";
 

@@ -1,5 +1,5 @@
 import { TopicBadge } from "../TopicBadge/TopicBadge.js";
-import { createDom } from "../../core/renderer.js";
+import { createDom } from "../../core/Renderer.js";
 
 export function PostItem(data){
     const id = data.id;

@@ -1,6 +1,6 @@
 import { CommentInputForm } from "./CommentInputForm.js";
 import {CommentItemList} from "./CommentItemList.js";
-import {h} from "../../core/renderer.js";
+import {h} from "../../core/Renderer.js";
 
 export function CommentSection(postId){
 

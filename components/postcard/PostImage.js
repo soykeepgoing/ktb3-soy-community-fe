@@ -1,4 +1,4 @@
-import {h} from "../../core/renderer.js";
+import {h} from "../../core/Renderer.js";
 
 export function PostImage(src) {
     if (!src) return null;

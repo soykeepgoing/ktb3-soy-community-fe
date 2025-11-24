@@ -1,4 +1,4 @@
-import {h} from "../../core/renderer.js"
+import {h} from "../../core/Renderer.js"
 import {loadCommentList} from "../../handle/comments/CommentEventHandler.js"
 
 export function CommentItemList(postId){

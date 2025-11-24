@@ -3,7 +3,7 @@ import { PostContent } from "./PostContent.js";
 import {PostImage} from "./PostImage.js";
 import { PostMeta } from "./PostMeta.js";
 import {PostStats} from "./PostStats.js";
-import {h} from "../../core/renderer.js";
+import {h} from "../../core/Renderer.js";
 import {PostCardDropDown} from "./PostCardDropDown.js";
 
 export function PostCard(data){
