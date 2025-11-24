@@ -1,3 +1,5 @@
+import {getState, setState} from "../core/GlobalStore.js"
+
 export async function loginUser(userData) {
   return await fetch("http://localhost:8080/api/users/auth", {
     method: "POST",
@@ -16,7 +18,7 @@ export async function postSignUpData(userData){
         body: JSON.stringify(userData)
     });
     const data = await res.json();
-    localStorage.setItem("userId", data.data.userId);
+    setState("userId", data.data.userId);
     console.log("회원가입 성공", data);
   } catch (err) {
     console.error("회원 가입 실패: ", err);
@@ -27,14 +29,14 @@ export async function postSignUpData(userData){
 export async function uploadProfileImage(file){
   const formData = new FormData();
   formData.append("file", file);
-  const userId = localStorage.getItem("userId");
+  const userId = getState("userId");
   try{
     const res = await fetch(`http://localhost:8080/api/users/${userId}/profile`, {
       method: "POST",
       body: formData
     });
     const data = await res.json();
-    localStorage.setItem("userProfileImg", data.profileImgUrl);
+    setState("userProfileImg", data.profileImgUrl);
     console.log("사용자 프로필 이미지 업로드 성공");
   } catch (err) {
     console.log("사용자 프로필 이미지 업로드 실패 : ", err);
@@ -42,7 +44,7 @@ export async function uploadProfileImage(file){
 }
 
 export async function uploadNickname(nickname){
-    const userId = localStorage.getItem("userId");
+    const userId = getState("userId");
     const postData = {
         "userNickname": nickname
     };
@@ -55,7 +57,7 @@ export async function uploadNickname(nickname){
         });
         if (res.ok) {
             console.log("닉네임 변경 성공");
-            localStorage.setItem("userNickname", nickname);
+            setState("userNickname", nickname);
             return true;
         } else {
             return false;

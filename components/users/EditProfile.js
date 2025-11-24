@@ -1,3 +1,5 @@
+import { getState } from "../../core/GlobalStore.js";
+
 export function EditProfile(){
     const section = document.createElement("section");
     section.className = "edit-profile-box";
@@ -6,14 +8,14 @@ export function EditProfile(){
         <label>프로필 사진</label>
         <div class="profile-img">
           <label for="userProfileImg" class="profile-img-preview">
-              <img id="userProfileImgPreview" alt="Profile Image" src=${localStorage.getItem("userProfileImg")} />
+              <img id="userProfileImgPreview" alt="Profile Image" src=${getState("userProfileImg")} />
           </label>
           <input type="file" id="userProfileImg" accept="image/*" />
         </div>
 
         <div class="profile-details">
           <label>이메일*</label>
-          <p id="email-info">${localStorage.getItem("userEmail")}</p>
+          <p id="email-info">${getState("userEmail")}</p>
           <p class="helper-text" id="helper-text-email"></p>
 
           <label>닉네임*</label>

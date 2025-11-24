@@ -2,7 +2,8 @@ import { getComments, createComment, deleteComments, editComment } from "../../a
 import { CommentItem } from "../../components/Comments/CommentItem.js";
 import {createDom} from "../../core/renderer.js";
 import { Modal } from "../../components/Modal/Modal.js"
-import {navigateTo} from "../../core/router.js";
+import {navigateTo} from "../../core/Router.js";
+import {getState} from "../../core/GlobalStore.js";
 
 class CommentEventHandler{
     constructor(){}
@@ -50,7 +51,7 @@ class CommentEventHandler{
             () => modal.remove()
         );
     
-        const userId = localStorage.getItem("userId");
+        const userId = getState("userId");
     
         btnConfirm.addEventListener("click", async () => {
             await deleteComments(postId, commentId, userId);

@@ -6,7 +6,7 @@ import { PostDetailPage } from "../pages/PostDetailPage.js";
 import { PostListPage } from "../pages/PostListPage.js";
 import { PostCreatePage } from "../pages/PostCreatePage.js";
 import {PostEditPage} from "../pages/PostEditPage.js";
-import {mount} from "../core/renderer.js";
+import {mount} from "./Renderer.js";
 
 class Router{
     constructor(){

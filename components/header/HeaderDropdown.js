@@ -1,4 +1,5 @@
-import { navigateTo } from "../../core/router.js";
+import { clearStore } from "../../core/GlobalStore.js";
+import { navigateTo } from "../../core/Router.js";
 import { Dropdown } from "../Dropdown/Dropdown.js";
 
 export function HeaderDropdown(){
@@ -14,7 +15,7 @@ export function HeaderDropdown(){
             editProfile: () => navigateTo("/edit-profile"),
             editPassword: () => navigateTo("edit-password"),
             logout: () => {
-                localStorage.clear();
+                clearStore();
                 navigateTo("/")
             }
         }

@@ -1,5 +1,5 @@
 import { fromCreatedAt } from "../../utils/formatUtils.js";
-import {h} from "../../core/renderer.js";
+import {h} from "../../core/Renderer.js";
 
 export function CommentHeader(data){
     return h(

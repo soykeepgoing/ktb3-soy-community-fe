@@ -8,27 +8,3 @@ export function renderHeader() {
     const newHeader = Header();
     document.body.prepend(newHeader);
 }
-
-
-export function setNewDropDown(){
-    const header = document.getElementById("header");
-    const userProfile = document.querySelector("#user-profile");
-    const userProfileImage = document.querySelector("#profile-img");
-
-    userProfile.style.display = 'inline-block';
-    userProfileImage.src = localStorage.getItem("userProfileImg");
-
-    const editUserProfile = document.querySelector("#edit-user-profile");
-    editUserProfile.addEventListener("click", () => navigateTo("/edit-profile"));
-
-    const editUserPassword = document.querySelector("#edit-user-password");
-    editUserPassword.addEventListener("click", () => navigateTo("/edit-password"));
-
-    const logoutUser = header.querySelector("#logout-user");
-    logoutUser.addEventListener("click", () => {
-        localStorage.clear();
-        localStorage.setItem("isLogin", "false");
-        navigateTo("/");
-    });
-
-}

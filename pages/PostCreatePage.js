@@ -1,5 +1,6 @@
 import { createPost } from "../../api/postApi.js";
-import {navigateTo} from "../core/router.js";
+import {navigateTo} from "../core/Router.js";
+import {getState} from "../core/GlobalStore.js";
 import { postImageFile } from "../../api/postApi.js";
 import { Dropdown } from "../components/Dropdown/Dropdown.js";
 import { PostsCreateSection } from "../components/posts/PostsCreateSection.js";
@@ -38,7 +39,7 @@ export function PostCreatePage(){
 async function attachPostCreate(section){
     const postContent = section.querySelector("#post-content");
     const postImgFile = section.querySelector("#post-image");
-    const userId = localStorage.getItem("userId");
+    const userId = getState("userId");
     const submitBtn = section.querySelector("#btn-post-create");
     const helperTextBody = section.querySelector("#helper-text-content");
 

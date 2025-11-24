@@ -6,7 +6,8 @@ import {
     patchNewPassword,
     deleteUser
 } from "../../api/userApi.js";
-import { navigateTo } from "../../core/router.js";
+import { navigateTo } from "../../core/Router.js";
+import {setState, getState, clearStore} from '../../core/GlobalStore.js';
 import { 
     isValidEmailForSignUp,
     isValidPasswordForSignUp,
@@ -36,11 +37,11 @@ class UserEventHandler{
             }
 
             const data = await response.json();
-            localStorage.setItem("userId", data.data.userId);
-            localStorage.setItem("userProfileImg", data.data.userProfileImgUrl);
-            localStorage.setItem("userEmail", email.value);
-            localStorage.setItem("userNickname", data.data.userNickname);
-            localStorage.setItem("isLogin", "true");
+            setState("userId", data.data.userId);
+            setState("userProfileImg", data.data.userProfileImgUrl);
+            setState("userEmail", email.value);
+            setState("userNickname", data.data.userNickname);
+            setState("isLogin", "true");
             
             navigateTo("/posts");
             
@@ -129,7 +130,7 @@ class UserEventHandler{
 
     async handleProfileImageChanged(event) {
         const file = event.target.files[0];
-        const userId = localStorage.getItem("userId");
+        const userId = getState("userId");
 
         const formData = new FormData();
         formData.append("userProfileImg", file);
@@ -158,7 +159,7 @@ class UserEventHandler{
             await uploadProfileImage(file);
         }
     
-        localStorage.setItem("isLogin", "false");
+        setState("isLogin", "false");
     
     }
 
@@ -206,7 +207,7 @@ class UserEventHandler{
         const titleMsg = "회원 탈퇴하시겠습니까?"
         const contentMsg = "작성된 게시글과 댓글은 삭제됩니다."
         linkUserDelete.addEventListener("click", 
-            () => this.handleUserDelete(titleMsg, contentMsg, localStorage.getItem("userId")));
+            () => this.handleUserDelete(titleMsg, contentMsg, getState("userId")));
     
     }
 
@@ -226,12 +227,12 @@ class UserEventHandler{
             deleteUser(userId);
             modal.remove();
             navigateTo("/");
-            localStorage.clear();
+            clearStore();
         })
     }
     
     async handleEditPassword(userOldPassword, userNewPassword){
-        const userId = localStorage.getItem("userId");
+        const userId = getState("userId");
         await patchNewPassword(userId, userOldPassword, userNewPassword);
     }
     

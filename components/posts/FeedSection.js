@@ -1,6 +1,6 @@
 import { getPosts } from "../../api/postApi.js";
 import { PostItem } from "./PostItem.js";
-import { navigateTo } from "../../core/router.js";
+import { navigateTo } from "../../core/Router.js";
 const DEFAULT_SIZE = 8;
 let page = 0;
 export function FeedSection(){

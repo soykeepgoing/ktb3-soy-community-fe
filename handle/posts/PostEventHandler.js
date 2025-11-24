@@ -1,12 +1,13 @@
 import { Modal } from "../../components/Modal/Modal.js";
-import { navigateTo } from "../../core/router.js";
+import { navigateTo } from "../../core/Router.js";
+import { getState } from "../../core/GlobalStore.js";
 import {getPostDetail, deletePost, editPost, postImageFile, likePost, dislikePost} from "../../api/postApi.js"
 
 class PostEventHandler{
     constructor(){}
 
     loadPostDetail(postId){
-        const userId = localStorage.getItem("userId");
+        const userId = getState("userId");
         return getPostDetail(postId, userId).then(data => data)
         .catch(error => {
             console.error(error)
@@ -27,7 +28,7 @@ class PostEventHandler{
             () => modal.remove()
         );
 
-        const userId = localStorage.getItem("userId");
+        const userId = getState("userId");
 
         btnConfirm.addEventListener("click", async () => {
             await deletePost(postId, userId);
@@ -43,7 +44,7 @@ class PostEventHandler{
         const postImgFile = document.querySelector("#post-img");
 
         const newPost = {"postContent": postBody};
-        const userId = localStorage.getItem("userId");
+        const userId = getState("userId");
 
         await editPost(newPost, postId, userId);
         
@@ -61,7 +62,7 @@ class PostEventHandler{
         const likeStats = document.querySelector(".postStatsLike");
         
         let res;
-        const userId = localStorage.getItem("userId");
+        const userId = getState("userId");
         if (btn.classList.contains("liked")){
             btn.classList.remove("liked");
             res = await dislikePost(postId, userId);

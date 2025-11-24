@@ -1,5 +1,6 @@
+import {getState} from "../core/GlobalStore.js"
 export async function createComment(commentData, postId){
-    const userId = localStorage.getItem("userId");
+    const userId = getState("userId");
     const response = await fetch(`http://localhost:8080/api/posts/${postId}/comments?userId=${userId}`, {
         method: "POST", 
         headers: {
@@ -40,7 +41,7 @@ export async function deleteComments(postId, commentId, userId){
 }
 
 export async function editComment(commentData, postId, commentId){
-  const userId = localStorage.getItem("userId");
+  const userId = getState("userId");
   const editCommentUrl = `http://localhost:8080/api/posts/${postId}/comments/${commentId}?userId=${userId}`;
 
   try{
