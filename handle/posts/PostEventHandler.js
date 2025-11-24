@@ -50,13 +50,13 @@ class PostEventHandler{
         if (postImgFile.files.length > 0){
             const file = postImgFile.files[0];
             await postImageFile(postId, file);
-            console.log("이미지 업로드 하고 그 다음에 이동하기");
             navigateTo(`/posts/${postId}`);
         } else {
             navigateTo(`/posts/${postId}`);
         }
         
     }
+
 }
 
 const postEventHandler = new PostEventHandler();

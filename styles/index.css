@@ -26,3 +26,9 @@
 @import "../components/postcard/PostMeta.css";
 @import "../components/postcard/PostStats.css";
 @import "../components/postcard/PostCardDropDown.css";
+
+@import "../components/Comments/CommentInputForm.css";
+@import "../components/Comments/CommentSection.css";
+@import "../components/Comments/CommentItemList.css";
+@import "../components/Comments/CommentItem.css";
+@import "../components/Comments/CommentHeader.css";

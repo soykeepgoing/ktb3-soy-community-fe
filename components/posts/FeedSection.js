@@ -5,7 +5,6 @@ const DEFAULT_SIZE = 8;
 let page = 0;
 export function FeedSection(){
     page = 0;
-    console.log("feedSection");
     const section = document.createElement("section");
     section.className = "feedSection";
     section.appendChild(PostItemContainer());

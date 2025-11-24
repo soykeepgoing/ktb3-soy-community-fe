@@ -1,0 +1,35 @@
+/* 댓글 전체 컨테이너 */
+.commentItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+}
+
+/* 댓글 본문 */
+.commentItem .body {
+    font-size: 18px;
+    color: var(--neutral);
+    margin-top: 4px;
+}
+
+.commentItem .body,.btns{
+    margin-left: 52px;
+}
+
+.commentItem .btns{
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.commentItem .btnEdit,.btnDelete{
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    width: fit-content;
+}

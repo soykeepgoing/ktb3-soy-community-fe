@@ -1,5 +1,5 @@
-import {h} from "../../core/renderer.js"
 import { navigateTo } from "../../core/router.js"
+import { handlePostDelete } from "../../handle/posts/PostEventHandler.js";
 import { Dropdown } from "../Dropdown/Dropdown.js"
 
 export function PostCardDropDown(postId){
@@ -13,7 +13,7 @@ export function PostCardDropDown(postId){
             className: "postCardDropDown",
             clickEvents: {
                 edit: () => navigateTo(`/posts/${postId}/edit`),
-                delete: () => console.log("삭제")
+                delete: () => handlePostDelete(postId)
             }
         }
     

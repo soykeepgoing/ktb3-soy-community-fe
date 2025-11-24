@@ -6,7 +6,7 @@ export function CommentSection(postId){
 
     return h(
         "div", {class: "commentSection"},
-        CommentInputForm(),
+        CommentInputForm(postId),
         CommentItemList(postId)
     )
 }
