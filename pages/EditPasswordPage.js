@@ -1,5 +1,5 @@
 import {EditPassword} from "../components/users/EditPassword.js"
-import { attachEditPassword } from "../handle/users/handleEditPassword.js";
+import { attachEditPassword } from "../handle/users/UserEventHandler.js";
 
 export function EditPasswordPage(){
     const div = document.createElement("div");

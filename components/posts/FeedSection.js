@@ -34,7 +34,7 @@ function createFragment(postsData) {
     postsData.forEach(postData => {
         const post = PostItem(postData);
         const postId = postData.id;
-        console.log(postId)
+
         post.addEventListener("click", () => navigateTo(`/posts/${postId}`));
         fragment.appendChild(post);
     });
@@ -48,7 +48,7 @@ async function handlePostItemContainer(section){
 
     /* 초기화 */
     const data = await getPosts(page, DEFAULT_SIZE);
-    console.log(data);
+
     const postItemData = data.postItemResponseList;
     postItemContainer.appendChild(createFragment(postItemData));
     page++;
@@ -65,7 +65,7 @@ async function handlePostItemContainer(section){
             
             const data = await getPosts(page, DEFAULT_SIZE);
             const postItemData = data.postItemResponseList;
-            console.log(page, postItemData);
+
             if(postItemData.length === 0){
                 observer.unobserve(entry.target);
                 return;

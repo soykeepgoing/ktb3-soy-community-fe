@@ -1,5 +1,5 @@
 import { SignUp } from "../components/users/SignUp.js";
-import { attachSignUpEvents } from "../handle/users/handleSignUpEvents.js";
+import { attachSignUpEvents } from "../handle/users/UserEventHandler.js";
 
 export function SignUpPage(){
     const signUp = SignUp();
