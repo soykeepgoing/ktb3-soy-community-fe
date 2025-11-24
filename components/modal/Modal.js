@@ -1,4 +1,3 @@
-
 export function Modal(titleMsg, contentMsg){    
     const modal = document.createElement("div");
     modal.classList.add("modal-wrapper");
