@@ -1,7 +1,6 @@
-import { getPostDetail } from "../../api/postApi.js";
 import { Modal } from "../../components/Modal/Modal.js";
-import {deletePost} from "../../api/postApi.js"
 import { navigateTo } from "../../core/router.js";
+import {getPostDetail, deletePost, editPost, postImageFile} from "../../api/postApi.js"
 
 class PostEventHandler{
     constructor(){}
@@ -37,8 +36,30 @@ class PostEventHandler{
         })
     }
 
+    async handlePostEdit(event, postId){
+        event.preventDefault();
+
+        const postBody = document.querySelector("#post-body").value;
+        const postImgFile = document.querySelector("#post-img");
+
+        const newPost = {"postContent": postBody};
+        const userId = localStorage.getItem("userId");
+
+        await editPost(newPost, postId, userId);
+        
+        if (postImgFile.files.length > 0){
+            const file = postImgFile.files[0];
+            await postImageFile(postId, file);
+            console.log("이미지 업로드 하고 그 다음에 이동하기");
+            navigateTo(`/posts/${postId}`);
+        } else {
+            navigateTo(`/posts/${postId}`);
+        }
+        
+    }
 }
 
 const postEventHandler = new PostEventHandler();
 export const loadPostDetail = postEventHandler.loadPostDetail.bind(postEventHandler);
 export const handlePostDelete = postEventHandler.handlePostDelete.bind(postEventHandler);
+export const handlePostEdit = postEventHandler.handlePostEdit.bind(postEventHandler);

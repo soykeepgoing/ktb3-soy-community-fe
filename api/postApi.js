@@ -99,7 +99,7 @@ export async function postImageFile(postId, file){
   const formData = new FormData();
   formData.append("file", file);
 
-  fetch(`http://localhost:8080/api/posts/${postId}`, {
+  return fetch(`http://localhost:8080/api/posts/${postId}`, {
     method: "POST",
     body: formData
   })

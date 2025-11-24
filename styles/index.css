@@ -9,6 +9,7 @@
 @import "../pages/PostDetailPage.css";
 @import "../pages/EditProfilePage.css";
 @import "../pages/EditPasswordPage.css";
+@import "./post-edit.css";
 
 @import "./edit-profile.css";
 

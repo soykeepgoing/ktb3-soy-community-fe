@@ -2,7 +2,7 @@ import {h} from "../../core/renderer.js"
 import { navigateTo } from "../../core/router.js"
 import { Dropdown } from "../Dropdown/Dropdown.js"
 
-export function PostCardDropDown(){
+export function PostCardDropDown(postId){
     return Dropdown(
         {
             placeholder:  "⋯",
@@ -12,7 +12,7 @@ export function PostCardDropDown(){
             ], 
             className: "postCardDropDown",
             clickEvents: {
-                edit: () => console.log("삭제"),
+                edit: () => navigateTo(`/posts/${postId}/edit`),
                 delete: () => console.log("삭제")
             }
         }

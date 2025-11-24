@@ -7,9 +7,9 @@ import { PostCardDropDown } from "../components/postcard/PostCardDropDown.js";
 export function PostDetailPage(postId) {
     const container = document.createElement("section");
     container.classList.add("postDetailPage");
-
     let cardDom = null;
-    loadPostDetail(postId).then(data => {     
+    loadPostDetail(postId).then(data => {    
+        console.log(data);
         const card = PostCard(data);
         const cardDrop = PostCardDropDown(postId);
         cardDom = createDom(card);
@@ -19,6 +19,8 @@ export function PostDetailPage(postId) {
         const commentSection = CommentSection(postId);
         container.appendChild(createDom(commentSection));
     })
+
+
 
     return container;
 }
