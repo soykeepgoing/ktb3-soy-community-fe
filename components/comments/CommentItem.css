@@ -1,35 +1,50 @@
-/* 댓글 전체 컨테이너 */
 .commentItem {
     display: flex;
     flex-direction: column;
     gap: 8px;
     width: 100%;
     padding: 14px 20px;
+    background: rgba(241, 220, 220, 0.634); 
+    border-radius: 16px;
 }
 
-/* 댓글 본문 */
+.commentItem:hover {
+    background: rgba(242, 214, 214, 0.6);
+    transform: translateY(-2px);
+}
+
+
 .commentItem .body {
     font-size: 18px;
     color: var(--neutral);
     margin-top: 4px;
 }
 
-.commentItem .body,.btns{
+.commentItem .body,
+.commentItem .btns {
     margin-left: 52px;
 }
 
-.commentItem .btns{
+.commentItem .btns {
     display: flex;
     gap: 10px;
     margin-top: 4px;
 }
 
-.commentItem .btnEdit,.btnDelete{
+.commentItem .btnEdit,
+.commentItem .btnDelete {
     padding: 8px 14px;
     border-radius: 20px;
     font-size: 13px;
     border: none;
     cursor: pointer;
-    transition: 0.2s;
     width: fit-content;
+    background: #F2B6BB;
+    color: #595959;
+}
+
+.commentItem .btnEdit:hover,
+.commentItem .btnDelete:hover {
+    transform: translateY(-2px) scale(1.04);
+    background: #F2D0D0;
 }

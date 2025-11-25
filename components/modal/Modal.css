@@ -63,7 +63,7 @@
   width: 140px;
   height: 48px;
   background: var(--main-red);
-  color: var(--neutral);
+  color: white;
   border-radius: 12px;
   border: none;
   font-size: 16px;
@@ -73,4 +73,5 @@
 .btn-cancel:hover,
 .btn-confirm:hover {
   opacity: 0.9;
+  transform: translateY(-2px) scale(1.04);
 }

@@ -11,7 +11,7 @@ export function PostCard(data){
         "div", 
         {class: "postCard"}, 
         TopicBadge(data.topicLabel, data.topicCode),
-        PostMeta(data.userNickname, data.userProfileImgUrl, data.createdAt, data.id),
+        PostMeta(data.userNickname, data.userProfileImgUrl, data.createdAt, data.id, data.isUserLiked),
         PostImage(data.imgUrl),
         PostContent(data.content),
         PostStats({
