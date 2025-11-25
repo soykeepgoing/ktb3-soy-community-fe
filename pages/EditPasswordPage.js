@@ -8,6 +8,8 @@ export function EditPasswordPage(){
     const section = EditPassword();
     attachEditPassword(section);
     const floatingBtn = FloatingButton({value: "🏠", url: "/posts"});
+
+    div.appendChild(section);
     div.appendChild(floatingBtn);
     return div;
 }

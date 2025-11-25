@@ -166,10 +166,10 @@ class UserEventHandler{
     attachUserEditProfile(section){
         const newUserProfileImgInput = section.querySelector("#userProfileImg");
         const newUserProfileImgInputPreview = section.querySelector("#userProfileImgPreview");
-    
+        let newImageUrl = null;
         newUserProfileImgInput.addEventListener(
             "change", async (e) => {
-            const newImageUrl = await this.handleProfileImageChanged(e);
+            newImageUrl = await this.handleProfileImageChanged(e);
             newUserProfileImgInputPreview.src = newImageUrl;}
         );
     
@@ -182,11 +182,13 @@ class UserEventHandler{
                     return false;
                 }
                 isEdited = await uploadNickname(nickname);
+                setState("userNickname", nickname);
             }
 
             if (newUserImgInput && newUserImgInput.files.length > 0) {
                 const file = newUserImgInput.files[0];
                 isEdited = await uploadProfileImage(file);
+                setState("userProfileImg", newImageUrl);
             }
             return isEdited;
         }

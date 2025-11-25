@@ -13,7 +13,7 @@ export function HeaderDropdown(){
         className: "header_dropdown",
         clickEvents: {
             editProfile: () => navigateTo("/edit-profile"),
-            editPassword: () => navigateTo("edit-password"),
+            editPassword: () => navigateTo("/edit-password"),
             logout: () => {
                 clearStore();
                 navigateTo("/")
