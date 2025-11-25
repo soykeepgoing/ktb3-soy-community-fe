@@ -42,7 +42,7 @@ export function SignUp(){
 
     </form>
 
-    <button class="signup__btn" id="signup__btn" disabled>Start Dancing</button>
+    <button class="signup__btn" id="signup__btn" disabled>Join us!</button>
 
     <p class="link_to" id="signup__login_link_to">Already a member? Sign in</a></p>
   `;

@@ -47,6 +47,7 @@ class Renderer{
     mount(newPage) {
         if (this.currentPage) {
             this.container.innerHTML = "";
+            
             // unmount 로직 추가 
         }
         this.currentPage = newPage;

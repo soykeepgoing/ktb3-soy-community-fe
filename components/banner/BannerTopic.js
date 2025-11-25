@@ -8,6 +8,6 @@ export function BannerTopicLabel(){
 export function BannerTopicText(){
     const p = document.createElement("p");
     p.classList.add("banner__topic_text");
-    p.innerHTML = `오늘도 나만의 리듬으로 춤추는 토마토, 여기서 나를 칭찬해보세요.`;
+    p.innerHTML = `우리는 모두 각자의 리듬으로 춤추는 토마토, 여기서 나를 칭찬해보세요.`;
     return p;
 }
