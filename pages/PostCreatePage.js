@@ -3,7 +3,7 @@ import {navigateTo} from "../core/Router.js";
 import {getState} from "../core/GlobalStore.js";
 import { postImageFile } from "../../api/postApi.js";
 import { Dropdown } from "../components/Dropdown/Dropdown.js";
-import { PostsCreateSection } from "../components/posts/PostsCreateSection.js";
+import { PostsCreateSection } from "../components/Posts/PostsCreateSection.js";
 import { FloatingButton } from "../components/FloatingButton/FloatingButton.js";
 let selectedTopic = null; 
 

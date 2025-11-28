@@ -4,6 +4,7 @@ export async function createPost(postData, userId){
     try{
         const response = await fetch(`http://localhost:8080/api/posts?userId=${userId}`, {
                 method: "POST", 
+                credentials: "include",
                 headers: {
                   "Header": "application/json",
                   "Content-Type": "application/json"},
@@ -24,7 +25,10 @@ export async function getPosts(currentPage, pageSize){
   const url = getPostsURL + `page=${currentPage}&size=${pageSize}`;
 
   try{
-    const response = await fetch(url);
+    const response = await fetch(url,{
+        method: "GET",
+        credentials: "include"
+    });
     if (!response.ok) console.log("게시글 목록 조회 실패");
     return await response.json();
   } catch{
@@ -35,7 +39,9 @@ export async function getPosts(currentPage, pageSize){
 export async function getPostDetail(postId, userId){
   const getPostDetailUrl = `http://localhost:8080/api/posts/${postId}?userId=${userId}`;
   try{
-    const response = await fetch(getPostDetailUrl);
+    const response = await fetch(getPostDetailUrl
+        ,{credentials: "include"}
+    );
     if (!response.ok) console.log("게시글 상세 조회 실패");
     return await response.json();
   } catch{

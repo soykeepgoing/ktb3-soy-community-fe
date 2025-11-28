@@ -6,6 +6,7 @@ import { PostDetailPage } from "../pages/PostDetailPage.js";
 import { PostListPage } from "../pages/PostListPage.js";
 import { PostCreatePage } from "../pages/PostCreatePage.js";
 import {PostEditPage} from "../pages/PostEditPage.js";
+import {ManageMemberPage} from "../pages/ManageMemberPage.js";
 import {mount} from "./Renderer.js";
 
 class Router{
@@ -18,7 +19,8 @@ class Router{
             "/posts/:param1": PostDetailPage,
             "/posts/:param1/edit": PostEditPage,
             "/edit-profile": EditProfilePage,
-            "/edit-password": EditPasswordPage
+            "/edit-password": EditPasswordPage,
+            "/admin/members": ManageMemberPage
         };
     }
 

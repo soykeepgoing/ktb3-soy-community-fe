@@ -1,4 +1,4 @@
-import { SignUp } from "../components/users/SignUp.js";
+import { SignUp } from "../components/Users/SignUp.js";
 import { attachSignUpEvents } from "../handle/users/UserEventHandler.js";
 
 export function SignUpPage(){

@@ -4,7 +4,6 @@ class GlobalStore {
 
     setState(key, value){
         this.store[key] = value;
-        console.log(this.store);
     }
     
     getState(key){

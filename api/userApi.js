@@ -1,19 +1,22 @@
 import {getState, setState} from "../core/GlobalStore.js"
 
-export async function loginUser(userData) {
-  return await fetch("http://localhost:8080/api/users/auth", {
-    method: "POST",
-    headers: { 
-        "Accept": "application/json",
-        "Content-Type": "application/json" },
-    body: JSON.stringify(userData),
-  });
+export async function loginUser(inputData) {
+    const res = await fetch("http://localhost:8080/api/users/auth", {
+        method: "POST",
+        credentials: "include",
+        headers: { 
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(inputData)
+    });
+    return res;
 }
 
 export async function postSignUpData(userData){
     try{
         const res = await fetch("http://localhost:8080/api/users", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData)
     });
@@ -32,6 +35,7 @@ export async function uploadProfileImage(file){
   const userId = getState("userId");
   return fetch(`http://localhost:8080/api/users/${userId}/profile`, {
       method: "POST",
+      credentials: "include",
       body: formData
     })
     .then(res => {
@@ -52,6 +56,7 @@ export async function uploadNickname(nickname){
     
     return fetch(`http://localhost:8080/api/users/${userId}/profile`, {
             method: "PATCH",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(postData)
         }).then(res => {
@@ -66,6 +71,7 @@ export async function deleteUser(userId){
     try{
         const res = await fetch(`http://localhost:8080/api/users/${userId}`, {
             method: "Delete",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
         }); 
         if (res.ok){
@@ -87,6 +93,7 @@ export async function patchNewPassword(userId, userOldPassword, userNewPassword)
         console.log(data);
         const res = await fetch(`http://localhost:8080/api/users/${userId}/password`,{
             method: "PATCH",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         });

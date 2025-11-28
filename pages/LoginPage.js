@@ -1,5 +1,5 @@
-import { SignUpLink } from "../components/users/SignUpLink.js";
-import { Login } from "../components/users/Login.js";
+import { SignUpLink } from "../components/Users/SignUpLink.js";
+import { Login } from "../components/Users/Login.js";
 import {attachLoginValid } from "../handle/users/UserValidationHandler.js";
 
 export function LoginPage(){

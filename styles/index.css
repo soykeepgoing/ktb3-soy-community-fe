@@ -21,12 +21,12 @@
 @import "../components/Toast/Toast.css";
 @import "../components/header/HeaderDropdown.css";
 @import "../components/TopicBadge/TopicBadge.css";
-@import "../components/postcard/PostCard.css";
-@import "../components/postcard/PostContent.css";
-@import "../components/postcard/PostImage.css";
-@import "../components/postcard/PostMeta.css";
-@import "../components/postcard/PostStats.css";
-@import "../components/postcard/PostCardDropDown.css";
+@import "../components/Postcard/PostCard.css";
+@import "../components/Postcard/PostContent.css";
+@import "../components/Postcard/PostImage.css";
+@import "../components/Postcard/PostMeta.css";
+@import "../components/Postcard/PostStats.css";
+@import "../components/Postcard/PostCardDropDown.css";
 
 @import "../components/Comments/CommentInputForm.css";
 @import "../components/Comments/CommentSection.css";

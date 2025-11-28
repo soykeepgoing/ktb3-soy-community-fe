@@ -1,5 +1,5 @@
 import {loadPostDetail} from "../handle/posts/PostEventHandler.js";
-import {PostEdit} from "../components/posts/PostEdit.js";
+import {PostEdit} from "../components/Posts/PostEdit.js";
 import { handlePostEdit } from "../handle/posts/PostEventHandler.js";
 import { FloatingButton } from "../components/FloatingButton/FloatingButton.js";
 

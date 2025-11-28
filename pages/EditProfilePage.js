@@ -1,4 +1,4 @@
-import { EditProfile } from "../components/users/EditProfile.js";
+import { EditProfile } from "../components/Users/EditProfile.js";
 import { attachUserEditProfile } from "../handle/users/UserEventHandler.js";
 import { FloatingButton } from "../components/FloatingButton/FloatingButton.js";
 

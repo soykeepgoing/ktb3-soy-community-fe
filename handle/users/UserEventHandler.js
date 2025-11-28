@@ -28,7 +28,10 @@ class UserEventHandler{
         };
 
         try {
-            const response = await loginUser(userData);
+            const response = await loginUser({
+                email: email.value,
+                password: password.value
+            });
 
             if (!response.ok) {
                 helperText.textContent = "아이디 또는 비밀번호를 확인해주세요.";
@@ -37,11 +40,13 @@ class UserEventHandler{
             }
 
             const data = await response.json();
-            setState("userId", data.data.userId);
-            setState("userProfileImg", data.data.userProfileImgUrl);
+            console.log(data);
+            setState("userId", data.userId);
+            setState("userProfileImg", data.userProfileImgUrl);
             setState("userEmail", email.value);
-            setState("userNickname", data.data.userNickname);
+            setState("userNickname", data.userNickname);
             setState("isLogin", "true");
+            setState("userRole", data.role);
             
             navigateTo("/posts");
             
@@ -149,6 +154,8 @@ class UserEventHandler{
             userPassword: password,
             userNickname: nickname
         };
+
+        console.log(userData);
         
         await postSignUpData(userData);
     
