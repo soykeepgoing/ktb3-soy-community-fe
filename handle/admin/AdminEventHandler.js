@@ -37,9 +37,9 @@ class AdminEventHandler{
                 <td>${member.id}</td>
                 <td>${member.nickname}</td>
                 <td>${member.email}</td>
-                <td>${member.createTime}</td>
-                <td>${member.updateTime}</td>
-                <td>${member.deletedTime}</td>
+                <td>${member.createTime===null ? "" : member.createTime}</td>
+                <td>${member.updateTime===null ? "" : member.updateTime}</td>
+                <td>${member.deletedTime===null ? "" : member.deletedTime}</td>
             `;
 
             tbody.appendChild(tr);
