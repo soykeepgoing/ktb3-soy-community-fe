@@ -59,14 +59,14 @@ class PostEventHandler{
         const likeStats = document.querySelector(".postStatsLike");
         
         let res;
-        const userId = getState("userId");
+        
         if (btn.classList.contains("liked")){
             btn.classList.remove("liked");
-            res = await dislikePost(postId, userId);
+            res = await dislikePost(postId);
             likeStats.textContent = `좋아요 ${res.likeCount}`;
         } else {
             btn.classList.add("liked");
-            res = await likePost(postId, userId);
+            res = await likePost(postId);
             likeStats.textContent = `좋아요 ${res.likeCount}`;
         }
     

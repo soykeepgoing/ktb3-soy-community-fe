@@ -106,10 +106,11 @@ export async function postImageFile(postId, file){
 }
 
 
-export async function likePost(postId, userId){
+export async function likePost(postId){
     try{
-        const res = await fetch(`http://localhost:8080/api/posts/${postId}/likes?userId=${userId}`, {
-                                method: "POST"});
+        const res = await fetch(`http://localhost:8080/api/posts/${postId}/likes`, {
+            credentials: "include",                    
+            method: "POST"});
         const data = await res.json();
         if(!res.ok) {
             return {liked: false, likeCount: data.likeCount}}
@@ -121,8 +122,9 @@ export async function likePost(postId, userId){
 
 export async function dislikePost(postId, userId){
     try{
-        const res = await fetch(`http://localhost:8080/api/posts/${postId}/likes?userId=${userId}`, {
-                                method: "DELETE"});
+        const res = await fetch(`http://localhost:8080/api/posts/${postId}/likes`, {
+            credentials: "include",            
+            method: "DELETE"});
         const data = await res.json();
         if(!res.ok) {
             return {liked: false, likeCount: data.likeCount}}
