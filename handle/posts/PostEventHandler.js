@@ -28,10 +28,8 @@ class PostEventHandler{
             () => modal.remove()
         );
 
-        const userId = getState("userId");
-
         btnConfirm.addEventListener("click", async () => {
-            await deletePost(postId, userId);
+            await deletePost(postId);
             modal.remove();
             navigateTo("/posts");
         })

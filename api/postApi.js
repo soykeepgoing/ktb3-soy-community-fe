@@ -33,8 +33,8 @@ export async function getPosts(currentPage, pageSize){
   }
 }
 
-export async function getPostDetail(postId, userId){
-  const getPostDetailUrl = `http://localhost:8080/api/posts/${postId}?userId=${userId}`;
+export async function getPostDetail(postId){
+  const getPostDetailUrl = `http://localhost:8080/api/posts/${postId}`;
   try{
     const response = await fetch(getPostDetailUrl
         ,{credentials: "include"}
@@ -70,10 +70,13 @@ export async function editPost(postData, postId){
   }
 }
 
-export async function deletePost(postId, userId){
-  const deletePostUrl =  `http://localhost:8080/api/posts/${postId}?userId=${userId}`;
+export async function deletePost(postId){
+  const deletePostUrl =  `http://localhost:8080/api/posts/${postId}`;
   try{
-      const response = await fetch(deletePostUrl, {method: "DELETE"});
+      const response = await fetch(deletePostUrl, {
+        method: "DELETE",
+        credentials: "include"
+    });
       if (!response.ok) alert("게시글 삭제 실패");
       return true;
   } catch(error) {
