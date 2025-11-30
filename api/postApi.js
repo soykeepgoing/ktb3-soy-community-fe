@@ -1,135 +1,62 @@
 import { setState } from "../core/GlobalStore.js";
-
-export async function createPost(formData){
-    try{
-        const response = await fetch(`http://localhost:8080/api/posts`, {
-                method: "POST", 
-                credentials: "include",
-                body: formData
-            });
-        
-        if (!response.ok) alert("게시글 등록 실패");
-        const data = await response.json();
-        return {state: true, postId: data.postId};
-    } catch(error){
-        console.log("게시글 등록 실패 : " + error);
-        return {state: false, postId: undefined};
-    }
-}
+import { apiFetch } from "./api.js";
 
 export async function getPosts(currentPage, pageSize){
-  const getPostsURL = "http://localhost:8080/api/posts?";
-  const url = getPostsURL + `page=${currentPage}&size=${pageSize}`;
-
-  try{
-    const response = await fetch(url,{
-        method: "GET",
-        credentials: "include"
-    });
-    if (!response.ok) console.log("게시글 목록 조회 실패");
-    return await response.json();
-  } catch{
-    console.error("게시글 목록 조회 실패", err);
-  }
+    return await apiFetch({
+        path: `/api/posts?page=${currentPage}&size=${pageSize}`,
+        methodType: "GET"
+    })
 }
 
 export async function getPostDetail(postId){
-  const getPostDetailUrl = `http://localhost:8080/api/posts/${postId}`;
-  try{
-    const response = await fetch(getPostDetailUrl
-        ,{credentials: "include"}
-    );
-    if (!response.ok) console.log("게시글 상세 조회 실패");
-    return await response.json();
-  } catch{
-    console.error("게시글 상세 조회 실패", err);
-  }
+    return await apiFetch({
+        path: `/api/posts/${postId}`,
+        methodType: "GET"
+    });
 }
 
-export async function editPost(postData, postId){
-  const editPostUrl = `http://localhost:8080/api/posts/${postId}`;
+export async function createPost(inputData){
+    return await apiFetch({
+        path: "/api/posts",
+        methodType: "POST", 
+        bodyData: inputData
+    });
+}
 
-  try{
-      const response = await fetch(editPostUrl, {
-                method: "PATCH", 
-                credentials: "include",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify(postData)});
+export async function editPost(newPostData, postId){
+    return await apiFetch({
+        path: `/api/posts/${postId}`,
+        methodType: "PATCH",
+        bodyData: newPostData
+    });
+}
 
-      if (!response.ok){
-        console.log("게시글 수정 실패");
-      } else {
-        console.log("게시글 수정 완료");
-      }
-      return await response.json();
-  } catch(error) {
-    console.log("게시글 수정 에러" + error);
-    return false
-  }
+export async function uploadImageToPost(inputData, postId){
+    return await apiFetch({
+        path: `/api/posts/${postId}/image`,
+        methodType: "POST", 
+        bodyData: inputData
+    })
+}
+
+export async function likePost(postId){
+    return await apiFetch({
+        path: `/api/posts/${postId}/likes`,
+        methodType: "POST"
+    });
+}
+
+export async function dislikePost(postId){
+    return await apiFetch({
+        path: `/api/posts/${postId}/likes`,
+        methodType: "DELETE"
+    });
 }
 
 export async function deletePost(postId){
-  const deletePostUrl =  `http://localhost:8080/api/posts/${postId}`;
-  try{
-      const response = await fetch(deletePostUrl, {
-        method: "DELETE",
-        credentials: "include"
-    });
-      if (!response.ok) alert("게시글 삭제 실패");
-      return true;
-  } catch(error) {
-    console.log("게시글 삭제 에러" + error);
-    return false
-  }
-}
-
-
-export async function postImageFile(postId, file){
-  const formData = new FormData();
-  formData.append("file", file);
-
-  return fetch(`http://localhost:8080/api/posts/${postId}/image`, {
-    method: "POST",
-    credentials: "include",
-    body: formData
-  })
-    .then(res => {
-      if (!res.ok) throw new Error("이미지 업로드 실패");
-      return res.json();
+    return await apiFetch({
+        path: `/api/posts/${postId}`,
+        methodType: "DELETE"
     })
-    .then(data => {
-      console.log("이미지 업데이트 완료:", data);
-    })
-    .catch(err => console.error(err));
 }
 
-
-export async function likePost(postId){
-    try{
-        const res = await fetch(`http://localhost:8080/api/posts/${postId}/likes`, {
-            credentials: "include",                    
-            method: "POST"});
-        const data = await res.json();
-        if(!res.ok) {
-            return {liked: false, likeCount: data.likeCount}}
-        else{return {liked: true, likeCount: data.likeCount}};
-    } catch { // 이미 좋아요한 경우 
-        return {liked: true, likeCount: data.likeCount};
-    };
-}
-
-export async function dislikePost(postId, userId){
-    try{
-        const res = await fetch(`http://localhost:8080/api/posts/${postId}/likes`, {
-            credentials: "include",            
-            method: "DELETE"});
-        const data = await res.json();
-        if(!res.ok) {
-            return {liked: false, likeCount: data.likeCount}}
-        else{return {liked: true, likeCount: data.likeCount}};
-    } catch { // 이미 좋아요한 경우 
-        return {liked: true, likeCount: data.likeCount};
-    };
-}

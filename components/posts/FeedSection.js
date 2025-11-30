@@ -47,8 +47,8 @@ async function handlePostItemContainer(section){
     const scrollObserver = section.querySelector("#scrollObserver");
 
     /* 초기화 */
-    const data = await getPosts(page, DEFAULT_SIZE);
-
+    const response = await getPosts(page, DEFAULT_SIZE);
+    const data = response.data;
     const postItemData = data.postItemResponseList;
     postItemContainer.appendChild(createFragment(postItemData));
     page++;
@@ -63,7 +63,8 @@ async function handlePostItemContainer(section){
         for (const entry of entries){
             if (!entry.isIntersecting) continue;
             
-            const data = await getPosts(page, DEFAULT_SIZE);
+            const response = await getPosts(page, DEFAULT_SIZE);
+            const data = response.data;
             const postItemData = data.postItemResponseList;
 
             if(postItemData.length === 0){

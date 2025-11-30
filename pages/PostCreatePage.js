@@ -1,7 +1,7 @@
 import { createPost } from "../../api/postApi.js";
 import {navigateTo} from "../core/Router.js";
 import {getState} from "../core/GlobalStore.js";
-import { postImageFile } from "../../api/postApi.js";
+import { uploadImageToPost } from "../../api/postApi.js";
 import { Dropdown } from "../components/Dropdown/Dropdown.js";
 import { PostsCreateSection } from "../components/Posts/PostsCreateSection.js";
 import { FloatingButton } from "../components/FloatingButton/FloatingButton.js";
@@ -77,7 +77,7 @@ async function attachPostCreate(section){
             formData.append("postImgFile", postImgFile.files[0]);
         }
         
-        const {state, postId} = await createPost(formData);
+        await createPost(formData);
         console.log("게시글 작성 완료");
         navigateTo("/posts");
     });
