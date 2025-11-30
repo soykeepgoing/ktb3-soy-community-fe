@@ -23,22 +23,6 @@ export async function logout() {
     return res;
 }
 
-export async function postSignUpData(signUpData){
-    try{
-        const res = await fetch("http://localhost:8080/api/users", {
-        method: "POST",
-        credentials: "include",
-        body: signUpData
-    });
-    const data = await res.json();
-    setState("userId", data.data.userId);
-    console.log("회원가입 성공", data);
-  } catch (err) {
-    console.error("회원 가입 실패: ", err);
-    throw err;
-  };
-}
-
 export async function uploadProfileImage(file){
   const formData = new FormData();
   formData.append("file", file);

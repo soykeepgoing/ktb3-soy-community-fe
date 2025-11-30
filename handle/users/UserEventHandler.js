@@ -17,6 +17,7 @@ import {
 
 import {Modal} from "../../components/Modal/Modal.js";
 import { showToast } from "../../components/toast/Toast.js";
+import { doFetch } from "../../api/api.js";
 
 class UserEventHandler{
     constructor(){}
@@ -148,7 +149,7 @@ class UserEventHandler{
     async handleSignUpSubmit(section, userEmail, userPassword, userPasswordCheck, userNickname){
         const formData = new FormData();
 
-        const data = {
+        const userData = {
             userEmail: userEmail.value,
             userPassword: userPassword.value,
             userNickname: userNickname.value
@@ -156,7 +157,7 @@ class UserEventHandler{
 
         formData.append(
             "data",
-            new Blob([JSON.stringify(data)], { type: "application/json" })
+            new Blob([JSON.stringify(userData)], { type: "application/json" })
         );
 
         const profileImgInput = section.querySelector("#userProfileImg");
@@ -164,10 +165,16 @@ class UserEventHandler{
             formData.append("profileImage", profileImgInput.files[0]);
         }
 
-        postSignUpData(formData);
-    
-        setState("isLogin", "false");
-    
+        const data = await doFetch({
+            path: "/api/users",
+            methodType: "POST",
+            bodyData: formData
+        });
+
+        if (data.success){
+            setState("userId", data.data.userId);
+            setState("isLogin", "false");
+        }
     }
 
     attachUserEditProfile(section){
