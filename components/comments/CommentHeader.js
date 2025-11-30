@@ -1,4 +1,4 @@
-import { fromCreatedAt } from "../../utils/formatUtils.js";
+import { formatTime } from "../../utils/formatUtils.js";
 import {h} from "../../core/Renderer.js";
 
 export function CommentHeader(data){
@@ -7,6 +7,6 @@ export function CommentHeader(data){
         {class: "commentHeader"}, 
         h("img", {class: "profileImg", src: data.userProfileImgUrl}),
         h("span", {class: "authorNickname"}, data.userNickname ),
-        h("span", {class: "date"},fromCreatedAt(data.createdAt) )
+        h("span", {class: "date"},formatTime(data.createdAt) )
     )
 }
