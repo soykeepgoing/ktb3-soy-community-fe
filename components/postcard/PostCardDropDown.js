@@ -1,4 +1,4 @@
-import { navigateTo } from "../../core/Router.js"
+import { navigateTo } from "../../core/router.legacy.js"
 import { handlePostDelete } from "../../handle/posts/PostEventHandler.js";
 import { Dropdown } from "../Dropdown/Dropdown.js"
 

@@ -1,5 +1,5 @@
 import { Modal } from "../../components/Modal/Modal.js";
-import { navigateTo } from "../../core/Router.js";
+import { navigateTo } from "../../core/router.legacy.js";
 import { getState } from "../../core/GlobalStore.js";
 import {getPostDetail, deletePost, editPost, uploadImageToPost, likePost, dislikePost} from "../../api/postApi.js"
 

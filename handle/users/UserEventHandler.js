@@ -7,7 +7,7 @@ import {
     deleteUser,
     editPassword,
 } from "../../api/userApi.js";
-import { navigateTo } from "../../core/Router.js";
+// import { navigateTo } from "../../core/router.js";
 import {setState, getState, clearStore} from '../../core/GlobalStore.js';
 import { 
     isValidEmailForSignUp,
@@ -43,7 +43,7 @@ class UserEventHandler{
         setState("userNickname", response.data.userNickname);
         setState("isLogin", "true");
         setState("userRole", response.data.role);
-        navigateTo("/posts");
+        // navigateTo("/posts");
         
     }
 
@@ -53,7 +53,7 @@ class UserEventHandler{
 
     attachSignUpEvents(section){
         const linkLogin = section.querySelector("#signup__login_link_to");
-        linkLogin.onclick = () => navigateTo("/");
+        // linkLogin.onclick = () => navigateTo("/");
     
         const userEmail = section.querySelector("#userEmail");
         const userPassword = section.querySelector("#userPassword");
@@ -113,7 +113,7 @@ class UserEventHandler{
         // submit
         signUpBtn.addEventListener("click", async () => {
             await this.handleSignUpSubmit(section, userEmail, userPassword, userPasswordCheck, userNickname);
-            navigateTo("/");
+            // navigateTo("/");
         });
     }
 
@@ -278,7 +278,7 @@ class UserEventHandler{
             "click", 
             () => {
                 this.handleEditPassword(userOldPassword, userNewPassword);
-                navigateTo("/posts");
+                // navigateTo("/posts");
             } 
         );
     }
@@ -298,7 +298,7 @@ class UserEventHandler{
         btnConfirm.addEventListener("click", async () => {
             await deleteUser(userId);
             modal.remove();
-            navigateTo("/");
+            // navigateTo("/");
             clearStore();
         })
     }

@@ -1,5 +1,5 @@
 import { createPost } from "../../api/postApi.js";
-import {navigateTo} from "../core/Router.js";
+import {navigateTo} from "../core/router.legacy.js";
 import {getState} from "../core/GlobalStore.js";
 import { uploadImageToPost } from "../../api/postApi.js";
 import { Dropdown } from "../components/Dropdown/Dropdown.js";

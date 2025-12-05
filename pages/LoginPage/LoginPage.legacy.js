@@ -1,6 +1,6 @@
-import { SignUpLink } from "../components/Users/SignUpLink.js";
-import { Login } from "../components/Users/Login.js";
-import {attachLoginValid } from "../handle/users/UserValidationHandler.js";
+import { SignUpLink } from "../../components/Users/SignUpLink.js";
+import { Login } from "../../components/Users/Login.js";
+import {attachLoginValid } from "../../handle/users/UserValidationHandler.js";
 
 export function LoginPage(){
     const login = Login();

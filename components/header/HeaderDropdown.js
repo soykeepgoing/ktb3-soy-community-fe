@@ -1,5 +1,5 @@
 import { getState, clearStore } from "../../core/GlobalStore.js";
-import { navigateTo } from "../../core/Router.js";
+import { navigateTo } from "../../core/router.legacy.js";
 import { Dropdown } from "../Dropdown/Dropdown.js";
 import {attachLogoutSubmit} from "../../handle/users/UserEventHandler.js";
 

@@ -1,4 +1,4 @@
-import { navigateTo } from "../../core/Router.js";
+import { navigateTo } from "../../core/router.legacy.js";
 
 export function FloatingButton({value, url}){
     const div = document.createElement("div");

@@ -1,4 +1,4 @@
-import {navigateTo} from "../../core/Router.js";
+import {navigateTo} from "../../core/router.legacy.js";
 import {getState} from "../../core/GlobalStore.js";
 import {createDom} from "../../core/Renderer.js";
 
