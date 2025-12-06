@@ -3,6 +3,7 @@ import { globalFiberState } from "../fiber/globalFiberState.js";
 import { diff } from "./diff.js";
 
 export function reconcileFunctionComponent(fiber){
+    // 새 파이버 만들어주기
     globalFiberState.wipFiber = fiber
     globalFiberState.wipFiber.hooks = [] 
     globalFiberState.wipFiber.hookIndex = 0

@@ -38,16 +38,41 @@ function commitWork(fiber) {
     commitWork(fiber.sibling);
 }
 
-function flushEffects(){
-    for (const hook of globalFiberState.globalEffects){
-        if (globalFiberState.currentRoot && hook.cleanup){
-            hook.cleanup()
+export function flushEffects() {
+    // 대기중인 이펙트들에서 
+    for (const effect of globalFiberState.globalEffects) {
+        const { fiber, hook, oldCleanup } = effect;
+
+        // 이전 클린업 함수 실행 
+        if (typeof oldCleanup === "function") {
+            try {
+                oldCleanup();
+            } catch (e) {
+                console.error("useEffect cleanup error:", e);
+            }
         }
 
-        const cleanup = hook.callback()
-        hook.cleanup = typeof cleanup === "function" ? cleanup : null
-    }
+        // 새 클린업 함수 선언 
+        let cleanup;
+        try {
+            cleanup = hook.callback();
+        } catch (e) {
+            console.error("useEffect callback error:", e);
+            cleanup = null;
+        }
+
+        // 클린업 함수 훅에 저장 
+        if (typeof cleanup === "function") {
+            hook.cleanup = cleanup;
+        } else {
+            hook.cleanup = null;
+        }
+  }
+
+  globalFiberState.globalEffects = [];
 }
+
+
 
 export function commitRoot() {
     globalFiberState.deletions.forEach(commitWork); 
@@ -55,4 +80,20 @@ export function commitRoot() {
     flushEffects();
     globalFiberState.currentRoot = globalFiberState.wipRoot;
     globalFiberState.wipRoot = null;
+
+    // 도중에 발생했던 state가 있었다면 예약 
+    if (globalFiberState.hasPendingUpdate && globalFiberState.currentRoot){
+        globalFiberState.hasPendingUpdate = false;
+
+        globalFiberState.wipRoot = {
+            dom: globalFiberState.currentRoot.dom,
+            props: globalFiberState.currentRoot.props,
+            alternate: globalFiberState.currentRoot,
+        };
+        
+        globalFiberState.nextUnitOfWork = globalFiberState.wipRoot;
+        globalFiberState.deletions = [];
+        
+    }
+
 }

@@ -4,5 +4,7 @@ export const globalFiberState = {
     wipFiber: null, 
     nextUnitOfWork: null, 
     deletions: [],  
-    globalEffects: []  
+    globalEffects: [],
+
+    hasPendingUpdate: false // 렌더 또는 이벤트 도중에 호출되면 true
 }

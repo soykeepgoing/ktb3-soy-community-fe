@@ -9,18 +9,17 @@ import { useEffect } from "../../../core/hooks/useEffect.js";
 export function LoginForm() {
 
     const [email, setEmail] = useState("");
+    const [isEmailTouched, setEmailTouched] = useState(false);
+
     const [pw, setPw] = useState("");
+    const [isPwTouched, setPwTouched] = useState(false);
+
     const [helperText, setHelperText] = useState("");
     const [isValid, setValid] = useState(false);
-    const [isTouched, setTouched] = useState(false);
 
-    const handleBlur = () => {
-        setTouched(true);
-    }
 
     useEffect(() => {
-        console.log(isTouched)
-        if (!isTouched) return;
+        if (!isEmailTouched) return;
 
         if (email.trim() === "") {
             setHelperText("이메일을 입력하세요.");
@@ -38,8 +37,31 @@ export function LoginForm() {
         setHelperText("");
         setValid(true);
 
-    }, [email, isTouched]);
+        return () => {console.log("clean up email")};
+    }, [email, isEmailTouched]);
 
+    useEffect(() => {
+        if (!isPwTouched) return;
+
+        if (pw.trim() === "") {
+            setHelperText("비밀번호를 입력하세요.");
+            setValid(false);
+            return;
+        }
+
+        const pwReg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,20}$/;
+        if (!pwReg.test(pw)) {
+            setHelperText("비밀번호는 8자 이상, 20자 이하이며 대문자, 소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.");
+            setValid(false);
+            return;
+        }
+
+        setHelperText("");
+        setValid(true);
+
+        return () => {console.log("clean up password")};
+
+    }, [pw, isPwTouched]);
 
 
     return h("section", null, 
@@ -51,7 +73,7 @@ export function LoginForm() {
             placeholder: "email", 
             value: email,
             onInput: e => setEmail(e.target.value),
-            onBlur: handleBlur
+            onBlur: () => {setEmailTouched(true)}
         }),
 
         LoginField({
@@ -61,13 +83,13 @@ export function LoginForm() {
             placeholder: "password",
             value: pw,
             onInput: (e) => {setPw(e.target.value)},
-            onBlur: handleBlur
+            onBlur: () => {setPwTouched(true)}
         }),
 
         LoginHelper(helperText),
 
         LoginButton({
-            disabled: false, 
+            disabled: !isValid, 
             onClick: () => console.log("로그인")
         })
 
