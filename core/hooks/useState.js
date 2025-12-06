@@ -13,11 +13,16 @@ export function useState(initial){
 
     const actions = oldHook ? oldHook.queue : [];
     actions.forEach(action => {
-        hook.state = action(hook.state)
+        if (typeof action === 'function') {
+            hook.state = action(hook.state);
+        } else {
+            hook.state = action;
+        }
     })
 
     const setState = (action) => {
-        hook.queue.push(action)
+        console.log(action);
+        hook.queue.push(action);
         globalFiberState.wipRoot = {
             dom: globalFiberState.currentRoot.dom, 
             props: globalFiberState.currentRoot.props, 

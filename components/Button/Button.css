@@ -1,0 +1,20 @@
+.button {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 22px;
+  border: none;
+  cursor: pointer;
+  background: var(--main-red-tomato); /* 메인 토마토 */
+  color: #fff;
+  transition: 0.2s;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--main-red); 
+}
+
+.button:disabled {
+  background:  var(--neutral); 
+  cursor: not-allowed;
+}

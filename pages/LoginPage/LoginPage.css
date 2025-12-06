@@ -1,0 +1,14 @@
+.login_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login_page .container{
+    width: 360px;
+    background: var(--sub-red);
+    border-radius: 28px;
+    padding: 40px 32px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}

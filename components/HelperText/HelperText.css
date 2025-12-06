@@ -1,0 +1,8 @@
+.helper-text {
+    font-size: 8px;
+    color: var(--sub-green);
+}
+
+.helper-text.invalid {
+    color: var(--main-red);
+}

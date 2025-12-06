@@ -3,5 +3,6 @@ export const globalFiberState = {
     currentRoot: null, 
     wipFiber: null, 
     nextUnitOfWork: null, 
-    deletions: [],    
+    deletions: [],  
+    globalEffects: []  
 }

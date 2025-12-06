@@ -23,7 +23,13 @@ function commitWork(fiber) {
     if (fiber.effectTag === "PLACEMENT" && fiber.dom != null) {
         domParent.appendChild(fiber.dom);
     } else if (fiber.effectTag === "UPDATE" && fiber.dom != null) {
-        updateDom(fiber.dom, fiber.alternate.props, fiber.props);
+        if(fiber.type === "TEXT_ELEMENT"){
+            if (fiber.dom.nodeValue !== fiber.props.nodeValue) {
+                fiber.dom.nodeValue = fiber.props.nodeValue;
+            }
+        } else {
+            updateDom(fiber.dom, fiber.alternate.props, fiber.props);
+        }
     } else if (fiber.effectTag === "DELETION") {
         commitDeletion(fiber, domParent);
     }
@@ -32,9 +38,21 @@ function commitWork(fiber) {
     commitWork(fiber.sibling);
 }
 
+function flushEffects(){
+    for (const hook of globalFiberState.globalEffects){
+        if (globalFiberState.currentRoot && hook.cleanup){
+            hook.cleanup()
+        }
+
+        const cleanup = hook.callback()
+        hook.cleanup = typeof cleanup === "function" ? cleanup : null
+    }
+}
+
 export function commitRoot() {
-    globalFiberState.deletions.forEach(commitWork) 
-    commitWork(globalFiberState.wipRoot.child) 
-    globalFiberState.currentRoot = globalFiberState.wipRoot 
-    globalFiberState.wipRoot = null
+    globalFiberState.deletions.forEach(commitWork); 
+    commitWork(globalFiberState.wipRoot.child);
+    flushEffects();
+    globalFiberState.currentRoot = globalFiberState.wipRoot;
+    globalFiberState.wipRoot = null;
 }
