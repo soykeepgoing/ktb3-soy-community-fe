@@ -31,13 +31,3 @@ body {
     display: flex;
     justify-content: center;
 }
-
-
-.link_to{
-    margin-top: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: var(--sub-green);
-    cursor: pointer;
-    text-decoration: underline;
-}

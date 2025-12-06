@@ -90,7 +90,7 @@ export function commitRoot() {
             props: globalFiberState.currentRoot.props,
             alternate: globalFiberState.currentRoot,
         };
-        
+
         globalFiberState.nextUnitOfWork = globalFiberState.wipRoot;
         globalFiberState.deletions = [];
         

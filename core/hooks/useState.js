@@ -34,7 +34,6 @@ export function useState(initial){
 
     // 이전에 삽입된 액션들 수행
     const actions = oldHook ? oldHook.queue : [];
-    console.log(actions)
     actions.forEach(action => {
         if (typeof action === 'function') {
             hook.state = action(hook.state);

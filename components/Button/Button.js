@@ -4,7 +4,7 @@ export function Button({ className, id, text, disabled, onClick }) {
   return h(
     "button",
     {
-      className: className,
+      className,
       id,
       disabled,
       onClick   

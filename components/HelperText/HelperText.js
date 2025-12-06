@@ -1,5 +1,7 @@
 import {h} from "../../core/vdom/h.js";
 
-export function HelperText(text = ""){
-    return h("p", {className: "helper-text"}, text);
+export function HelperText({text = "", invalid}){
+    const className = `helper-text ${invalid ? 'invalid': ''}`;
+
+    return h("p", {className}, text);
 }

@@ -3,7 +3,8 @@
 
 @import "../components/HelperText/HelperText.css";
 @import "../components/Button/Button.css";
-@import "../components/Login/LoginButton/LoginButton.css";
+@import "../components/LinkTo/LinkTo.css";
+
 @import "../components/Login/LoginField/LoginField.css";
 @import "../components/Login/LoginTitle/LoginTitle.css";
 @import "../pages/LoginPage/LoginPage.css";

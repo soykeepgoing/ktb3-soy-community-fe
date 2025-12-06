@@ -10,32 +10,32 @@ export function LoginForm() {
 
     const [email, setEmail] = useState("");
     const [isEmailTouched, setEmailTouched] = useState(false);
+    const [isEmailValid, setEmailValid] = useState(false);
 
     const [pw, setPw] = useState("");
     const [isPwTouched, setPwTouched] = useState(false);
+    const [isPwValid, setPwValid] = useState(false);
 
     const [helperText, setHelperText] = useState("");
-    const [isValid, setValid] = useState(false);
-
 
     useEffect(() => {
         if (!isEmailTouched) return;
 
         if (email.trim() === "") {
             setHelperText("이메일을 입력하세요.");
-            setValid(false);
+            setEmailValid(false);
             return;
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             setHelperText("이메일 형식이 올바르지 않습니다.");
-            setValid(false);
+            setEmailValid(false);
             return;
         }
 
         setHelperText("");
-        setValid(true);
+        setEmailValid(true);
 
         return () => {console.log("clean up email")};
     }, [email, isEmailTouched]);
@@ -45,19 +45,19 @@ export function LoginForm() {
 
         if (pw.trim() === "") {
             setHelperText("비밀번호를 입력하세요.");
-            setValid(false);
+            setPwValid(false);
             return;
         }
 
         const pwReg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,20}$/;
         if (!pwReg.test(pw)) {
             setHelperText("비밀번호는 8자 이상, 20자 이하이며 대문자, 소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.");
-            setValid(false);
+            setPwValid(false);
             return;
         }
 
         setHelperText("");
-        setValid(true);
+        setPwValid(true);
 
         return () => {console.log("clean up password")};
 
@@ -86,12 +86,14 @@ export function LoginForm() {
             onBlur: () => {setPwTouched(true)}
         }),
 
-        LoginHelper(helperText),
+        LoginHelper({
+            text: helperText, 
+            invalid: !isEmailValid || !isPwValid
+        }),
 
         LoginButton({
-            disabled: !isValid, 
+            disabled: !(isEmailValid && isPwValid), 
             onClick: () => console.log("로그인")
         })
-
     )
 }
