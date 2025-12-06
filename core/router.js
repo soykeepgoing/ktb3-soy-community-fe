@@ -1,6 +1,9 @@
+import { globalFiberState } from "./fiber/globalFiberState.js";
+
 export class Router{
     constructor(){
         this.routes = {},
+        this.container = document.getElementById("root");
         this.currentPath = window.location.pathname;
         this._onChanged = null; 
         window.addEventListener("popstate", this._handlePopState.bind(this));
@@ -17,7 +20,7 @@ export class Router{
     }
 
     navigate(path){
-        if (this.currentPath === path) return ;
+        if (this.currentPath === path) return;
 
         window.history.pushState(null, "", path);
         this.currentPath = path;

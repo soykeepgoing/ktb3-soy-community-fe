@@ -7,19 +7,18 @@ import { LoginPage } from "./pages/LoginPage/LoginPage.js";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage.js";
 
 export const router = new Router();
-const container = document.getElementById("root");
 
 router
     .add("/index.html", LoginPage)
     .add("/", LoginPage)
-    .add("/signup", SignUpPage)
+    .add("/signup", SignUpPage);
 
 router.start((PageComponent) => {
     const appElement = createElement(
         PageComponent,
         null
     );
-    render(appElement, container);
+    render(appElement, router.container);
 });
 
 requestIdleCallback(workLoop);

@@ -1,23 +1,21 @@
 import { globalFiberState } from "../fiber/globalFiberState.js";
 
 export function diff(wipFiber, elements){
-    globalFiberState.wipFiber = wipFiber
-
-    let index = 0
-    let oldFiber = globalFiberState.wipFiber.alternate && globalFiberState.wipFiber.alternate.child
-    let prevSibling = null
+    let index = 0;
+    let oldFiber = wipFiber.alternate && wipFiber.alternate.child;
+    let prevSibling = null;
     
     while (
         index < elements.length ||
         oldFiber != null 
     ) {
-        const element = elements[index]
-        let newFiber = null
+        const element = elements[index];
+        let newFiber = null;
 
         const sameType =
             oldFiber &&
             element &&
-            element.type == oldFiber.type
+            element.type == oldFiber.type;
 
         if (sameType) {
             newFiber = {
@@ -27,7 +25,7 @@ export function diff(wipFiber, elements){
                 parent: wipFiber, 
                 alternate: oldFiber, 
                 effectTag: "UPDATE"
-            }
+            };
         }
         if (element && !sameType) {
             newFiber = {
@@ -37,21 +35,21 @@ export function diff(wipFiber, elements){
                 parent: wipFiber, 
                 alternate: null, 
                 effectTag: "PLACEMENT"
-            }
+            };
         }
         if (oldFiber && !sameType) {
-            oldFiber.effectTag = "DELETION"
-            globalFiberState.deletions.push(oldFiber)
+            oldFiber.effectTag = "DELETION";
+            globalFiberState.deletions.push(oldFiber);
         }
 
         if(oldFiber){
-            oldFiber = oldFiber.sibling
+            oldFiber = oldFiber.sibling;
         }
 
-        if (index === 0) { globalFiberState.wipFiber.child = newFiber} 
-        else {prevSibling.sibling = newFiber}
+        if (index === 0) { wipFiber.child = newFiber;} 
+        else {prevSibling.sibling = newFiber;}
 
-        prevSibling = newFiber
-        index++
+        prevSibling = newFiber;
+        index++;
     }
 }
