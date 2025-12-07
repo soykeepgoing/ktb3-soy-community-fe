@@ -8,6 +8,7 @@ import { validateNickname } from "../../../utils/validation/validateNickname.js"
 import { Button } from "../../Button/Button.js";
 import { SignupField } from "../SignupField/SignupField.js";
 import { useInputField } from "../../../core/hooks/useInputField.js";
+import { SignupImgField } from "../SignupField/SignupImgField.js";
 
 export function SignupForm(){
 
@@ -18,6 +19,11 @@ export function SignupForm(){
 
     return h("form",
         { className: "signup-form"}, 
+        SignupImgField({
+            id: "signup-img-input", 
+            label: "Profile Image",
+            src: "../../../images/default_user_profile.png"
+        }),
         SignupField({
             label: "Email*",
             type: "email",
@@ -28,7 +34,6 @@ export function SignupForm(){
             onInput: (e) => email.setValue(e.target.value),
             onBlur: () => email.setTouched(true)
         }),
-
         SignupField({
             label: "Password*",
             type: "password",

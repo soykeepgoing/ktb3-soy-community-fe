@@ -1,5 +1,5 @@
 import { h } from "../../../core/vdom/h.js";
-import { SignupHelper } from "../SignupHelper/SignupHelper.js";
+import { HelperText } from "../../HelperText/HelperText.js";
 
 export function SignupField({label, type, id, placeholder, value, helperText, onInput, onBlur}){
     return h("div", { className: "signup-field"},
@@ -12,7 +12,7 @@ export function SignupField({label, type, id, placeholder, value, helperText, on
             onInput,
             onBlur
         }), 
-        SignupHelper({
+        HelperText({
             id: `signup-helper-${type}`,
             text: helperText
         })

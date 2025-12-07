@@ -4,6 +4,7 @@
 @import "../components/HelperText/HelperText.css";
 @import "../components/Button/Button.css";
 @import "../components/LinkTo/LinkTo.css";
+@import "../components/AvatarUploader/AvatarUploader.css";
 
 @import "../components/Login/LoginField/LoginField.css";
 @import "../components/Login/LoginTitle/LoginTitle.css";

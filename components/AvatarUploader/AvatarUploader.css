@@ -1,0 +1,38 @@
+.avatar-uploader-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.avatar-uploader-widget__wrapper {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid #ACBFA3;
+    transition: 0.2s;
+}
+
+.avatar-uploader-widget__wrapper:hover {
+    border-color: #BF3B3B;
+}
+
+.avatar-uploader-widget__thumbnail {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.avatar-uploader-widget__thumbnail .img-tag {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.avatar-uploader-widget__file-trigger {
+    display: none;
+}
