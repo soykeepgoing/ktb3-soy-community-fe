@@ -9,101 +9,56 @@ import { validateNickname } from "../../../utils/validation/validateNickname.js"
 
 import { Button } from "../../Button/Button.js";
 import { SignupField } from "../SignupField/SignupField.js";
+import { useInputField } from "../../../core/hooks/useInputField.js";
 
 export function SignupForm(){
-    const [email, setEmail] = useState("");
-    const [helperEmailText, setHelperEmailText] = useState("");
-    const [isEmailValid, setEmailValid] = useState(false);
-    const [isEmailTouched, setEmailTouched] = useState(false);
 
-    const [pw, setPw] = useState("");
-    const [helperPwText, setHelperPwText] = useState("");
-    const [isPwValid, setPwValid] = useState(false);
-    const [isPwTouched, setPwTouched] = useState(false);
-
-    const [pwCheck, setPwCheck] = useState("");
-    const [helperPwCheckText, setHelperPwCheckText] = useState("");
-    const [isPwCheckValid, setPwCheckValid] = useState(false);
-    const [isPwCheckTouched, setPwCheckTouched] = useState(false);
-
-    const [nickname, setNickname] = useState("");
-    const [helperNicknameText, setHelperNicknameText] = useState("");
-    const [isNicknameValid, setNicknameValid] = useState(false);
-    const [isNicknameTouched, setNicknameTouched] = useState(false);
-
-    useEffect(() => {
-        if (!isEmailTouched) return;
-        const {success, helperText} = validateEmail(email);
-        setHelperEmailText(helperText);
-        setEmailValid(success);
-        return;
-    }, [email, isEmailTouched]);
-
-    useEffect(() => {
-        if (!isPwTouched) return;
-        const {success, helperText} = validatePw(pw);
-        setHelperPwText(helperText);
-        setPwValid(success);
-        return;
-    }, [pw, isPwTouched]);
-
-    useEffect(() => {
-        if (!isPwCheckTouched) return;
-        const {success, helperText} = validatePwCheck(pw, pwCheck);
-        setHelperPwCheckText(helperText);
-        setPwCheckValid(success);
-        return;
-    }, [pwCheck, isPwCheckTouched])
-
-    useEffect(() => {
-        if (!isNicknameTouched) return;
-        const {success, helperText} = validateNickname(nickname);
-        setHelperNicknameText(helperText);
-        setNicknameValid(success);
-        return;
-    }, [nickname, isNicknameTouched])
-
+    const email = useInputField("", validateEmail);
+    const pw = useInputField("", validatePw);
+    const pwCheck = useInputField("", (v) => validatePwCheck(pw.value, v));
+    const nickname = useInputField("", validateNickname);
 
     return h("form", null, 
         SignupField({
             label: "Email*",
             type: "email",
             id: "signup-email-input",
-            value: email,
             placeholder: "이메일을 입력하세요.",
-            helperText: helperEmailText,
-            onInput: (e) => setEmail(e.target.value),
-            onBlur: () => {setEmailTouched(true)},
+            value: email.value,
+            helperText: email.helperText,
+            onInput: (e) => email.setValue(e.target.value),
+            onBlur: () => email.setTouched(true)
         }),
+
         SignupField({
             label: "Password*",
             type: "password",
             id: "signup-password-input",
-            value: pw,
             placeholder: "비밀번호를 입력하세요.",
-            helperText: helperPwText,
-            onInput: (e) => setPw(e.target.value),
-            onBlur: () => {setPwTouched(true)},
+            value: pw.value,
+            helperText: pw.helperText,
+            onInput: (e) => pw.setValue(e.target.value),
+            onBlur: () => pw.setTouched(true)
         }),
         SignupField({
             label: "Password check*",
             type: "password",
             id: "signup-password-check-input",
-            value: pwCheck,
             placeholder: "비밀번호를 한 번 더 입력하세요.", 
-            helperText: helperPwCheckText, 
-            onInput: (e) => setPwCheck(e.target.value),
-            onBlur: () => {setPwCheckTouched(true)}
+            value: pwCheck.value,
+            helperText: pwCheck.helperText, 
+            onInput: (e) => pwCheck.setValue(e.target.value),
+            onBlur: () => pwCheck.setTouched(true)
         }),
         SignupField({
             label: "Nickname*",
             type: "nickname",
             id: "signup-nickname-input",
-            value: nickname, 
             placeholder: "닉네임을 입력하세요.",
-            helperText: helperNicknameText, 
-            onInput: (e) => setNickname(e.target.value), 
-            onBlur: () => { setNicknameTouched(true)}
+            value: nickname.value, 
+            helperText: nickname.helperText, 
+            onInput: (e) => nickname.setValue(e.target.value), 
+            onBlur: () => nickname.setTouched(true)
         }),
         Button({
             className: "button",

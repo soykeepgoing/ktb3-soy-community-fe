@@ -5,64 +5,14 @@ import { LoginHelper } from "../LoginHelper/LoginHelper.js";
 import { useState } from "../../../core/hooks/useState.js";
 import { useEffect } from "../../../core/hooks/useEffect.js";
 import { Button } from "../../Button/Button.js";
+import { useInputField } from "../../../core/hooks/useInputField.js";
+import { validateEmail } from "../../../utils/validation/validateEmail.js";
+import { validatePw } from "../../../utils/validation/validatePw.js";
 
 export function LoginForm() {
 
-    const [email, setEmail] = useState("");
-    const [isEmailTouched, setEmailTouched] = useState(false);
-    const [isEmailValid, setEmailValid] = useState(false);
-
-    const [pw, setPw] = useState("");
-    const [isPwTouched, setPwTouched] = useState(false);
-    const [isPwValid, setPwValid] = useState(false);
-
-    const [helperText, setHelperText] = useState("");
-
-    useEffect(() => {
-        if (!isEmailTouched) return;
-
-        if (email.trim() === "") {
-            setHelperText("이메일을 입력하세요.");
-            setEmailValid(false);
-            return;
-        }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setHelperText("이메일 형식이 올바르지 않습니다.");
-            setEmailValid(false);
-            return;
-        }
-
-        setHelperText("");
-        setEmailValid(true);
-
-        return () => {console.log("clean up email")};
-    }, [email, isEmailTouched]);
-
-    useEffect(() => {
-        if (!isPwTouched) return;
-
-        if (pw.trim() === "") {
-            setHelperText("비밀번호를 입력하세요.");
-            setPwValid(false);
-            return;
-        }
-
-        const pwReg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,20}$/;
-        if (!pwReg.test(pw)) {
-            setHelperText("비밀번호는 8자 이상, 20자 이하이며 대문자, 소문자, 숫자, 특수문자를 각각 최소 1개 포함해야 합니다.");
-            setPwValid(false);
-            return;
-        }
-
-        setHelperText("");
-        setPwValid(true);
-
-        return () => {console.log("clean up password")};
-
-    }, [pw, isPwTouched]);
-
+    const email = useInputField("", validateEmail);
+    const pw = useInputField("", validatePw);
 
     return h("section", null, 
         LoginTitle(), 
@@ -70,31 +20,36 @@ export function LoginForm() {
         LoginField({
             label: "Email*", 
             type: "email", 
+            id: "signin-login-input",
             placeholder: "email", 
-            value: email,
-            onInput: e => setEmail(e.target.value),
-            onBlur: () => {setEmailTouched(true)}
+            value: email.value,
+            onInput: e => email.setValue(e.target.value),
+            onBlur: () => email.setTouched(true)
         }),
 
         LoginField({
             label: "Password*", 
             type: "password", 
-            id: "login__user-password", 
+            id: "signin-pw-input", 
             placeholder: "password",
-            value: pw,
-            onInput: (e) => {setPw(e.target.value)},
-            onBlur: () => {setPwTouched(true)}
+            value: pw.value,
+            onInput: (e) => pw.setValue(e.target.value),
+            onBlur: () => pw.setTouched(true)
         }),
 
         LoginHelper({
-            text: helperText, 
-            invalid: !isEmailValid || !isPwValid
+            text: (email.isTouched && email.helperText)
+                ? email.helperText
+                : (pw.isTouched && pw.helperText)
+                ? pw.helperText
+                : "",
+                invalid: !email.isValid || !pw.isValid
         }),
 
         Button({
             id: "login_button",
             text: "Sign in",
-            disabled: !(isEmailValid && isPwValid), 
+            disabled: !(email.isValid && pw.isValid), 
             onClick: () => console.log("로그인")
         })
     )

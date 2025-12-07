@@ -14,7 +14,7 @@ export function useEffect(callback, dep) {
     const newHook = {
         dep,
         callback,
-        cleanup: oldHook?.cleanup ?? null,
+        cleanup: oldHook?.cleanup ?? null, // todo: 나중에 고치기
     };
 
     globalFiberState.wipFiber.hooks.push(newHook);
