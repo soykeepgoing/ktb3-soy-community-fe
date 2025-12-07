@@ -37,10 +37,8 @@ export function flushEffects() {
     for (const effect of globalFiberState.globalEffects) {
         const { fiber, hook, oldCleanup } = effect;
 
-        console.log(effect, oldCleanup);
         // 이전 클린업 함수 실행
         if (typeof oldCleanup === "function") {
-            console.log("ddd");
             try {
                 oldCleanup();
             } catch (e) {
