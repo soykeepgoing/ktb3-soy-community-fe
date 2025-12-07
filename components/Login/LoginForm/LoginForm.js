@@ -2,9 +2,9 @@ import {h} from "../../../core/vdom/h.js";
 import { LoginTitle } from "../LoginTitle/LoginTitle.js";
 import { LoginField } from "../LoginField/LoginField.js";
 import { LoginHelper } from "../LoginHelper/LoginHelper.js";
-import { LoginButton } from "../LoginButton/LoginButton.js";
 import { useState } from "../../../core/hooks/useState.js";
 import { useEffect } from "../../../core/hooks/useEffect.js";
+import { Button } from "../../Button/Button.js";
 
 export function LoginForm() {
 
@@ -68,7 +68,7 @@ export function LoginForm() {
         LoginTitle(), 
         
         LoginField({
-            label: "Email", 
+            label: "Email*", 
             type: "email", 
             placeholder: "email", 
             value: email,
@@ -77,7 +77,7 @@ export function LoginForm() {
         }),
 
         LoginField({
-            label: "Password", 
+            label: "Password*", 
             type: "password", 
             id: "login__user-password", 
             placeholder: "password",
@@ -91,7 +91,9 @@ export function LoginForm() {
             invalid: !isEmailValid || !isPwValid
         }),
 
-        LoginButton({
+        Button({
+            id: "login_button",
+            text: "Sign in",
             disabled: !(isEmailValid && isPwValid), 
             onClick: () => console.log("로그인")
         })

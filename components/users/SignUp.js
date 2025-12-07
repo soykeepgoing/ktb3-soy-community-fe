@@ -3,7 +3,7 @@ export function SignUp(){
     section.className = "signup-box";
 
     section.innerHTML = `
-    <h2 class="signup__title">Join the Club</h2>
+
     <form class="signup__form">
         <label class="signup__label">Profile Image</label>
         <p class="helper-text"></p>
