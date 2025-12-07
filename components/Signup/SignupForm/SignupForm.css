@@ -1,0 +1,10 @@
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form label{
+    font-size: 14px;
+    color: var(--main-green); /* 줄기 느낌 */
+    margin-bottom: 2px;
+}

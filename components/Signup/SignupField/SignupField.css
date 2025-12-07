@@ -1,0 +1,25 @@
+.signup-field {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+}
+
+.signup-field label{
+    font-size: 14px;
+    color: var(--main-green); /* 줄기 느낌 */
+    margin-bottom: 2px;
+}
+
+.signup-field input{
+    padding: 7px;
+    border: 2px solid var(--main-green); /* 연한 줄기 */
+    border-radius: 26px;
+    background: #fff;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.signup-field input:focus{
+    border-color: #BF3B3B;
+    outline: none;
+}

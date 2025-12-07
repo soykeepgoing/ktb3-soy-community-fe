@@ -1,11 +1,11 @@
-.login_page{
+.login-page{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.login_page .container{
+.login-page .container{
     width: 360px;
     background: var(--sub-red);
     border-radius: 28px;

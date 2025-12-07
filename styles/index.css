@@ -7,8 +7,14 @@
 
 @import "../components/Login/LoginField/LoginField.css";
 @import "../components/Login/LoginTitle/LoginTitle.css";
-@import "../pages/LoginPage/LoginPage.css";
 
+@import "../components/Signup/SignupField/SignupField.css";
+@import "../components/Signup/SignupForm/SignupForm.css";
+@import "../components/Signup/SignupTitle/SignupTitle.css";
+
+
+@import "../pages/LoginPage/LoginPage.css";
+@import "../pages/SignUpPage/SignUpPage.css";
 
 /* 
 

@@ -1,5 +1,3 @@
-import { useEffect } from "../../../core/hooks/useEffect.js";
-import { useState } from "../../../core/hooks/useState.js";
 import { h } from "../../../core/vdom/h.js";
 
 import { validateEmail } from "../../../utils/validation/validateEmail.js";
@@ -18,7 +16,8 @@ export function SignupForm(){
     const pwCheck = useInputField("", (v) => validatePwCheck(pw.value, v));
     const nickname = useInputField("", validateNickname);
 
-    return h("form", null, 
+    return h("form",
+        { className: "signup-form"}, 
         SignupField({
             label: "Email*",
             type: "email",

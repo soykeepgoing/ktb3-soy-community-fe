@@ -1,0 +1,15 @@
+.signup-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-page .container{
+    width: 380px;
+    max-height: 700px;
+    background: #F2D0D0; /* 연한 토마토 톤 */
+    border-radius: 28px;
+    padding: 20px 32px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
