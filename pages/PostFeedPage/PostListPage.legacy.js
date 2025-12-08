@@ -1,5 +1,5 @@
 import { FeedSection } from "../../components/Posts/FeedSection.js";
-import {Header} from "../../components/Header/Header.js";
+import {Header} from "../../components/Header/Header/Header.js";
 import { Banner } from "../../components/Banner/Banner.js";
 import { FloatingButton } from "../../components/FloatingButton/FloatingButton.js";
 

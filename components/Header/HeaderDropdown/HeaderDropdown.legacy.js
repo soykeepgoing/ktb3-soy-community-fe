@@ -1,7 +1,7 @@
-import { getState, clearStore } from "../../core/GlobalStore.js";
+import { getState, clearStore } from "../../../core/GlobalStore.js";
 import { navigateTo } from "../../core/router.legacy.js";
-import { Dropdown } from "../Dropdown/Dropdown.js";
-import {attachLogoutSubmit} from "../../handle/users/UserEventHandler.js";
+import { Dropdown } from "../../Dropdown/Dropdown.legacy.js";
+import {attachLogoutSubmit} from "../../../handle/users/UserEventHandler.js";
 
 export function HeaderDropdown(){
     return Dropdown({

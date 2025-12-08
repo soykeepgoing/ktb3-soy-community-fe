@@ -1,72 +1,40 @@
-export function Dropdown({ placeholder, options, className, clickEvents = {}}) {
-    const div = document.createElement("div");
-    div.classList.add(className);
+import { h } from "../../core/vdom/h.js";
 
-    div.innerHTML = `
-        <button class="btn">${placeholder}</button>
-        <ul class="menu">
-            ${options.map(o => `<li data-value="${o.value}">${o.label}</li>`).join("")}
-        </ul>
-    `;
+export function Dropdown({className, placeholder, options, clickEvents = {}}){
 
-    const btn = div.querySelector(".btn");
-    const menu = div.querySelector(".menu");
-
-    btn.addEventListener("click", () => {
+    const handleToggle = (e) => {
+        const btn = e.currentTarget;
+        const menu = btn.nextElementSibling;
         menu.classList.toggle("show");
-    });
+    }
 
-    div.querySelectorAll(".menu li").forEach(item => {
-        item.addEventListener("click", () => {
-            const value = item.dataset.value;
+    const handleClick = (e, option) => {
+        const li = e.currentTarget; 
+        const menu = li.parentElement;
+        const btn = menu.previousElementSibling; 
 
-            btn.textContent = item.textContent + " ▾";
-            btn.classList.add("selected"); 
-            menu.classList.remove("show");
+        btn.textContent = li.textContent + " ▾";
+        btn.classList.add("selected"); 
+        menu.classList.remove("show");
 
-            div.dispatchEvent(new CustomEvent("select", {
-                detail: { value }
-            }));
+        if (clickEvents[option.value]){
+            clickEvents[option.value]();
+        }
+    }
 
-            if (clickEvents[value]){
-                clickEvents[value]();
-            }
-
-        });
-    });
-
-    return div;
+    return h("div", {className},
+        h("button", {
+            className: "button", 
+            onClick: handleToggle}, 
+            `${placeholder}`),
+        h("ul", 
+            {className: "menu"}, 
+            ...options.map(option => 
+                h("li", 
+                {"data-value": option.value,
+                    onClick: (e) => { handleClick(e, option); }
+                }, option.label)
+            )
+        )
+    )
 }
-
-
-
-
-// export function Dropdown({placeholder, options, className}){
-
-//     function toggleMenu(e){
-//         const menu = div.querySelector(".menu");
-//         menu.classList.toggle("show");
-//     }
-
-//     fun
-
-
-//     return h("div", {class: className},
-//         h("button", {class: "btn", onClick: toggleMenu}, placeholder),
-//         h("ul", {class: "menu"}, 
-//             ...options.map(o => {
-//                 h("li", {"data-value": o.value, onClick: () => clickLabel(o.value)}, o.label)
-//             })
-//         );
-//     }
-
-
-
-
-
-
-
-
-
-//     )
-// }
