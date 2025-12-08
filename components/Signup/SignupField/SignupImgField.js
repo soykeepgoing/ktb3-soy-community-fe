@@ -1,9 +1,9 @@
 import { h } from "../../../core/vdom/h.js";
 import { AvatarUploader } from "../../AvatarUploader/AvatarUploader.js";
 
-export function SignupImgField({id, label, src}){
+export function SignupImgField({id, label, src, onChange}){
     return h("div", { className: "signup-field"},
         h("label", null, label),
-        AvatarUploader({id, src}),
+        AvatarUploader({id, src, onChange}),
     );
 }

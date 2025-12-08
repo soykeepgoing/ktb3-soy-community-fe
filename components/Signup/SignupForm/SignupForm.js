@@ -1,4 +1,5 @@
 import { h } from "../../../core/vdom/h.js";
+import { useState } from "../../../core/hooks/useState.js";
 
 import { validateEmail } from "../../../utils/validation/validateEmail.js";
 import { validatePw } from "../../../utils/validation/validatePw.js";
@@ -10,6 +11,8 @@ import { SignupField } from "../SignupField/SignupField.js";
 import { useInputField } from "../../../core/hooks/useInputField.js";
 import { SignupImgField } from "../SignupField/SignupImgField.js";
 
+import { handleImageChanged } from "../../../handlers/handleImageChanged.js";
+
 export function SignupForm(){
 
     const email = useInputField("", validateEmail);
@@ -17,12 +20,21 @@ export function SignupForm(){
     const pwCheck = useInputField("", (v) => validatePwCheck(pw.value, v));
     const nickname = useInputField("", validateNickname);
 
+    const [imgPreviewUrl, setImgPreviewUrl] = useState("../../../images/default_user_profile.png");
+
+    let profileImageUrl = null;
+
     return h("form",
         { className: "signup-form"}, 
         SignupImgField({
             id: "signup-img-input", 
             label: "Profile Image",
-            src: "../../../images/default_user_profile.png"
+            src: imgPreviewUrl,
+            onChange: async (e) => {
+                const imageUrl = await handleImageChanged(e);
+                profileImageUrl = imageUrl;
+                setImgPreviewUrl(imageUrl);
+            }
         }),
         SignupField({
             label: "Email*",
@@ -31,8 +43,8 @@ export function SignupForm(){
             placeholder: "이메일을 입력하세요.",
             value: email.value,
             helperText: email.helperText,
-            onInput: (e) => email.setValue(e.target.value),
-            onBlur: () => email.setTouched(true)
+            onInput: (e) => email.handleInput(e.target.value),
+            onBlur: () => email.handleBlur()
         }),
         SignupField({
             label: "Password*",
@@ -41,8 +53,8 @@ export function SignupForm(){
             placeholder: "비밀번호를 입력하세요.",
             value: pw.value,
             helperText: pw.helperText,
-            onInput: (e) => pw.setValue(e.target.value),
-            onBlur: () => pw.setTouched(true)
+            onInput: (e) => pw.handleInput(e.target.value),
+            onBlur: () => pw.handleBlur()
         }),
         SignupField({
             label: "Password check*",
@@ -51,8 +63,8 @@ export function SignupForm(){
             placeholder: "비밀번호를 한 번 더 입력하세요.", 
             value: pwCheck.value,
             helperText: pwCheck.helperText, 
-            onInput: (e) => pwCheck.setValue(e.target.value),
-            onBlur: () => pwCheck.setTouched(true)
+            onInput: (e) => pwCheck.handleInput(e.target.value),
+            onBlur: () => pwCheck.handleBlur()
         }),
         SignupField({
             label: "Nickname*",
@@ -61,13 +73,24 @@ export function SignupForm(){
             placeholder: "닉네임을 입력하세요.",
             value: nickname.value, 
             helperText: nickname.helperText, 
-            onInput: (e) => nickname.setValue(e.target.value), 
-            onBlur: () => nickname.setTouched(true)
+            onInput: (e) => nickname.handleInput(e.target.value), 
+            onBlur: () => nickname.handleBlur()
         }),
         Button({
             className: "button",
             id: "signup_btn",
-            text: "Sign Up"
+            text: "Sign Up", 
+            disabled: ! (email.isValid && pw.isValid && nickname.isValid),
+            onClick: async () => {
+                console.log("hi");
+                const res = await handleSignup({
+                    email: email.value, 
+                    password: pw.value, 
+                    nickname: nickname.value,
+                    profileImage: profileImageUrl
+                });
+
+            }
         })
     )
 }

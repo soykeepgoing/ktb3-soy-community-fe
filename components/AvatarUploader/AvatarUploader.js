@@ -1,6 +1,6 @@
 import { h } from "../../core/vdom/h.js";
 
-export function AvatarUploader({id, src}){
+export function AvatarUploader({id, src, onChange}){
     return h(
         "div", 
         {className: "avatar-uploader-widget"}, 
@@ -22,7 +22,8 @@ export function AvatarUploader({id, src}){
                         id,
                         className: "avatar-uploader-widget__file-trigger", 
                         type: "file",
-                        accept: "image/*"
+                        accept: "image/*", 
+                        onChange
                     }
                 )
             ),

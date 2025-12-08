@@ -8,7 +8,7 @@ import { LoginField } from "../LoginField/LoginField.js";
 import { LoginHelper } from "../LoginHelper/LoginHelper.js";
 import { Button } from "../../Button/Button.js";
 
-import { handleLogin } from "../../../handlers/auth/handleLogin.js";
+import { handleLogin } from "../../../handlers/users/handleLogin.js";
 import { validateEmail } from "../../../utils/validation/validateEmail.js";
 import { validatePw } from "../../../utils/validation/validatePw.js";
 
