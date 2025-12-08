@@ -1,6 +1,6 @@
 import { h } from "../../core/vdom/h.js";
 
-export function Dropdown({className, placeholder, options, clickEvents = {}}){
+export function Dropdown({className, placeholder, showMenu = true, options, clickEvents = {}}){
 
     const handleToggle = (e) => {
         const btn = e.currentTarget;
@@ -12,9 +12,9 @@ export function Dropdown({className, placeholder, options, clickEvents = {}}){
         const li = e.currentTarget; 
         const menu = li.parentElement;
         const btn = menu.previousElementSibling; 
-
-        btn.textContent = li.textContent + " ▾";
-        btn.classList.add("selected"); 
+        if (showMenu) {
+            btn.textContent = li.textContent + " ▾";
+        }
         menu.classList.remove("show");
 
         if (clickEvents[option.value]){
@@ -23,12 +23,10 @@ export function Dropdown({className, placeholder, options, clickEvents = {}}){
     }
 
     return h("div", {className},
-        h("button", {
-            className: "button", 
+        h("button", { 
             onClick: handleToggle}, 
             `${placeholder}`),
-        h("ul", 
-            {className: "menu"}, 
+        h("ul", {},
             ...options.map(option => 
                 h("li", 
                 {"data-value": option.value,

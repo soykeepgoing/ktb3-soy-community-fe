@@ -3,6 +3,7 @@
 
 @import "../components/Header/Header/Header.css";
 @import "../components/Header/HeaderTitle/HeaderTitle.css";
+@import "../components/Header/HeaderDropdown/HeaderDropdown.css";
 @import "../components/HelperText/HelperText.css";
 @import "../components/Button/Button.css";
 @import "../components/LinkTo/LinkTo.css";

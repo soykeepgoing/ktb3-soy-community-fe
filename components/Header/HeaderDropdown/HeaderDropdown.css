@@ -3,7 +3,7 @@
     display: inline-block;
 }
 
-.header_dropdown .btn {
+.header_dropdown button {
     background: none;
     border: none;
     font-size: 24px;    
@@ -14,12 +14,12 @@
     transition: 0.15s ease;
 }
 
-.header_dropdown .btn:hover {
+.header_dropdown button:hover {
     background: rgba(0,0,0,0.05);
 }
 
 
-.header_dropdown .menu {
+.header_dropdown ul {
     position: absolute;
     right: 0;
     top: 36px;
@@ -34,11 +34,11 @@
     z-index: 99;
 }
 
-.header_dropdown .menu.show {
+.header_dropdown ul.show {
     display: block;
 }
 
-.header_dropdown .menu li {
+.header_dropdown ul li {
     padding: 10px 16px;
     font-size: 14px;
     cursor: pointer;
@@ -47,7 +47,7 @@
     white-space: nowrap;
 }
 
-.header_dropdown .menu li:hover {
+.header_dropdown ul li:hover {
     background: var(--sub-red);
     color: var(--main-red);
 }
