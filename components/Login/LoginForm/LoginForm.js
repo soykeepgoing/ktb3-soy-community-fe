@@ -2,12 +2,13 @@ import {h} from "../../../core/vdom/h.js";
 import { LoginTitle } from "../LoginTitle/LoginTitle.js";
 import { LoginField } from "../LoginField/LoginField.js";
 import { LoginHelper } from "../LoginHelper/LoginHelper.js";
-import { useState } from "../../../core/hooks/useState.js";
-import { useEffect } from "../../../core/hooks/useEffect.js";
 import { Button } from "../../Button/Button.js";
 import { useInputField } from "../../../core/hooks/useInputField.js";
 import { validateEmail } from "../../../utils/validation/validateEmail.js";
 import { validatePw } from "../../../utils/validation/validatePw.js";
+import { handleLogin } from "../../../handlers/auth/handleLogin.js";
+import { useEffect } from "../../../core/hooks/useEffect.js";
+import { router } from "../../../main.js";
 
 export function LoginForm() {
 
@@ -46,11 +47,21 @@ export function LoginForm() {
                 invalid: !email.isValid || !pw.isValid
         }),
 
-        Button({
+        Button({ 
             id: "login_button",
             text: "Sign in",
             disabled: !(email.isValid && pw.isValid), 
-            onClick: () => console.log("로그인")
+            onClick: async () => {
+                console.log(pw);
+                const res = await handleLogin({
+                    email: email.value, 
+                    password: pw.value
+                });
+                if (!res.success) {
+                    
+                }
+                router.navigate("/posts");
+            }
         })
     )
 }

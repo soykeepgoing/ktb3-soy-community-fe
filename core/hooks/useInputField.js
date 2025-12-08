@@ -7,6 +7,7 @@ export function useInputField(initialValue, validator){
     const [isValid, setIsValid] = useState(false);
     const [isTouched, setTouched] = useState(false);
 
+
     useEffect(() => {
         if (!isTouched) return;
         const {success, helperText} = validator(value);
