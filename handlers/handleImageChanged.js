@@ -12,5 +12,5 @@ function convertFileToDataURL(file) {
 export async function handleImageChanged(event) {
     const file = event.target.files[0];
     const imageUrl = await convertFileToDataURL(file);
-    return imageUrl;
+    return {imageUrl, file};
 };

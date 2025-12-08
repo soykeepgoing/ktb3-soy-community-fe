@@ -1,4 +1,7 @@
-export async function handleSignUp({email, password, nickname, profileImg}){
+import { signUp } from "../../api/userApi.js";
+import { setState } from "../../core/GlobalStore.js";
+
+export async function handleSignUp({email, password, nickname, profileImage}){
     const formData = new FormData();
 
     const userData = {
@@ -12,8 +15,8 @@ export async function handleSignUp({email, password, nickname, profileImg}){
         new Blob([JSON.stringify(userData)], { type: "application/json" })
     );
 
-    if(profileImg){
-        formData.append("profileImage", profileImgInput.files[0]);
+    if(profileImage){
+        formData.append("profileImage", profileImage);
     }
 
     const response = await signUp(formData);

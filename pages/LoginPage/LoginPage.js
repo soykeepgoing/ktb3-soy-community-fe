@@ -8,7 +8,7 @@ export function LoginPage() {
         h("div", {className: "container"},
         LoginForm(), 
         LinkTo({
-            text: "Join Us!", 
+            text: "Sign Up", 
             onClick: () => { router.navigate("/signup"); }
         })
     ));

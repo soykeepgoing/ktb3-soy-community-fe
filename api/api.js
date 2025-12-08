@@ -20,6 +20,7 @@ export async function apiFetch({path, methodType, headerData = {}, bodyData}){
     // console.log(fetchOptions);
 
     const res = await fetch(url + path, fetchOptions);
+
     let data = null;
     let error = null;
     try{

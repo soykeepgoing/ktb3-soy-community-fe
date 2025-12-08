@@ -12,6 +12,7 @@ import { useInputField } from "../../../core/hooks/useInputField.js";
 import { SignupImgField } from "../SignupField/SignupImgField.js";
 
 import { handleImageChanged } from "../../../handlers/handleImageChanged.js";
+import { handleSignUp } from "../../../handlers/users/handleSignup.js";
 
 export function SignupForm(){
 
@@ -23,6 +24,7 @@ export function SignupForm(){
     const [imgPreviewUrl, setImgPreviewUrl] = useState("../../../images/default_user_profile.png");
 
     let profileImageUrl = null;
+    let profileImageFile = null;
 
     return h("form",
         { className: "signup-form"}, 
@@ -31,8 +33,9 @@ export function SignupForm(){
             label: "Profile Image",
             src: imgPreviewUrl,
             onChange: async (e) => {
-                const imageUrl = await handleImageChanged(e);
+                const {imageUrl, file} = await handleImageChanged(e);
                 profileImageUrl = imageUrl;
+                profileImageFile = file;
                 setImgPreviewUrl(imageUrl);
             }
         }),
@@ -81,15 +84,14 @@ export function SignupForm(){
             id: "signup_btn",
             text: "Sign Up", 
             disabled: ! (email.isValid && pw.isValid && nickname.isValid),
-            onClick: async () => {
-                console.log("hi");
-                const res = await handleSignup({
+            onClick: async (e) => {
+                e.preventDefault();
+                const res = await handleSignUp({
                     email: email.value, 
                     password: pw.value, 
                     nickname: nickname.value,
-                    profileImage: profileImageUrl
+                    profileImage: profileImageFile
                 });
-
             }
         })
     )
