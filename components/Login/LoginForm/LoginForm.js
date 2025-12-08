@@ -1,19 +1,23 @@
+import { router } from "../../../main.js";
 import {h} from "../../../core/vdom/h.js";
+import { useInputField } from "../../../core/hooks/useInputField.js";
+import { useState } from "../../../core/hooks/useState.js";
+
 import { LoginTitle } from "../LoginTitle/LoginTitle.js";
 import { LoginField } from "../LoginField/LoginField.js";
 import { LoginHelper } from "../LoginHelper/LoginHelper.js";
 import { Button } from "../../Button/Button.js";
-import { useInputField } from "../../../core/hooks/useInputField.js";
+
+import { handleLogin } from "../../../handlers/auth/handleLogin.js";
 import { validateEmail } from "../../../utils/validation/validateEmail.js";
 import { validatePw } from "../../../utils/validation/validatePw.js";
-import { handleLogin } from "../../../handlers/auth/handleLogin.js";
-import { useEffect } from "../../../core/hooks/useEffect.js";
-import { router } from "../../../main.js";
 
 export function LoginForm() {
 
     const email = useInputField("", validateEmail);
     const pw = useInputField("", validatePw);
+    const [loginErrMsg, setLoginErrMsg] = useState("");
+    const [isLoginSuccess, setIsLoginSuccess] = useState(false);
 
     return h("section", null, 
         LoginTitle(), 
@@ -24,8 +28,8 @@ export function LoginForm() {
             id: "signin-login-input",
             placeholder: "email", 
             value: email.value,
-            onInput: e => email.setValue(e.target.value),
-            onBlur: () => email.setTouched(true)
+            onInput: e => email.handleInput(e.target.value),
+            onBlur: () => email.handleBlur()
         }),
 
         LoginField({
@@ -34,17 +38,17 @@ export function LoginForm() {
             id: "signin-pw-input", 
             placeholder: "password",
             value: pw.value,
-            onInput: (e) => pw.setValue(e.target.value),
-            onBlur: () => pw.setTouched(true)
+            onInput: e => pw.handleInput(e.target.value),
+            onBlur: () => pw.handleBlur()
         }),
 
         LoginHelper({
-            text: (email.isTouched && email.helperText)
-                ? email.helperText
-                : (pw.isTouched && pw.helperText)
-                ? pw.helperText
-                : "",
-                invalid: !email.isValid || !pw.isValid
+            text: 
+                loginErrMsg ? loginErrMsg:
+                (email.isTouched && email.helperText) ? email.helperText :
+                (pw.isTouched && pw.helperText) ? pw.helperText :
+                "",
+                invalid: !email.isValid || !pw.isValid || !isLoginSuccess
         }),
 
         Button({ 
@@ -52,14 +56,16 @@ export function LoginForm() {
             text: "Sign in",
             disabled: !(email.isValid && pw.isValid), 
             onClick: async () => {
-                console.log(pw);
                 const res = await handleLogin({
                     email: email.value, 
                     password: pw.value
                 });
                 if (!res.success) {
-                    
+                    setLoginErrMsg("이메일과 비밀번호를 다시 확인해주세요.");
+                    setIsLoginSuccess(false);
+                    return;
                 }
+                setIsLoginSuccess(true);
                 router.navigate("/posts");
             }
         })
