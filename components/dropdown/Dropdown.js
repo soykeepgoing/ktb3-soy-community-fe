@@ -10,7 +10,7 @@ export function Dropdown({
     clickEvents = {}}){
 
     const selectedLabel = options.find(o => o.value === selectedValue)?.label || placeholder;
-    
+
     return h(
         "div", 
         {className}, 

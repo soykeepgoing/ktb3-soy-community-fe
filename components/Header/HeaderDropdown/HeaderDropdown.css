@@ -30,12 +30,7 @@
     list-style: none;
     margin: 0;
     width: 160px;
-    display: none;
     z-index: 99;
-}
-
-.header_dropdown ul.show {
-    display: block;
 }
 
 .header_dropdown ul li {

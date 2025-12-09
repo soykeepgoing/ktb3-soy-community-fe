@@ -3,6 +3,10 @@ import { HeaderTitle } from "../HeaderTitle/HeaderTitle.js";
 import { HeaderDropDown } from "../HeaderDropdown/HeaderDropdown.js";
 
 export function Header(){
+
+    
+
+
     return h("div", {className: "header"}, 
         HeaderTitle(), 
         HeaderDropDown()
