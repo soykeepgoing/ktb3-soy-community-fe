@@ -26,14 +26,10 @@
     background: white;
     border-radius: 16px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-    display: none;
+    display: block;
     position: absolute;
     width: 100%;
     z-index: 10;
-}
-
-.topic-dropdown ul.show {
-    display: block;
 }
 
 .topic-dropdown ul li {

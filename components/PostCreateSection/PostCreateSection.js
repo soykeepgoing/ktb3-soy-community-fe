@@ -1,9 +1,9 @@
 import { h } from "../../core/vdom/h.js";
-
 import { HelperText } from "../HelperText/HelperText.js";
-import { Button } from "../Button/Button.js";
 
 export function PostCreateSection(){
+
+
     return h("form", 
         {className: "post-create"}, 
         h("label", {}, "내용*"), 
@@ -14,10 +14,5 @@ export function PostCreateSection(){
         }), 
         h("label", {}, "이미지"), 
         h("input", {type: "file"}), 
-        Button({
-            text: "작성 완료",
-            disabled: false, 
-            onClick: () => console.log("hi")
-        }), 
     )
 }

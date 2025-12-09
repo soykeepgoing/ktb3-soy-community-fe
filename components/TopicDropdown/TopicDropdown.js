@@ -1,6 +1,6 @@
 import { Dropdown } from "../Dropdown/Dropdown.js";
 
-export function TopicDropdown(){
+export function TopicDropdown({ selectedTopic, isOpen, onToggle, clickEvents }) { 
     return Dropdown({
         className: "topic-dropdown",
         placeholder: "오늘 칭찬할 일 찾기 ▾",
@@ -11,5 +11,9 @@ export function TopicDropdown(){
             { value: "music", label: "#듣는마약" },
             { value: "activity", label: "#피지컬파워" }
         ],
-    })
+        selectedValue: selectedTopic,
+        isOpen, 
+        onToggle, 
+        clickEvents
+    });
 }
