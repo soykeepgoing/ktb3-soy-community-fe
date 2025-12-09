@@ -1,9 +1,10 @@
 import { h } from "../../core/vdom/h.js";
+import { useState } from "../../core/hooks/useState.js";
 
 import { PostCreateSection } from "../../components/PostCreateSection/PostCreateSection.js";
 import { TopicDropdown } from "../../components/TopicDropdown/TopicDropdown.js";
 import { Button } from "../../components/Button/Button.js";
-import { useState } from "../../core/hooks/useState.js";
+import { FloatingButton } from "../../components/FloatingButton/FloatingButton.js";
 
 export function PostCreatePage(){
     const [selectedTopic, setSelectedTopic] = useState(undefined);
@@ -36,5 +37,6 @@ export function PostCreatePage(){
             disabled: false, 
             onClick: () => console.log("hi")
         }), 
+        FloatingButton({value: "🏠", url: "/posts"})
     );
 }
