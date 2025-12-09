@@ -1,23 +1,10 @@
-.post-create-container {
-    margin: 0 auto;
-    width: 800px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 100px;
-    gap: 20px;
-}
-
 .post-create {
   width: 100%;
   background: #ea4e4e;
-  padding: 32px 28px;
+  padding: 20px 28px;
   border-radius: 26px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
   font-family: sans-serif;
-}
-
-.post-create form {
   display: flex;
   flex-direction: column;
   gap: 20px;

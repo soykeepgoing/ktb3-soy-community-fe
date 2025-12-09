@@ -1,6 +1,6 @@
 import {h} from "../../core/vdom/h.js";
 
-export function Button({ className, id, text, disabled, onClick }) {
+export function Button({ id, text, disabled, onClick }) {
   return h(
     "button",
     {

@@ -33,10 +33,16 @@
 
 @import "../components/FloatingButton/FloatingButton.css";
 
+@import "../components/PostCreateSection/PostCreateSection.css";
+
+@import "../components/TopicBadge/TopicBadge.css";
+@import "../components/TopicDropdown/TopicDropdown.css";
+
 
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
 @import "../pages/PostFeedPage/PostFeedPage.css";
+@import "../pages/PostCreatePage/PostCreatePage.css";
 
 /* 
 

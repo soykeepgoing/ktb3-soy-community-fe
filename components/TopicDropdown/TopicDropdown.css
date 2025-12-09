@@ -1,0 +1,49 @@
+.topic-dropdown {
+    position: relative;
+    width: 360px;
+    font-size: 20px;
+}
+
+.topic-dropdown button{
+    width: 100%;
+    font-size: 20px;
+    padding: 12px 16px;
+    border-radius: 18px;
+    background: #9bb48c; 
+    cursor: pointer;
+    transition: 0.2s;
+    color: #595959;
+}
+
+.topic-dropdown button:hover {
+    background: #8FB48C; /* 살짝 진한 토마토핑크 */
+}
+
+.topic-dropdown ul {
+    list-style: none;
+    padding: 8px 0;
+    margin: 6px 0 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.topic-dropdown ul.show {
+    display: block;
+}
+
+.topic-dropdown ul li {
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 12px;
+}
+
+.topic-dropdown ul li:hover {
+    background: #8FB48C; /* 토마토 핑크 강조 */
+    color: white;
+}

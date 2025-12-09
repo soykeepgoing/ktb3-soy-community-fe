@@ -26,7 +26,11 @@ export function updateDom(dom, prevProps, nextProps) {
     .filter(isProperty)
     .filter(isNew(prevProps, nextProps))
     .forEach(name => {
-      dom[name] = nextProps[name];
+        if (name === "className" && Array.isArray(nextProps.className)){
+            dom.className = nextProps.className.join(" ");
+        } else {
+            dom[name] = nextProps[name];
+        }
     });
 
   Object.keys(nextProps)
