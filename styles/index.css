@@ -9,6 +9,10 @@
 @import "../components/LinkTo/LinkTo.css";
 @import "../components/AvatarUploader/AvatarUploader.css";
 
+@import "../components/Banner/BannerSection/BannerSection.css";
+@import "../components/Banner/BannerLabel/BannerLabel.css";
+@import "../components/Banner/BannerTopic/BannerTopic.css";
+
 @import "../components/Login/LoginField/LoginField.css";
 @import "../components/Login/LoginTitle/LoginTitle.css";
 

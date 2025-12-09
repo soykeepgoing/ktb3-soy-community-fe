@@ -1,4 +1,4 @@
-import { BannerTopicLabel, BannerTopicText } from "./BannerTopic.js";
+import { BannerTopicLabel, BannerTopicText } from "./BannerTopic.legacy.js";
 
 export function Banner() {
     const section = document.createElement("section");
