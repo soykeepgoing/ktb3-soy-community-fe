@@ -31,6 +31,9 @@
 @import "../components/Signup/SignupTitle/SignupTitle.css";
 
 
+@import "../components/FloatingButton/FloatingButton.css";
+
+
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
 @import "../pages/PostFeedPage/PostFeedPage.css";

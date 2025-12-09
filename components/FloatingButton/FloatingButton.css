@@ -1,4 +1,4 @@
-.floatingBtn__link_to_post_create {
+.floating-button {
   position: fixed;
   bottom: 32px;
   right: 32px;
@@ -16,7 +16,7 @@
   transition: 0.2s;
 }
 
-.floatingBtn__link_to_post_create:hover {
+.floating-button:hover {
   background: var(--main-red);
   transform: translateY(-4px);
 }

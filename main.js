@@ -6,6 +6,7 @@ import {workLoop} from "./core/fiber/scheduler.js";
 import { LoginPage } from "./pages/LoginPage/LoginPage.js";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage.js";
 import { PostFeedPage } from "./pages/PostFeedPage/PostFeedPage.js";
+import { PostCreatePage } from "./pages/PostCreatePage/PostCreatePage.js";
 
 export const router = new Router();
 
@@ -14,6 +15,7 @@ router
     .add("/", LoginPage)
     .add("/signup", SignUpPage)
     .add("/posts", PostFeedPage)
+    .add("/posts/create", PostCreatePage)
 
 router.start((PageComponent) => {
     const appElement = createElement(

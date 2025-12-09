@@ -1,10 +1,10 @@
 import { createPost } from "../../api/postApi.js";
 import {navigateTo} from "../core/router.legacy.js";
-import {getState} from "../core/GlobalStore.js";
+import {getState} from "../../core/GlobalStore.js";
 import { uploadImageToPost } from "../../api/postApi.js";
-import { Dropdown } from "../components/Dropdown/Dropdown.js";
-import { PostsCreateSection } from "../components/Posts/PostsCreateSection.js";
-import { FloatingButton } from "../components/FloatingButton/FloatingButton.js";
+import { Dropdown } from "../../components/Dropdown/Dropdown.js";
+import { PostsCreateSection } from "../../components/Posts/PostsCreateSection.js";
+import { FloatingButton } from "../../components/FloatingButton/FloatingButton.js";
 let selectedTopic = null; 
 
 export function PostCreatePage(){

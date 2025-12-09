@@ -5,7 +5,7 @@ import { useEffect } from "../../core/hooks/useEffect.js";
 import { getPosts } from "../../api/postApi.js";
 import { PostItem } from "../PostItem/PostItem/PostItem.js";
 
-const DEFAULT_SIZE = 8;
+const DEFAULT_SIZE = 3;
 
 export function FeedSection(){
     const [posts, setPosts] = useState([]);
@@ -18,11 +18,8 @@ export function FeedSection(){
 
         setLoading(true);
         try {
-            const response = await getPosts(pageXOffset, DEFAULT_SIZE);
+            const response = await getPosts(page, DEFAULT_SIZE);
             const newPosts = response.data.postItemResponseList;
-
-            console.log(newPosts);
-
             if (newPosts.length === 0){
                 setHasMore(false);
             } else {
@@ -32,7 +29,6 @@ export function FeedSection(){
         } catch (error){
             console.error("Failed to load posts, ", error);
         } finally {
-            console.log(posts);
             setLoading(false);
         }
     };
@@ -52,7 +48,7 @@ export function FeedSection(){
         );
 
         observer.observe(observerTarget);
-        return () => observer.disconnect();
+        return () => observer.unobserve(observerTarget);
     }, [page, hasMore, loading]);
 
     return h(
