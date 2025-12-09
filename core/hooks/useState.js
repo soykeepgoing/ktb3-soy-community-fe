@@ -1,57 +1,36 @@
-import { globalFiberState } from "../fiber/globalFiberState.js"
+import { globalFiberState } from "../fiber/globalFiberState.js";
+import { scheduleUpdateOnRoot } from "../../core/fiber/scheduler.js";
 
-function scheduleUpdateOnRoot(){
-    // 이미 렌더링 중인 루트가 있다면 패스 
-    if (globalFiberState.wipRoot){
-        return; 
-    }
-
-    if (globalFiberState.currentRoot){
-        // 다음에 렌더 작업을 진행할 work와 root 선언 
-        globalFiberState.wipRoot = {
-            dom: globalFiberState.currentRoot.dom, 
-            props: globalFiberState.currentRoot.props, 
-            alternate: globalFiberState.currentRoot
-        }
-        globalFiberState.nextUnitOfWork = globalFiberState.wipRoot;
-        globalFiberState.deletions = [];
-    }
-}
-
-
-export function useState(initial){
-    // 이전 state를 기억하기 위한 옛날 훅 
-    const oldHook = 
+export function useState(initial) {
+    // 이전 훅 가져오기 
+    const oldHook =
         globalFiberState.wipFiber.alternate &&
         globalFiberState.wipFiber.alternate.hooks &&
         globalFiberState.wipFiber.alternate.hooks[globalFiberState.wipFiber.hookIndex];
 
-    // 새 훅 만들기 
-    const hook = {
-        state: oldHook ? oldHook.state : initial,
-        queue: []
-    };
+    // 큐 재사용 로직
+    const hookQueue = oldHook ? oldHook.queue : []; 
+    const actions = [... hookQueue];
 
-    // 이전에 삽입된 액션들 수행
-    const actions = oldHook ? oldHook.queue : [];
+    hookQueue.length = 0; // 큐 비우기 
+
+    let newState = oldHook ? oldHook.state : initial; 
     actions.forEach(action => {
-        if (typeof action === 'function') {
-            hook.state = action(hook.state);
-        } else {
-            hook.state = action;
-        }
-    })
+        newState = typeof action === "function"
+            ? action(newState)
+            : action;
+    });
 
-    // setState 함수 : 변경 감지 
+    const hook = {
+        state: newState, 
+        queue: hookQueue
+    }; 
+
     const setState = (action) => {
-        hook.queue.push(action); // 클로저 
+        hookQueue.push(action);
+        scheduleUpdateOnRoot(globalFiberState.wipFiber);
+    }
 
-        // 예약 상태 업데이트
-        globalFiberState.hasPendingUpdate = true;
-        scheduleUpdateOnRoot();
-    };
-
-    // 다음 훅 순서 만들어주기 
     globalFiberState.wipFiber.hooks.push(hook);
     globalFiberState.wipFiber.hookIndex++;
 

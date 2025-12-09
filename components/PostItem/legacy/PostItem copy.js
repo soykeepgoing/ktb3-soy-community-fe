@@ -1,5 +1,5 @@
-import { TopicBadge } from "../TopicBadge/TopicBadge.js";
-import { createDom } from "../../core/Renderer.js";
+import { TopicBadge } from "../../TopicBadge/TopicBadge.js";
+import { createDom } from "../../../core/Renderer.js";
 
 export function PostItem(data){
     const id = data.id;
@@ -19,20 +19,7 @@ export function PostItem(data){
     return div;
 }
 
-function PostItemImage(imageUrl){
-    const postItemImageData = PostItemImageData(imageUrl);
-    const div = document.createElement("div");
-    div.classList.add("image");
-    div.appendChild(postItemImageData);
-    return div;    
-}
 
-function PostItemImageData(imageUrl){
-    const img = document.createElement("img");
-    img.className = "data";
-    img.src = imageUrl;
-    return img;    
-}
 
 function PostItemText({content, topicCode, topicLabel, userNickname, userProfileImgUrl}){
     const postItemTextLeft = PostItemTextLeft({content, topicCode, topicLabel});
@@ -60,18 +47,6 @@ function PostItemTextRight(nickname, userProfileImgUrl){
     postItemTextRight.appendChild(PostItemAuthor(nickname));
     postItemTextRight.appendChild(PostItemUserImgProfile(userProfileImgUrl));
     return postItemTextRight;  
-}
-
-function PostItemTopicLabel(topicCode, topicLabel){
-    const badge = createDom(TopicBadge(topicLabel, topicCode));
-    return badge;
-}
-
-function PostItemContentPreview(content){
-    const p = document.createElement("p");
-    p.classList.add("preview-body");
-    p.innerHTML = content;
-    return p;
 }
 
 function PostItemAuthor(nickname){

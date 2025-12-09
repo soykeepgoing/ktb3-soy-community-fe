@@ -1,9 +1,9 @@
-import {h} from "../../core/Renderer.js";
+import { h } from "../../core/vdom/h.js";
 
-export function TopicBadge(label, code){
+export function TopicBadge({code, label}){
     return h(
         "span", 
-        {class: ["badge", code]}, 
+        {className: ["badge", code]}, 
         label
     );
 }

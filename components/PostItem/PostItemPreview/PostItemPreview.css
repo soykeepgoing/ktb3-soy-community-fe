@@ -1,0 +1,12 @@
+.postItem-preview {
+    margin-top: 10px;
+    color: #595959;
+    line-height: 1.4;
+
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2; /* 원하는 줄 수 */
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}

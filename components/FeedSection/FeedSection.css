@@ -1,0 +1,7 @@
+.postItemContainer {
+    width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 240px);
+    gap: 12px; 
+}

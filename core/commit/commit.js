@@ -1,6 +1,7 @@
 import { globalFiberState } from "../fiber/globalFiberState.js"
 import { updateDom } from "./updateDom.js";
 import { commitDeletion } from "./commitDeletion.js";
+import { scheduleUpdateOnRoot } from "../fiber/scheduler.js";
 
 function commitWork(fiber) {
     if (!fiber) {return;}
@@ -74,19 +75,12 @@ export function commitRoot() {
     globalFiberState.currentRoot = globalFiberState.wipRoot;
     globalFiberState.wipRoot = null;
 
+    console.log(globalFiberState);
+
     // 도중에 발생했던 state가 있었다면 예약 
-    if (globalFiberState.hasPendingUpdate && globalFiberState.currentRoot){
+    if (globalFiberState.hasPendingUpdate){
+        console.log("다음에 진행할 루트는", globalFiberState.currentRoot);
         globalFiberState.hasPendingUpdate = false;
-
-        globalFiberState.wipRoot = {
-            dom: globalFiberState.currentRoot.dom,
-            props: globalFiberState.currentRoot.props,
-            alternate: globalFiberState.currentRoot,
-        };
-
-        globalFiberState.nextUnitOfWork = globalFiberState.wipRoot;
-        globalFiberState.deletions = [];
-        
+        scheduleUpdateOnRoot();  
     }
-
 }

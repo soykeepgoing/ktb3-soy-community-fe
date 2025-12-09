@@ -9,6 +9,16 @@
 @import "../components/LinkTo/LinkTo.css";
 @import "../components/AvatarUploader/AvatarUploader.css";
 
+@import "../components/FeedSection/FeedSection.css";
+@import "../components/PostItem/PostItem/PostItem.css";
+@import "../components/PostItem/PostItemAuthorInfo/PostItemAuthorInfo.css";
+@import "../components/PostItem/PostItemAvatar/PostItemAvatar.css";
+@import "../components/PostItem/PostItemContent/PostItemContent.css";
+@import "../components/PostItem/PostItemNickname/PostItemNickname.css";
+@import "../components/PostItem/PostItemPreview/PostItemPreview.css";
+@import "../components/PostItem/PostItemThumbnail/PostItemThumbnail.css";
+
+
 @import "../components/Banner/BannerSection/BannerSection.css";
 @import "../components/Banner/BannerLabel/BannerLabel.css";
 @import "../components/Banner/BannerTopic/BannerTopic.css";
@@ -23,6 +33,7 @@
 
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
+@import "../pages/PostFeedPage/PostFeedPage.css";
 
 /* 
 
