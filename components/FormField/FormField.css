@@ -1,16 +1,16 @@
-.signup-field {
+.form-field {
     display: flex;
     flex-direction: column;
-    /* gap: 5px; */
+    gap: 5px;
 }
 
-.signup-field label{
+.form-field label{
     font-size: 14px;
     color: var(--main-green); /* 줄기 느낌 */
     margin-bottom: 2px;
 }
 
-.signup-field input{
+.form-field input{
     padding: 7px;
     border: 2px solid var(--main-green); /* 연한 줄기 */
     border-radius: 26px;
@@ -19,7 +19,7 @@
     transition: 0.2s;
 }
 
-.signup-field input:focus{
+.form-field input:focus{
     border-color: #BF3B3B;
     outline: none;
 }

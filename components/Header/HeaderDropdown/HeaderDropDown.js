@@ -1,6 +1,7 @@
 import { editPassword } from "../../../api/userApi.js";
 import { Dropdown } from "../../Dropdown/Dropdown.js";
 import { useState } from "../../../core/hooks/useState.js";
+import { router } from "../../../main.js";
 
 export function HeaderDropDown(){
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -20,7 +21,7 @@ export function HeaderDropDown(){
         isOpen: dropdownOpen,
         onToggle: handleToggle, 
         clickEvents : {
-            editProfile: () => {console.log("Click Edit Profile");}, 
+            editProfile: () => {router.navigate("/edit/profile")}, 
             editPassword: () => {console.log("Click Edit Password")}, 
             logout: () => {console.log("Logout")}
         }, 

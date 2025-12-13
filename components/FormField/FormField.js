@@ -1,8 +1,8 @@
 import { h } from "../../../core/vdom/h.js";
-import { HelperText } from "../../HelperText/HelperText.js";
+import { HelperText } from "../HelperText/HelperText.js";
 
-export function SignupField({label, type, id, placeholder, value, helperText, onInput, onBlur}){
-    return h("div", { className: "signup-field"},
+export function FormField({label, type, id, placeholder, value, helperText, onInput, onBlur}){
+    return h("div", { className: "form-field"},
         h("label", null, label),
         h("input",{
             type, 
@@ -13,7 +13,7 @@ export function SignupField({label, type, id, placeholder, value, helperText, on
             onBlur
         }), 
         HelperText({
-            id: `signup-helper-${type}`,
+            id: `form-helper-${type}`,
             text: helperText
         })
     );

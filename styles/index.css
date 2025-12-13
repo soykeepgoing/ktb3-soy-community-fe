@@ -9,6 +9,9 @@
 @import "../components/LinkTo/LinkTo.css";
 @import "../components/AvatarUploader/AvatarUploader.css";
 
+@import "../components/FormField/FormField.css";
+@import "../components/ProfileImgField/ProfileImgField.css";
+
 @import "../components/FeedSection/FeedSection.css";
 @import "../components/PostItem/PostItem/PostItem.css";
 @import "../components/PostItem/PostItemAuthorInfo/PostItemAuthorInfo.css";
@@ -26,7 +29,6 @@
 @import "../components/Login/LoginField/LoginField.css";
 @import "../components/Login/LoginTitle/LoginTitle.css";
 
-@import "../components/Signup/SignupField/SignupField.css";
 @import "../components/Signup/SignupForm/SignupForm.css";
 @import "../components/Signup/SignupTitle/SignupTitle.css";
 

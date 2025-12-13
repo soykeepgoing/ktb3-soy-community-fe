@@ -7,6 +7,7 @@ import { LoginPage } from "./pages/LoginPage/LoginPage.js";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage.js";
 import { PostFeedPage } from "./pages/PostFeedPage/PostFeedPage.js";
 import { PostCreatePage } from "./pages/PostCreatePage/PostCreatePage.js";
+import { EditProfilePage } from "./pages/EditProfilePage/EditProfilePage.js";
 
 export const router = new Router();
 
@@ -16,6 +17,7 @@ router
     .add("/signup", SignUpPage)
     .add("/posts", PostFeedPage)
     .add("/posts/create", PostCreatePage)
+    .add("/edit/profile", EditProfilePage);
 
 router.start((PageComponent) => {
     const appElement = createElement(

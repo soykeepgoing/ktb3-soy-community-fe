@@ -7,10 +7,9 @@ import { validatePwCheck } from "../../../utils/validation/validatePwCheck.js";
 import { validateNickname } from "../../../utils/validation/validateNickname.js";
 
 import { Button } from "../../Button/Button.js";
-import { SignupField } from "../SignupField/SignupField.js";
+import { FormField } from "../../FormField/FormField.js";
 import { useInputField } from "../../../core/hooks/useInputField.js";
-import { SignupImgField } from "../SignupField/SignupImgField.js";
-
+import { ProfileImgField } from "../../ProfileImgField/ProfileImgField.js";
 import { handleImageChanged } from "../../../handlers/handleImageChanged.js";
 import { handleSignUp } from "../../../handlers/users/handleSignup.js";
 
@@ -27,8 +26,8 @@ export function SignupForm(){
     let profileImageFile = null;
 
     return h("form",
-        { className: "signup-form"}, 
-        SignupImgField({
+        { className: "form-field"}, 
+        ProfileImgField({
             id: "signup-img-input", 
             label: "Profile Image",
             src: imgPreviewUrl,
@@ -39,7 +38,7 @@ export function SignupForm(){
                 setImgPreviewUrl(imageUrl);
             }
         }),
-        SignupField({
+        FormField({
             label: "Email*",
             type: "email",
             id: "signup-email-input",
@@ -49,7 +48,7 @@ export function SignupForm(){
             onInput: (e) => email.handleInput(e.target.value),
             onBlur: () => email.handleBlur()
         }),
-        SignupField({
+        FormField({
             label: "Password*",
             type: "password",
             id: "signup-password-input",
@@ -59,7 +58,7 @@ export function SignupForm(){
             onInput: (e) => pw.handleInput(e.target.value),
             onBlur: () => pw.handleBlur()
         }),
-        SignupField({
+        FormField({
             label: "Password check*",
             type: "password",
             id: "signup-password-check-input",
@@ -69,7 +68,7 @@ export function SignupForm(){
             onInput: (e) => pwCheck.handleInput(e.target.value),
             onBlur: () => pwCheck.handleBlur()
         }),
-        SignupField({
+        FormField({
             label: "Nickname*",
             type: "nickname",
             id: "signup-nickname-input",
