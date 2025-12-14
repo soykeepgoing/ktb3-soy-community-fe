@@ -5,6 +5,6 @@ export function EditProfilePage(){
 
     const section = EditProfileSection();
 
-    return h("div", {}, section);
+    return h("div", {className: "edit-profile-page"}, section);
 
 }

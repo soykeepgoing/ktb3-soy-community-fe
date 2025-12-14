@@ -33,7 +33,7 @@ export function EditProfileSection(){
 
     return h(
         "section", 
-        {}, 
+        {className: "edit-profile-section"}, 
         h("h2", {}, "회원 정보 수정"),
         EditProfileForm({
             nickname, 

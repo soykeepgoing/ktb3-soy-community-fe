@@ -23,3 +23,11 @@
     border-color: #BF3B3B;
     outline: none;
 }
+
+.form-field p{
+    padding: 7px;
+    border-radius: 26px;
+    color: black;
+    font-size: 14px;
+    transition: 0.2s;
+}
