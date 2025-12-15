@@ -23,7 +23,7 @@ class UserEventHandler{
     constructor(){}
 
     async attachLoginSubmit(email, password, helperText){
-
+        console.log("여기 들어오니?");
         const inputData = {
             email: email.value,
             password: password.value
@@ -236,32 +236,11 @@ class UserEventHandler{
     
 
 
-    handleUserDelete(titleMsg, contentMsg, userId){
-        Modal(titleMsg, contentMsg);
-    
-        const modal = document.getElementById("modal-delete");
-    
-        const btnConfirm = modal.querySelector("#btn-confirm");
-        const btnCancel = modal.querySelector("#btn-cancel");
-    
-        btnCancel.addEventListener("click", 
-            () => modal.remove()
-        );
-    
-        btnConfirm.addEventListener("click", async () => {
-            await deleteUser(userId);
-            modal.remove();
-            // navigateTo("/");
-            clearStore();
-        })
-    }
-
 }
 
 export const userEventHandler = new UserEventHandler();
 export const attachLoginSubmit = userEventHandler.attachLoginSubmit.bind(userEventHandler);
 export const attachSignUpEvents = userEventHandler.attachSignUpEvents.bind(userEventHandler);
 export const attachUserEditProfile = userEventHandler.attachUserEditProfile.bind(userEventHandler);
-export const handleUserDelete = userEventHandler.handleUserDelete.bind(userEventHandler);
 export const attachLogoutSubmit = userEventHandler.attachLogoutSubmit.bind(userEventHandler);
 export const handleEditPassword = userEventHandler.handleEditPassword.bind(userEventHandler);

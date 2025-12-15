@@ -6,12 +6,14 @@ export async function handleLogin({email, password}){
     const inputData = {email, password};
     const response = await login(inputData);
 
-    setState("userId", response.data.userId);
-    setState("userProfileImg", response.data.userProfileImgUrl);
-    setState("userEmail", email.value);
-    setState("userNickname", response.data.userNickname);
-    setState("isLogin", "true");
-    setState("userRole", response.data.role);
+    if (response?.success) {
+        setState("userId", response.data.userId);
+        setState("userProfileImg", response.data.userProfileImgUrl);
+        setState("userEmail", email);
+        setState("userNickname", response.data.userNickname);
+        setState("userRole", response.data.role);
+        setState("isLogin", "true");
+    }
 
     return response;
 

@@ -13,16 +13,17 @@
 }
 
 /* 모달 박스 */
-.model-box {
-    position: absolute;
-    top: calc(50vh - 100px); left: calc(50vw - 200px);
-    background-color: white;
-    display: flex; justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 10px;
-    width: 400px;
-    height: 200px;
+.modal-box {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 12px;
+  width: 400px;
+  padding: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* 제목 */

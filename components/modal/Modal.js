@@ -1,18 +1,33 @@
-export function Modal(titleMsg, contentMsg){    
-    const modal = document.createElement("div");
-    modal.classList.add("modal-wrapper");
-	modal.id = "modal-delete";
+import { h } from "../../core/vdom/h.js";
+import { Button } from "../Button/Button.js";
 
-	modal.innerHTML = `
-		<div class="model-box">
-			<h2 class="modal-title">${titleMsg}</h2>
-			<p class="modal-content">${contentMsg}</p>
-			<div class="modal-buttons">
-				<button id="btn-confirm" class="btn-confirm">확인</button>
-				<button id="btn-cancel" class="btn-cancel">취소</button>
-			</div>
-		</div>`;
-
-	document.body.appendChild(modal);
-
+export function Modal({titleMsg, contentMsg, onClickConfirm, onClickCancel}){
+    return h(
+        "div",
+        { className: "modal-wrapper" },
+        h(
+            "div",
+            { className: "modal-box" },
+            h("h2", { className: "modal-title" }, titleMsg),
+            h("p", { className: "modal-content" }, contentMsg),
+            h(
+                "div",
+                { className: "modal-buttons" },
+                Button({
+                    className: "btn-confirm",
+                    id: "btn-confirm",
+                    text: "확인",
+                    disabled: false,
+                    onClick: onClickConfirm
+                }),
+                Button({
+                    className: "btn-cancel",
+                    id: "btn-cancel",
+                    text: "취소",
+                    disabled: false,
+                    onClick: onClickCancel
+                })
+            )
+        )
+    );
 }

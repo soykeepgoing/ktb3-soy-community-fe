@@ -45,48 +45,11 @@
 
 @import "../components/EditPasswordSection/EditPasswordSection.css";
 
+@import "../components/Modal/Modal.css";
+
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
 @import "../pages/PostFeedPage/PostFeedPage.css";
 @import "../pages/PostCreatePage/PostCreatePage.css";
 @import "../pages/EditProfilePage/EditProfilePage.css";
 @import "../pages/EditPasswordPage/EditPasswordPage.css";
-/* 
-
-
-@import "./variable.css";
-@import "./global.css";
-@import "./login.css";
-@import "./signup.css";
-
-
-@import "./posts.css";
-@import "./post-create.css";
-@import "../pages/PostDetailPage.css";
-@import "../pages/EditProfilePage.css";
-@import "../pages/EditPasswordPage.css";
-@import "./post-edit.css";
-
-@import "./edit-profile.css";
-
-@import "./components/dropdown.css";
-@import "../components/modal/Modal.css";
-@import "../components/FloatingButton/FloatingButton.css";
-@import "../components/banner/Banner.css";
-@import "../components/header/Header.css";
-@import "../components/Toast/Toast.css";
-@import "../components/header/HeaderDropdown.css";
-@import "../components/TopicBadge/TopicBadge.css";
-@import "../components/Postcard/PostCard.css";
-@import "../components/Postcard/PostContent.css";
-@import "../components/Postcard/PostImage.css";
-@import "../components/Postcard/PostMeta.css";
-@import "../components/Postcard/PostStats.css";
-@import "../components/Postcard/PostCardDropDown.css";
-
-@import "../components/Comments/CommentInputForm.css";
-@import "../components/Comments/CommentSection.css";
-@import "../components/Comments/CommentItemList.css";
-@import "../components/Comments/CommentItem.css";
-@import "../components/Comments/CommentHeader.css";
-@import "./memberTable.css"; */
