@@ -1,6 +1,6 @@
-import {EditPassword} from "../components/Users/EditPassword.js";
-import {FloatingButton} from "../components/FloatingButton/FloatingButton.js";
-import { attachEditPassword } from "../handle/users/UserEventHandler.js";
+import {EditPassword} from "../../components/Users/EditPassword.js";
+import {FloatingButton} from "../../components/FloatingButton/FloatingButton.js";
+import { attachEditPassword } from "../../handle/users/UserEventHandler.js";
 
 export function EditPasswordPage(){
     const div = document.createElement("div");

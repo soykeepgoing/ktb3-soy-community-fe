@@ -8,6 +8,7 @@ import { SignUpPage } from "./pages/SignUpPage/SignUpPage.js";
 import { PostFeedPage } from "./pages/PostFeedPage/PostFeedPage.js";
 import { PostCreatePage } from "./pages/PostCreatePage/PostCreatePage.js";
 import { EditProfilePage } from "./pages/EditProfilePage/EditProfilePage.js";
+import { EditPasswordPage } from "./pages/EditPasswordPage/EditPasswordPage.js";
 
 export const router = new Router();
 
@@ -17,7 +18,8 @@ router
     .add("/signup", SignUpPage)
     .add("/posts", PostFeedPage)
     .add("/posts/create", PostCreatePage)
-    .add("/edit/profile", EditProfilePage);
+    .add("/edit/profile", EditProfilePage)
+    .add("/edit/password", EditPasswordPage);
 
 router.start((PageComponent) => {
     const appElement = createElement(

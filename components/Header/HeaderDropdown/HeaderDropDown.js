@@ -22,7 +22,7 @@ export function HeaderDropDown(){
         onToggle: handleToggle, 
         clickEvents : {
             editProfile: () => {router.navigate("/edit/profile")}, 
-            editPassword: () => {console.log("Click Edit Password")}, 
+            editPassword: () => {router.navigate("/edit/password")}, 
             logout: () => {console.log("Logout")}
         }, 
         

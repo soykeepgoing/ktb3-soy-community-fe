@@ -14,6 +14,8 @@ export function useInputField(initialValue, validator){
     }
 
     const handleInput = (newValue) => {
+
+        console.log(newValue);
         setValue(newValue);
         if (isTouched){
             validate(newValue);
