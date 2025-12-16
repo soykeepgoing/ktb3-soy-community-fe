@@ -1,11 +1,11 @@
-.authorDetails {
+.author-details {
     display: flex;
     flex-direction: column; /* 이미지 위 / 닉네임 아래 */
     align-items: center;
     gap: 6px;
 }
 
-.authorDetails img {
+.author-details img {
     width: 40px;
     height: 40px;
     border-radius: 50%;

@@ -1,7 +1,8 @@
 import { h } from "../../core/vdom/h.js";
+import { formatTime } from "../../utils/formatUtils.js";
 import { TopicBadge } from "../TopicBadge/TopicBadge.js";
 import { AuthorDetails } from "./AuthorDetails/AuthorDetails.js";
-import { LikeActions } from "./LikeActions/LikeActions.js";
+import { PostLikeButton } from "./PostLikeButton/PostLikeButton.js";
 
 export function PostCard(data){
 
@@ -26,6 +27,7 @@ export function PostCard(data){
     const author = data.userNickname ?? data.nickname ?? "";
     const isUserLiked = data.isUserLiked; 
     const postId = data.id;
+    const createdAt = data.createdAt;
 
     console.log(data);
 
@@ -33,10 +35,12 @@ export function PostCard(data){
         "section", 
         { className: "post-card" }, 
         TopicBadge({code: topicCode, label: topicLabel}),
-        AuthorDetails({nickname: author, profileImgUrl: imgUrl}),
-        LikeActions({ isUserLiked, postId}),
-        h("p", { className: "post-card__content"}, content),
-        imgUrl ? h("img", { className: "post-card__image", src: imgUrl, alt: "post image" }) : null,
-        author ? h("p", { className: "post-card__author"}, `by ${author}`) : null
+        h("div", {className: "post-card-header"}, 
+            AuthorDetails({nickname: author, profileImgUrl: imgUrl}),
+            PostLikeButton({ isUserLiked, postId}),
+            h("span", {className: "created-at"}, formatTime(createdAt)),
+        ),
+        imgUrl ? h("img", { className: "post-card-image", src: imgUrl, alt: "post image" }) : null,
+        h("p", { className: "post-card-content"}, content)
     );
 }

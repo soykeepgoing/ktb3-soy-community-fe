@@ -50,8 +50,8 @@
 @import "../components/Toast/Toast.css";
 
 @import "../components/Postcard/AuthorDetails/AuthorDetails.css";
-@import "../components/Postcard/LikeActions/LikeActions.css";
-
+@import "../components/Postcard/PostLikeButton/PostLikeButton.css";
+@import "../components/Postcard/PostCard.css";
 
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
@@ -59,3 +59,4 @@
 @import "../pages/PostCreatePage/PostCreatePage.css";
 @import "../pages/EditProfilePage/EditProfilePage.css";
 @import "../pages/EditPasswordPage/EditPasswordPage.css";
+@import "../pages/PostDetailPage/PostDetailPage.css";

@@ -29,7 +29,9 @@ export function PostDetailPage(){
         return h("main", {}, "로딩 중...");
     }
 
-    return h("main", {}, 
+    return h("main", {
+        className: "post-detail-page"
+    }, 
         PostCard(post)
     );
 }
