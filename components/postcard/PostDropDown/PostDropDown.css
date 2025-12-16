@@ -1,0 +1,51 @@
+.post-drop-down {
+    position: absolute;
+    display: inline-block;
+    top: 15%; 
+    left: 90%;
+}
+
+/* 버튼(⋯) */
+.post-drop-down button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  padding: 6px;
+  cursor: pointer;
+  color: #595959;
+  border-radius: 50%;
+  transition: 0.2s, color 0.2s;
+}
+
+.post-drop-down button:hover {
+  background: #F2D0D0; /* 연한 토마토 과육 */
+}
+
+.post-drop-down ul {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  width: 90px;
+  display: block;
+  z-index: 10;
+  border: 2px solid #F2B6BB; /* 토마토 라인 */
+}
+
+/* 옵션 아이템 */
+.post-drop-down ul li {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #595959;
+  transition: 0.15s;
+}
+
+.post-drop-down ul li:hover {
+  background: #F2EDDC; /* 토마토 하이라이트 */
+}
