@@ -3,10 +3,11 @@ import { formatTime } from "../../utils/formatUtils.js";
 import { TopicBadge } from "../TopicBadge/TopicBadge.js";
 import { AuthorDetails } from "./AuthorDetails/AuthorDetails.js";
 import { PostDropDown } from "./PostDropDown/PostDropDown.js";
-import { PostLikeButton } from "./PostLikeButton/PostLikeButton.js";
 import { useState } from "../../core/hooks/useState.js";
 import { getState } from "../../core/GlobalStore.js";
 import { PostStats } from "./PostStats/PostStats.js";
+import { PostLikeButton } from "./PostLikeButton/PostLikeButton.js";
+import { handleLikePost } from "../../handlers/posts/handleLikePost.js";
 
 export function PostCard(data){
 
@@ -32,16 +33,26 @@ export function PostCard(data){
     const isUserLiked = data.isUserLiked; 
     const postId = data.id;
     const createdAt = data.createdAt;
-    const likeCounts = data.statsLikeCounts;
+    const likeCounts = data.statsLikeCounts ?? 0;
     const viewCounts = data.statsViewCounts;
     const commentCounts = data.statsCommentCounts;
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [liked, setLiked] = useState(!!isUserLiked);
+    const [likeCount, setLikeCount] = useState(likeCounts);
 
     console.log(data);
 
     const handleToggleDropDown = () => {
         setIsDropdownOpen(!isDropdownOpen);
+    }
+
+    const handleToggleLike = async () => {
+        const res = await handleLikePost({isUserLiked: liked, postId});
+        if (res?.success) {
+            setLiked(prev => !prev);
+            setLikeCount(prev => prev + (liked ? -1 : 1));
+        }
     }
 
     return h(
@@ -50,21 +61,21 @@ export function PostCard(data){
         TopicBadge({code: topicCode, label: topicLabel}),
         h("div", {className: "post-card-header"}, 
             AuthorDetails({nickname: author, profileImgUrl: imgUrl}),
-            PostLikeButton({ isUserLiked, postId}),
+            PostLikeButton({ isUserLiked: liked, onToggle: handleToggleLike}),
             h("span", {className: "created-at"}, formatTime(createdAt)),
         ),
         imgUrl ? h("img", { className: "post-card-image", src: imgUrl, alt: "post image" }) : null,
         h("p", { className: "post-card-content"}, content),
-        PostStats({like: likeCounts, comment: commentCounts, view: viewCounts}), 
+        PostStats({like: likeCount, comment: commentCounts, view: viewCounts}), 
         data.userId === getState("userId")
-        ? [ PostDropDown({
+        ? PostDropDown({
             isOpen: isDropdownOpen,
             onToggle: handleToggleDropDown, 
             clickEvents: {
                 "edit": () => console.log("edit"), 
                 "delete": () => console.log("delete")
             }
-        })]
+        })
         : null
     )
 }
