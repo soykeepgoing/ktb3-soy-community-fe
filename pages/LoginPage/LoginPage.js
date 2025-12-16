@@ -4,7 +4,7 @@ import { LinkTo } from "../../components/LinkTo/LinkTo.js";
 import { router } from "../../main.js";
 
 export function LoginPage() {
-    return h("div", {className: "login-page"}, 
+    return h("main", {className: "login-page"}, 
         h("div", {className: "container"},
         LoginForm(), 
         LinkTo({

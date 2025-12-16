@@ -2,9 +2,12 @@ import { h } from "../../../core/vdom/h.js";
 import { PostItemThumbnail } from "../PostItemThumbnail/PostItemThumbnail.js";
 import { PostItemContent } from "../PostItemContent/PostItemContent.js";
 import { PostItemAuthorInfo } from "../PostItemAuthorInfo/PostItemAuthorInfo.js";
+import { router } from "../../../main.js";
 
 export function PostItem(props){
-    return h("div", {className: "postItem"}, 
+    const postId = props.id ?? props.postId;
+
+    return h("div", {className: "postItem", onClick: () => {router.navigate(`/posts/${postId}`)}}, 
         PostItemThumbnail(props.postImgUrl),
         h("div", {className: "info"}, 
             PostItemContent({
@@ -17,6 +20,5 @@ export function PostItem(props){
                 profileImg: props.userProfileImgUrl
             })
         )
-
     );
 }

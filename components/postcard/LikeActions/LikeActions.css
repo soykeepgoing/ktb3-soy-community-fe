@@ -1,0 +1,35 @@
+.post-like-button {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.post-like-button.disliked {
+    background: #F2F2F2;  
+    color: var(--neutral);         
+    border: 1.5px solid #E6E6E6;
+}
+
+.post-like-button.disliked:hover {
+    background: #F2D0D0;     /* 옅은 토마토톤 */
+    border-color: #F2B6BB;
+}
+
+/* 좋아요 누른 상태(liked) */
+.post-like-button.liked {
+    background: #F2B6BB;     /* 토마토 핑크 */
+    color: var(--main-red2);          /* 잘 익은 토마토 */
+    border: 2px solid #F2A7AD;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.post-like-button.liked:hover {
+    background: #F29AA2;     /* 좀 더 진한 토마토 컬러 */
+}

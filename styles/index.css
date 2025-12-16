@@ -49,6 +49,10 @@
 
 @import "../components/Toast/Toast.css";
 
+@import "../components/Postcard/AuthorDetails/AuthorDetails.css";
+@import "../components/Postcard/LikeActions/LikeActions.css";
+
+
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
 @import "../pages/PostFeedPage/PostFeedPage.css";
