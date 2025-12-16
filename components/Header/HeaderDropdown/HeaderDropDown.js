@@ -2,6 +2,7 @@ import { editPassword } from "../../../api/userApi.js";
 import { Dropdown } from "../../Dropdown/Dropdown.js";
 import { useState } from "../../../core/hooks/useState.js";
 import { router } from "../../../main.js";
+import { clearStore } from "../../../core/GlobalStore.js";
 
 export function HeaderDropDown(){
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -23,7 +24,10 @@ export function HeaderDropDown(){
         clickEvents : {
             editProfile: () => {router.navigate("/edit/profile")}, 
             editPassword: () => {router.navigate("/edit/password")}, 
-            logout: () => {console.log("Logout")}
+            logout: () => {
+                clearStore();
+                router.navigate("/");
+            }
         }, 
         
     })

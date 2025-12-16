@@ -5,10 +5,12 @@ export async function handleSignUp({email, password, nickname, profileImage}){
     const formData = new FormData();
 
     const userData = {
-        userEmail: email, 
-        userPassword: password,
-        userNickname: nickname
+        userEmail:email, 
+        userPassword:password,
+        userNickname:nickname
     };
+
+    console.log(userData);
 
     formData.append(
         "data",
@@ -16,8 +18,10 @@ export async function handleSignUp({email, password, nickname, profileImage}){
     );
 
     if(profileImage){
-        formData.append("profileImage", profileImage);
+        formData.append("file", profileImage);
     }
+
+    console.log(profileImage);
 
     const response = await signUp(formData);
 

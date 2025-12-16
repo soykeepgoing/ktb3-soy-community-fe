@@ -16,8 +16,8 @@ export async function apiFetch({path, methodType, headerData = {}, bodyData}){
         body: body
     }
 
-    // console.log(url + path);
-    // console.log(fetchOptions);
+    console.log(url + path);
+    console.log(fetchOptions);
 
     const res = await fetch(url + path, fetchOptions);
 
