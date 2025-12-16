@@ -3,35 +3,36 @@ import { h } from "../../core/vdom/h.js";
 import { EditProfileForm } from "./EditProfileForm/EditProfileForm.js";
 import { LinkTo } from "../LinkTo/LinkTo.js";
 import { Modal } from "../Modal/Modal.js";
-
+import { Toast } from "../Toast/Toast.js";
 import { useState } from "../../core/hooks/useState.js";
 import { useInputField } from "../../core/hooks/useInputField.js";
 
 import { validateNickname } from "../../utils/validation/validateNickname.js";
 import { handleImageChanged } from "../../handlers/handleImageChanged.js";
 import { handleDelete } from "../../handlers/users/handleDelete.js";
- 
+import { handleEditProfile } from "../../handlers/users/handleEditProfile.js";
+
+import { getState } from "../../core/GlobalStore.js";
+
 export function EditProfileSection(){
 
     const nickname = useInputField("", validateNickname);
-    const [imgPreviewUrl, setImgPreviewUrl] = useState(
-        "../../../images/default_user_profile.png");
+    const [imgPreviewUrl, setImgPreviewUrl] = useState(getState("userProfileImg"));
     const [profileImgFile, setProfileImgFile] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const handleProfileImgChange = async(e) => {
-        const {imgUrl, file} = await handleImageChanged(e);
-        setImgPreviewUrl(imgUrl);
-        setProfileImgFile(file);
-    };
+    const [isToastOn, setIsToastOn] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await handleEditProfile({
+        const res = await handleEditProfile({
             nickname: nickname.value, 
             profileImgFile: profileImgFile
         });
+        
+        if (res.success){
+            setIsToastOn(true);
+        }
     };
 
     const handleSignOutClick = () => {
@@ -54,7 +55,11 @@ export function EditProfileSection(){
         EditProfileForm({
             nickname, 
             imgPreviewUrl, 
-            onImgChange: handleProfileImgChange, 
+            onImgChange: async (e) => {
+                const {imageUrl, file} = await handleImageChanged(e);
+                setImgPreviewUrl(imageUrl);
+                setProfileImgFile(file);
+            }, 
             onSubmit: handleSubmit
         }), 
         LinkTo({
@@ -66,6 +71,9 @@ export function EditProfileSection(){
             contentMsg: "작성된 게시글과 댓글은 삭제됩니다.",
             onClickConfirm: handleConfirmSignOut,
             onClickCancel: handleCancelSignOut
-        })] : [])
+        })] : []), 
+       ...(isToastOn
+        ? [Toast({isToastOn, setIsToastOn, text: "프로필 정보 수정 성공"})]
+        : [])
     );
 }

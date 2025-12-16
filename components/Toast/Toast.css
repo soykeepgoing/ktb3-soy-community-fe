@@ -1,4 +1,4 @@
-#toast {
+.toast {
   position: fixed;
   bottom: 40px;
   left: 50%;
@@ -16,7 +16,7 @@
 }
 
 /* 보일 때 */
-#toast.show {
+.toast.show {
   opacity: 1;
   transform: translateX(-50%) translateY(-10px);
 }

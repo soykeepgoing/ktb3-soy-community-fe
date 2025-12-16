@@ -17,7 +17,7 @@ import {
 } from "./UserValidationHandler.js";
 
 import {Modal} from "../../components/Modal/Modal.js";
-import { showToast } from "../../components/toast/Toast.js";
+// import { showToast } from "../../components/toast/Toast.js";
 
 class UserEventHandler{
     constructor(){}
@@ -210,7 +210,7 @@ class UserEventHandler{
                 await handleEditUserProfile(newUserProfileImgInput, newUserNickname, helperText);
                 if (isEdited){
                     const toastDiv = section.querySelector("#toast");
-                    await showToast(toastDiv, "수정 완료");
+                    // await showToast(toastDiv, "수정 완료");
                 }
             }
         );

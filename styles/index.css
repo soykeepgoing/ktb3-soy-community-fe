@@ -47,6 +47,8 @@
 
 @import "../components/Modal/Modal.css";
 
+@import "../components/Toast/Toast.css";
+
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
 @import "../pages/PostFeedPage/PostFeedPage.css";
