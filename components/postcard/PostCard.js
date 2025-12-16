@@ -6,7 +6,7 @@ import { PostDropDown } from "./PostDropDown/PostDropDown.js";
 import { PostLikeButton } from "./PostLikeButton/PostLikeButton.js";
 import { useState } from "../../core/hooks/useState.js";
 import { getState } from "../../core/GlobalStore.js";
-
+import { PostStats } from "./PostStats/PostStats.js";
 
 export function PostCard(data){
 
@@ -32,6 +32,9 @@ export function PostCard(data){
     const isUserLiked = data.isUserLiked; 
     const postId = data.id;
     const createdAt = data.createdAt;
+    const likeCounts = data.statsLikeCounts;
+    const viewCounts = data.statsViewCounts;
+    const commentCounts = data.statsCommentCounts;
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -52,14 +55,16 @@ export function PostCard(data){
         ),
         imgUrl ? h("img", { className: "post-card-image", src: imgUrl, alt: "post image" }) : null,
         h("p", { className: "post-card-content"}, content),
-        data.userId === getState("userId") ? PostDropDown({
+        PostStats({like: likeCounts, comment: commentCounts, view: viewCounts}), 
+        data.userId === getState("userId")
+        ? [ PostDropDown({
             isOpen: isDropdownOpen,
             onToggle: handleToggleDropDown, 
             clickEvents: {
                 "edit": () => console.log("edit"), 
                 "delete": () => console.log("delete")
             }
-        })
+        })]
         : null
-    );
+    )
 }

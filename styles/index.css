@@ -55,6 +55,9 @@
 
 @import "../components/Postcard/PostDropDown/PostDropDown.css";
 
+@import "../components/Postcard/PostStats/PostStats.css";
+
+
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";
 @import "../pages/PostFeedPage/PostFeedPage.css";
