@@ -35,7 +35,7 @@ export class Router{
         this.params = match?.params || {}; 
         
         if(this._onChanged && page){
-            this._onChanged(page);
+            this._onChanged(page, this.params);
         }
     }
 
@@ -45,27 +45,31 @@ export class Router{
     }
 
     _matchRoute(path){
+        // 1. 정적 라우트 
         for (const route of this.routes){
-            // exact match first
             if (!route.path.includes("{") && route.path === path){
-                return { page: route.page, params: {} };
+                return {page: route.page, params: {}};
             }
+        }
+        // 2. 동적 라우트
+        for (const route of this.routes){
+            if (!route.path.includes("{")) continue;
 
-            // dynamic segment match e.g. /posts/{postId}
-            const paramNames = [];
-            const regexPath = route.path.replace(/{([^}]+)}/g, (_full, name) => {
+            const paramNames = []; 
+            const regexPath = route.path.replace(/{([^}]+)}/g, (_, name) => {
                 paramNames.push(name);
                 return "([^/]+)";
             });
+
             const regex = new RegExp(`^${regexPath}$`);
             const match = path.match(regex);
-            if (match){
-                const params = {};
-                paramNames.forEach((name, idx) => {
-                    params[name] = match[idx + 1];
-                });
-                return { page: route.page, params };
-            }
+            if (!match) continue;
+
+            const params = {};
+            paramNames.forEach((name, idx) => {
+                params[name] = match[idx + 1];
+            });
+            return { page: route.page, params};
         }
 
         return null;

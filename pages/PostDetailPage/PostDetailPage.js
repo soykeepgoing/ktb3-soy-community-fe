@@ -2,15 +2,17 @@ import { h } from "../../core/vdom/h.js";
 import { useState } from "../../core/hooks/useState.js";
 import { useEffect } from "../../core/hooks/useEffect.js";
 import { getPostDetail } from "../../api/postApi.js";
-import { router } from "../../main.js";
 import { PostCard } from "../../components/Postcard/PostCard.js";
 
-export function PostDetailPage(){
+export function PostDetailPage(props){
     const [post, setPost] = useState(null);
-    const { postId } = router.params ?? {};
+    const { postId } = props?.params ?? {};
+
+    console.log(postId, postId);
 
     useEffect(() => {
-        if (!postId) return;
+        if (typeof postId !== "string") return;
+
         const fetchPost = async () => {
             const res = await getPostDetail(postId);
             console.log(res);
@@ -21,17 +23,11 @@ export function PostDetailPage(){
         fetchPost();
     }, [postId]);
 
-    if (!postId) {
-        return h("main", {}, "잘못된 경로입니다.");
-    }
-
-    if (!post) {
-        return h("main", {}, "로딩 중...");
-    }
-
     return h("main", {
         className: "post-detail-page"
     }, 
-        PostCard(post)
+        post
+        ? PostCard(post)
+        : h("main", {}, "로딩중 ... ")
     );
 }

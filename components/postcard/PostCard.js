@@ -25,6 +25,8 @@ export function PostCard(data){
     // userNickname
     // userProfileImgUrl
 
+    console.log(data);
+
     const topicCode = data.topicCode;
     const topicLabel = data.topicLabel;
     const content = data.postContent ?? data.content ?? "";
@@ -47,11 +49,11 @@ export function PostCard(data){
         setIsDropdownOpen(!isDropdownOpen);
     }
 
-    const handleToggleLike = async () => {
+    const handleToggleLike = async() => {
         const res = await handleLikePost({isUserLiked: liked, postId});
         if (res?.success) {
             setLiked(prev => !prev);
-            setLikeCount(prev => prev + (liked ? -1 : 1));
+            setLikeCount(prev => prev + (liked? -1: 1));
         }
     }
 

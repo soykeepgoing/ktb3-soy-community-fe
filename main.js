@@ -18,15 +18,15 @@ router
     .add("/", LoginPage)
     .add("/signup", SignUpPage)
     .add("/posts", PostFeedPage)
-    .add("/posts/{postId}", PostDetailPage)
     .add("/posts/create", PostCreatePage)
+    .add("/posts/{postId}", PostDetailPage)
     .add("/edit/profile", EditProfilePage)
     .add("/edit/password", EditPasswordPage);
 
-router.start((PageComponent) => {
+router.start((PageComponent, params) => {
     const appElement = createElement(
         PageComponent,
-        null
+        { params }
     );
     render(appElement, router.container);
 });
