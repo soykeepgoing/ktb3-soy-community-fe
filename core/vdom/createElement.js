@@ -5,7 +5,10 @@ export function createElement(type, props, ...children) {
     type: type,
     props: {
       ...props,
-     children: children.map(child =>
+      children: children
+      .flat()
+      .filter(child => child !== null && child !== false)
+      .map(child =>
         typeof child === "object"
           ? child
           : createTextElement(child)

@@ -73,7 +73,7 @@ export function PostEditPage(props) {
     }
 
     return h("main", 
-        {},
+        {className: "post-edit-section"},
         h("h1", {}, "게시글 수정"),
         content !== null
         ? PostEditCard({

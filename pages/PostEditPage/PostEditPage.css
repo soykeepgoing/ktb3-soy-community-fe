@@ -1,0 +1,71 @@
+/* 게시글 수정 전체 박스 */
+.post-edit-section {
+    margin: 0 auto;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+/* 제목 */
+.post-edit-section h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+/* 라벨 */
+.post-edit-card label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* 텍스트 인풋 */
+.post-edit-card input[type="text"],
+.post-edit-card input[type="file"],
+.post-edit-card textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--sub-red2);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  margin-bottom: 4px;
+}
+
+.post-edit-card input[type="text"]:focus,
+.post-edit-card textarea:focus {
+  border-color: var(--main-red);
+}
+
+/* textarea 크기 */
+.post-edit-card textarea {
+  min-height: 240px;
+  resize: vertical;
+}
+
+/* 이미지 섹션 전체 컨테이너 */
+.image-upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* 이미지 미리보기 스타일 */
+.preview-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    object-fit: cover; /* 이미지 비율 유지 */
+    border: 1px solid #eee;
+}

@@ -31,7 +31,7 @@ export function PostCard(data){
     const topicCode = data.topicCode;
     const topicLabel = data.topicLabel;
     const content = data.postContent ?? data.content ?? "";
-    const imgUrl = data.postImgUrl ?? data.imageUrl ?? data.imgUrl;
+    const imgUrl = data.imgUrl;
     const author = data.userNickname ?? data.nickname ?? "";
     const isUserLiked = data.isUserLiked; 
     const postId = data.id;
@@ -67,7 +67,9 @@ export function PostCard(data){
             PostLikeButton({ isUserLiked: liked, onToggle: handleToggleLike}),
             h("span", {className: "created-at"}, formatTime(createdAt)),
         ),
-        imgUrl ? h("img", { className: "post-card-image", src: imgUrl, alt: "post image" }) : null,
+        imgUrl
+        ? h("img", { className: "post-card-image", src: imgUrl, alt: "post image" })
+        : null,
         h("p", { className: "post-card-content"}, content),
         PostStats({like: likeCount, comment: commentCounts, view: viewCounts}), 
         data.userId === getState("userId")
