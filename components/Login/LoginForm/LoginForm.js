@@ -1,4 +1,4 @@
-import { router } from "../../../main.js";
+import { router } from "../../../core/router.js";
 import {h} from "../../../core/vdom/h.js";
 import { useInputField } from "../../../core/hooks/useInputField.js";
 import { useState } from "../../../core/hooks/useState.js";

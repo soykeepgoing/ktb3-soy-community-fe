@@ -7,7 +7,7 @@ import { Button } from "../../components/Button/Button.js";
 import { FloatingButton } from "../../components/FloatingButton/FloatingButton.js";
 import { handleCreatePost } from "../../handlers/posts/handleCreatePost.js";
 import { handleImageChanged } from "../../handlers/handleImageChanged.js";
-import { router } from "../../main.js";
+import { router } from "../../core/router.js";;
 import { Toast } from "../../components/Toast/Toast.js";
 
 export function PostCreatePage(){

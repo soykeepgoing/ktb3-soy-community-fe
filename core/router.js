@@ -75,3 +75,6 @@ export class Router{
         return null;
     }
 }
+
+
+export const router = new Router();

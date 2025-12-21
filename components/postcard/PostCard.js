@@ -8,26 +8,12 @@ import { getState } from "../../core/GlobalStore.js";
 import { PostStats } from "./PostStats/PostStats.js";
 import { PostLikeButton } from "./PostLikeButton/PostLikeButton.js";
 import { handleLikePost } from "../../handlers/posts/handleLikePost.js";
-import { router } from "../../main.js";
+import { Modal } from "../Modal/Modal.js";
+import { deletePost } from "../../api/postApi.js";
+import { Toast } from "../Toast/Toast.js";
+import { router } from "../../core/router.js";
 
 export function PostCard(data){
-
-    // content
-    // createdAt
-    // id
-    // imgUrl
-    // isUserLiked
-    // statsCommentCounts
-    // statsLikeCounts
-    // statsViewCounts
-    // topicCode
-    // topicLabel
-    // userId
-    // userNickname
-    // userProfileImgUrl
-
-    console.log(data);
-
     const topicCode = data.topicCode;
     const topicLabel = data.topicLabel;
     const content = data.postContent ?? data.content ?? "";
@@ -41,8 +27,12 @@ export function PostCard(data){
     const commentCounts = data.statsCommentCounts;
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleteToastOn, setIsDeleteToastOn]= useState(false);
     const [liked, setLiked] = useState(!!isUserLiked);
     const [likeCount, setLikeCount] = useState(likeCounts);
+
+    const deleteToastMsg = "게시글이 삭제되었습니다.";
 
     console.log(data);
 
@@ -56,6 +46,17 @@ export function PostCard(data){
             setLiked(prev => !prev);
             setLikeCount(prev => prev + (liked? -1: 1));
         }
+    }
+
+    const handleDeletePost = async () => {
+        const res = await deletePost(postId);
+        if (!res?.success) {
+            setIsModalOpen(false);
+            return; 
+        }
+        setIsModalOpen(false);
+        setIsDeleteToastOn(true);
+        
     }
 
     return h(
@@ -78,8 +79,23 @@ export function PostCard(data){
             onToggle: handleToggleDropDown, 
             clickEvents: {
                 "edit": () => router.navigate(`/posts/${postId}/edit`), 
-                "delete": () => console.log("delete")
+                "delete": () => setIsModalOpen(true)
             }
+        })
+        : null,
+        isModalOpen
+        ? Modal({
+            titleMsg: "게시글을 삭제하시겠습니까?", 
+            contentMsg: "삭제된 게시글은 복구될 수 없습니다.", 
+            onClickConfirm: handleDeletePost, 
+            onClickCancel: () => setIsModalOpen(false)
+        })
+        : null,
+        isDeleteToastOn
+        ? Toast({
+            isToastOn: isDeleteToastOn, 
+            setIsToastOn: setIsDeleteToastOn, 
+            text: deleteToastMsg
         })
         : null
     )

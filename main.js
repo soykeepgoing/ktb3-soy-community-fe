@@ -12,7 +12,8 @@ import { EditPasswordPage } from "./pages/EditPasswordPage/EditPasswordPage.js";
 import { PostDetailPage } from "./pages/PostDetailPage/PostDetailPage.js";
 import { PostEditPage } from "./pages/PostEditPage/PostEditPage.js";
 
-export const router = new Router();
+import { router } from "./core/router.js";
+
 
 router
     .add("/index.html", LoginPage)

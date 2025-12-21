@@ -6,7 +6,7 @@ import { useEffect } from "../../core/hooks/useEffect.js";
 import { handleImageChanged } from "../../handlers/handleImageChanged.js";
 import { handleEditPost as submitEditPost } from "../../handlers/posts/handleEditPost.js";
 import { Toast } from "../../components/Toast/Toast.js";
-import { router } from "../../main.js";
+import { router } from "../../core/router.js";;
 
 export function PostEditPage(props) {
     const [content, setContent] = useState(null);

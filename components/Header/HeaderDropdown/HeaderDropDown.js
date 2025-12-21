@@ -1,7 +1,7 @@
 import { editPassword } from "../../../api/userApi.js";
 import { Dropdown } from "../../Dropdown/Dropdown.js";
 import { useState } from "../../../core/hooks/useState.js";
-import { router } from "../../../main.js";
+import { router } from "../../../core/router.js";
 import { clearStore } from "../../../core/GlobalStore.js";
 
 export function HeaderDropDown(){

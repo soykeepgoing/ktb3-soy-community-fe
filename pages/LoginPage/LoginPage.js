@@ -1,7 +1,7 @@
 import { h } from "../../core/vdom/h.js";
 import { LoginForm } from "../../components/Login/LoginForm/LoginForm.js";
 import { LinkTo } from "../../components/LinkTo/LinkTo.js";
-import { router } from "../../main.js";
+import { router } from "../../core/router.js";;
 
 export function LoginPage() {
     return h("main", {className: "login-page"}, 

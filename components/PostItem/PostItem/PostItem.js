@@ -2,7 +2,7 @@ import { h } from "../../../core/vdom/h.js";
 import { PostItemThumbnail } from "../PostItemThumbnail/PostItemThumbnail.js";
 import { PostItemContent } from "../PostItemContent/PostItemContent.js";
 import { PostItemAuthorInfo } from "../PostItemAuthorInfo/PostItemAuthorInfo.js";
-import { router } from "../../../main.js";
+import { router } from "../../../core/router.js";
 
 export function PostItem(props){
     const postId = props.id ?? props.postId;

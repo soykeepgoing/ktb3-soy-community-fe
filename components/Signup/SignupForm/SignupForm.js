@@ -12,7 +12,8 @@ import { useInputField } from "../../../core/hooks/useInputField.js";
 import { ProfileImgField } from "../../ProfileImgField/ProfileImgField.js";
 import { handleImageChanged } from "../../../handlers/handleImageChanged.js";
 import { handleSignUp } from "../../../handlers/users/handleSignup.js";
-import { router } from "../../../main.js";
+
+import { router } from "../../../core/router.js";
 
 export function SignupForm(){
 
