@@ -32,49 +32,8 @@ class PostEventHandler{
         })
     }
 
-    async handlePostEdit(event, postId){
-        event.preventDefault();
-
-        const postBody = document.querySelector("#post-body").value;
-        const postImgFile = document.querySelector("#post-img");
-
-        const payload = { postContent: postBody };
-        const formData = new FormData();
-        formData.append("data", new Blob([JSON.stringify(payload)], { type: "application/json" }));
-
-        if (postImgFile.files.length > 0){
-            const file = postImgFile.files[0];
-            formData.append("postImgFile", file);
-        }
-
-        await editPost(postId, formData);
-        navigateTo(`/posts/${postId}`);
-    }
-
-    async handlePostLike(postId){
-        const btn = document.querySelector(".likeButton");
-        const likeStats = document.querySelector(".postStatsLike");
-        
-        let response;
-
-        if (btn.classList.contains("liked")){
-            btn.classList.remove("liked");
-            response = await dislikePost(postId);
-        } else {
-            btn.classList.add("liked");
-            response = await likePost(postId);
-        }
-        if (response.success){
-            const likeCount = response.data.likeCount;
-            likeStats.textContent = `좋아요 ${likeCount}`;
-        }
-
-    }
-
 }
 
 const postEventHandler = new PostEventHandler();
 export const loadPostDetail = postEventHandler.loadPostDetail.bind(postEventHandler);
 export const handlePostDelete = postEventHandler.handlePostDelete.bind(postEventHandler);
-export const handlePostEdit = postEventHandler.handlePostEdit.bind(postEventHandler);
-export const handlePostLike = postEventHandler.handlePostLike.bind(postEventHandler);

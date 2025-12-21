@@ -3,6 +3,7 @@ import { useState } from "../../core/hooks/useState.js";
 import { useEffect } from "../../core/hooks/useEffect.js";
 import { getPostDetail } from "../../api/postApi.js";
 import { PostCard } from "../../components/Postcard/PostCard.js";
+import { CommentSection } from "../../components/PostComments/CommentSection.js";
 
 export function PostDetailPage(props){
     const [post, setPost] = useState(null);
@@ -23,8 +24,14 @@ export function PostDetailPage(props){
     return h("main", {
         className: "post-detail-page"
     }, 
-        post
-        ? PostCard(post)
-        : h("main", {}, "로딩중 ... ")
+        ...(post
+            ? [
+                PostCard(post),
+                CommentSection({ postId })
+            ]
+            : [
+                h("main", {}, "로딩중 ... ")
+            ]
+        )
     );
 }

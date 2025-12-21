@@ -1,5 +1,5 @@
 /* 전체 댓글 입력 폼 */
-.commentInputForm {
+.comment-form {
     width: 700px;          /* 고정 너비 */
     margin: 0 auto;        /* 화면 가운데 정렬 */
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 /* 텍스트 입력 */
-.commentInputForm .textarea {
+.comment-form textarea {
     flex: 1;
     min-height: 80px;
     padding: 14px;
@@ -22,12 +22,12 @@
     line-height: 1.4;
 }
 
-.commentInputForm .textarea::placeholder {
+.comment-form textarea::placeholder {
     color: #A9A9A9;
 }
 
 /* 버튼 */
-.commentInputForm .btn {
+.comment-form button {
     padding: 12px 20px;
     border-radius: 14px;
     border: none;
@@ -40,6 +40,6 @@
     white-space: nowrap;
 }
 
-.commentInputForm .btn:hover {
+.comment-form button:hover {
     background: #D94848;   /* 클릭 느낌 */
 }

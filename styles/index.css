@@ -57,6 +57,10 @@
 
 @import "../components/Postcard/PostStats/PostStats.css";
 
+@import "../components/PostComments/CommentForm/CommentForm.css";
+@import "../components/PostComments/CommentItem/CommentItem.css";
+@import "../components/PostComments/CommentItemList/CommentItemList.css";
+@import "../components/PostComments/CommentSection.css";
 
 @import "../pages/LoginPage/LoginPage.css";
 @import "../pages/SignUpPage/SignUpPage.css";

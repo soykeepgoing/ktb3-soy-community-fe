@@ -8,7 +8,8 @@ export async function getComments(postId) {
     });
 }
 
-export async function createComment(inputData, postId){
+export async function createComment({inputData, postId}){
+    console.log(inputData, postId);
     return await apiFetch({
         path: `/api/posts/${postId}/comments`,
         methodType: "POST",
