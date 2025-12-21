@@ -23,7 +23,7 @@ export async function createPost(inputData){
     });
 }
 
-export async function editPost(newPostData, postId){
+export async function editPost(postId, newPostData){
     return await apiFetch({
         path: `/api/posts/${postId}`,
         methodType: "PATCH",
@@ -59,4 +59,3 @@ export async function deletePost(postId){
         methodType: "DELETE"
     })
 }
-

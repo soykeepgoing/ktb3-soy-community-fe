@@ -1,7 +1,7 @@
 import { Modal } from "../../components/Modal/Modal.js";
 import { navigateTo } from "../../core/router.legacy.js";
 import { getState } from "../../core/GlobalStore.js";
-import {getPostDetail, deletePost, editPost, uploadImageToPost, likePost, dislikePost} from "../../api/postApi.js"
+import {getPostDetail, deletePost, editPost, likePost, dislikePost} from "../../api/postApi.js"
 
 class PostEventHandler{
     constructor(){}
@@ -38,19 +38,17 @@ class PostEventHandler{
         const postBody = document.querySelector("#post-body").value;
         const postImgFile = document.querySelector("#post-img");
 
-        const newPostData = {"postContent": postBody};
+        const payload = { postContent: postBody };
+        const formData = new FormData();
+        formData.append("data", new Blob([JSON.stringify(payload)], { type: "application/json" }));
 
-        await editPost(newPostData, postId);
-        
         if (postImgFile.files.length > 0){
             const file = postImgFile.files[0];
-            const inputData = new FormData();
-            inputData.append("file", file);
-            await uploadImageToPost(inputData, postId);
-            navigateTo(`/posts/${postId}`);
-        } else {
-            navigateTo(`/posts/${postId}`);
+            formData.append("postImgFile", file);
         }
+
+        await editPost(postId, formData);
+        navigateTo(`/posts/${postId}`);
     }
 
     async handlePostLike(postId){

@@ -8,14 +8,11 @@ export function PostDetailPage(props){
     const [post, setPost] = useState(null);
     const { postId } = props?.params ?? {};
 
-    console.log(postId, postId);
-
     useEffect(() => {
         if (typeof postId !== "string") return;
 
         const fetchPost = async () => {
             const res = await getPostDetail(postId);
-            console.log(res);
             if (res?.success) {
                 setPost(res.data);
             }

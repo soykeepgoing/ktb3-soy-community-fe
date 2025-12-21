@@ -11,9 +11,6 @@ import { router } from "../../main.js";
 import { Toast } from "../../components/Toast/Toast.js";
 
 export function PostCreatePage(){
-
-    console.log("dmadmad");
-
     const [selectedTopic, setSelectedTopic] = useState(undefined);
     const [postContent, setPostContent] = useState(undefined);
     const [postImageFile, setPostImageFile] = useState(null);

@@ -8,6 +8,7 @@ import { getState } from "../../core/GlobalStore.js";
 import { PostStats } from "./PostStats/PostStats.js";
 import { PostLikeButton } from "./PostLikeButton/PostLikeButton.js";
 import { handleLikePost } from "../../handlers/posts/handleLikePost.js";
+import { router } from "../../main.js";
 
 export function PostCard(data){
 
@@ -74,7 +75,7 @@ export function PostCard(data){
             isOpen: isDropdownOpen,
             onToggle: handleToggleDropDown, 
             clickEvents: {
-                "edit": () => console.log("edit"), 
+                "edit": () => router.navigate(`/posts/${postId}/edit`), 
                 "delete": () => console.log("delete")
             }
         })

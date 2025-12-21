@@ -10,6 +10,7 @@ import { PostCreatePage } from "./pages/PostCreatePage/PostCreatePage.js";
 import { EditProfilePage } from "./pages/EditProfilePage/EditProfilePage.js";
 import { EditPasswordPage } from "./pages/EditPasswordPage/EditPasswordPage.js";
 import { PostDetailPage } from "./pages/PostDetailPage/PostDetailPage.js";
+import { PostEditPage } from "./pages/PostEditPage/PostEditPage.js";
 
 export const router = new Router();
 
@@ -20,6 +21,7 @@ router
     .add("/posts", PostFeedPage)
     .add("/posts/create", PostCreatePage)
     .add("/posts/{postId}", PostDetailPage)
+    .add("/posts/{postId}/edit", PostEditPage)
     .add("/edit/profile", EditProfilePage)
     .add("/edit/password", EditPasswordPage);
 
