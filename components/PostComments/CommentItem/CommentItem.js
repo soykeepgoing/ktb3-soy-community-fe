@@ -8,6 +8,7 @@ export function CommentItem({
     onDelete
 }){
     const canEdit = comment.userId === getState("userId");
+    console.log(comment.userId, getState("useId"));
 
     return h(
         "div", 

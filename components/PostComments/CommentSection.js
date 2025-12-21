@@ -4,13 +4,13 @@ import { useEffect } from "../../core/hooks/useEffect.js";
 import { getComments, createComment, deleteComments, editComment } from "../../api/commentApi.js";
 import { CommentForm } from "./CommentForm/CommentForm.js";
 import { CommentItemList } from "./CommentItemList/CommentItemList.js";
+import { getState } from "../../core/GlobalStore.js";
 
 export function CommentSection({postId}){
     const [comments, setComments] = useState([]);
     const [value, setValue] = useState("");
     const [ mode, setMode] = useState({type: "create"});
 
-    
     useEffect(() => {
         if (!postId) return;
         const fetchComments = async () => {

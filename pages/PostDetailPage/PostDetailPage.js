@@ -4,6 +4,7 @@ import { useEffect } from "../../core/hooks/useEffect.js";
 import { getPostDetail } from "../../api/postApi.js";
 import { PostCard } from "../../components/Postcard/PostCard.js";
 import { CommentSection } from "../../components/PostComments/CommentSection.js";
+import { FloatingButton } from "../../components/FloatingButton/FloatingButton.js";
 
 export function PostDetailPage(props){
     const [post, setPost] = useState(null);
@@ -32,6 +33,7 @@ export function PostDetailPage(props){
             : [
                 h("main", {}, "로딩중 ... ")
             ]
-        )
+        ),
+        FloatingButton({value: "🏠", url: "/posts"})
     );
 }
