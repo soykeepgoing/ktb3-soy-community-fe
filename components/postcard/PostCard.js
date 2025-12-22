@@ -19,6 +19,7 @@ export function PostCard(data){
     const content = data.postContent ?? data.content ?? "";
     const imgUrl = data.imgUrl;
     const author = data.userNickname ?? data.nickname ?? "";
+    const userProfileImgUrl = data.userProfileImgUrl;
     const isUserLiked = data.isUserLiked; 
     const postId = data.id;
     const createdAt = data.createdAt;
@@ -64,7 +65,7 @@ export function PostCard(data){
         { className: "post-card" }, 
         TopicBadge({code: topicCode, label: topicLabel}),
         h("div", {className: "post-card-header"}, 
-            AuthorDetails({nickname: author, profileImgUrl: imgUrl}),
+            AuthorDetails({nickname: author, profileImgUrl: userProfileImgUrl}),
             PostLikeButton({ isUserLiked: liked, onToggle: handleToggleLike}),
             h("span", {className: "created-at"}, formatTime(createdAt)),
         ),

@@ -1,4 +1,3 @@
-import { Router } from "./core/router.js"
 import { createElement } from "./core/vdom/createElement.js";
 import {render} from "./core/render/render.js";
 import {workLoop} from "./core/fiber/scheduler.js";
@@ -11,9 +10,7 @@ import { EditProfilePage } from "./pages/EditProfilePage/EditProfilePage.js";
 import { EditPasswordPage } from "./pages/EditPasswordPage/EditPasswordPage.js";
 import { PostDetailPage } from "./pages/PostDetailPage/PostDetailPage.js";
 import { PostEditPage } from "./pages/PostEditPage/PostEditPage.js";
-
-import { router } from "./core/router.js";
-
+import { router} from "./core/router.js";
 
 router
     .add("/index.html", LoginPage)
