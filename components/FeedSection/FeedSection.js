@@ -5,7 +5,7 @@ import { useEffect } from "../../core/hooks/useEffect.js";
 import { getPosts } from "../../api/postApi.js";
 import { PostItem } from "../PostItem/PostItem/PostItem.js";
 
-const DEFAULT_SIZE = 3;
+const DEFAULT_SIZE = 8;
 
 export function FeedSection(){
     const [posts, setPosts] = useState([]);
