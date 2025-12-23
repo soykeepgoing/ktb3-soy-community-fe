@@ -1,10 +1,14 @@
 import { EditProfileSection } from "../../components/EditProfileSection/EditProfileSection.js";
 import { h } from "../../core/vdom/h.js";
-
+import { FloatingButton } from "../../components/FloatingButton/FloatingButton.js";
 export function EditProfilePage(){
 
     const section = EditProfileSection();
 
-    return h("div", {className: "edit-profile-page"}, section);
+    return h("div", 
+        {className: "edit-profile-page"}, 
+        section,
+        FloatingButton({value: "🏠", url: "/posts"})
+    );
 
 }
