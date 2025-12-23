@@ -2,9 +2,8 @@ import { useInputField } from "../../core/hooks/useInputField.js";
 import { h } from "../../core/vdom/h.js";
 import { validatePw } from "../../utils/validation/validatePw.js";
 import { validatePwCheck } from "../../utils/validation/validatePwCheck.js";
-import { Button } from "../Button/Button.js";
 import { EditPasswordForm } from "./EditPasswordForm/EditPasswordForm.js";
-import { handleEditPassword } from "../../handle/users/UserEventHandler.js";
+import {editPassword} from "../../api/userApi.js";
 
 export function EditPasswordSection(){
     const oldPassword = useInputField("", validatePw);
@@ -17,10 +16,12 @@ export function EditPasswordSection(){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await handleEditPassword({
+        const inputData = {
             userOldPassword: oldPassword.value, 
             userNewPassword: newPassword.value
-        });
+        };
+
+        await editPassword(inputData);
     };
 
     return h(

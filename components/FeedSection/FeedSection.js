@@ -40,7 +40,7 @@ export function FeedSection(){
         const observer = new IntersectionObserver(
             async (entries) => {
                 if (entries[0].isIntersecting && hasMore) {
-                    console.log("hi");
+                    //console.log("hi");
                     await loadMore();
                 }
             }, 

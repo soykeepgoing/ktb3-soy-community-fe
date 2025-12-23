@@ -27,7 +27,7 @@ export function PostEditPage(props) {
         const fetchPost = async() => {
             const res = await getPostDetail(postId);
             if (res?.success){
-                console.log(res);
+                //console.log(res);
                 const fetchedContent = res.data.content ?? "";
                 setContent(fetchedContent);
                 setInitialContent(fetchedContent);
@@ -58,7 +58,7 @@ export function PostEditPage(props) {
     }
 
     const handleSubmit = async (event) => {
-        console.log(postId);
+        //console.log(postId);
         event.preventDefault();
         const res = await submitEditPost({
             postContent: content, 

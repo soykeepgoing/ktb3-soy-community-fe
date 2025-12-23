@@ -35,7 +35,7 @@ export function PostCard(data){
 
     const deleteToastMsg = "게시글이 삭제되었습니다.";
 
-    console.log(data);
+    //console.log(data);
 
     const handleToggleDropDown = () => {
         setIsDropdownOpen(!isDropdownOpen);

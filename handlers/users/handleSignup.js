@@ -10,7 +10,7 @@ export async function handleSignUp({email, password, nickname, profileImage}){
         userNickname:nickname
     };
 
-    console.log(userData);
+    //console.log(userData);
 
     formData.append(
         "data",
@@ -21,7 +21,7 @@ export async function handleSignUp({email, password, nickname, profileImage}){
         formData.append("file", profileImage);
     }
 
-    console.log(profileImage);
+    //console.log(profileImage);
 
     const response = await signUp(formData);
 

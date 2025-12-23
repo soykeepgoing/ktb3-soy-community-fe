@@ -1,10 +1,10 @@
 function runCleanupHooks(fiber){
-    // console.log(fiber.hooks);
+    // //console.log(fiber.hooks);
     if (!fiber.hooks) return;
 
     fiber.hooks.forEach(hook => {
         if (hook.cleanup){
-            console.log(hook, hook.cleanup)
+            //console.log(hook, hook.cleanup)
             hook.cleanup();
         }
     })

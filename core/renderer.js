@@ -14,7 +14,7 @@ class Renderer{
 
     createDom(node) {
         const dom = document.createElement(node.type);
-        // console.log(node, dom);
+        // //console.log(node, dom);
         for (const [key, value] of Object.entries(node.props) ){
             if (this.isEventProp(key)){
                 const event = key.slice(2).toLowerCase();

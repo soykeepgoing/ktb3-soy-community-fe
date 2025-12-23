@@ -75,11 +75,11 @@ export function commitRoot() {
     globalFiberState.currentRoot = globalFiberState.wipRoot;
     globalFiberState.wipRoot = null;
 
-    console.log(globalFiberState);
+    //console.log(globalFiberState);
 
     // 도중에 발생했던 state가 있었다면 예약 
     if (globalFiberState.hasPendingUpdate){
-        console.log("다음에 진행할 루트는", globalFiberState.currentRoot);
+        //console.log("다음에 진행할 루트는", globalFiberState.currentRoot);
         globalFiberState.hasPendingUpdate = false;
         scheduleUpdateOnRoot();  
     }
